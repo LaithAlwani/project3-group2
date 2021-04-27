@@ -5,6 +5,10 @@ const TeamSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide a Team name"],
   },
+  sport:{
+      type:String,
+      required: [true, "please enter the sport that your team plays"]  
+  },
   players: [
     {
       player: {

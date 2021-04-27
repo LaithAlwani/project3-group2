@@ -31,17 +31,11 @@ const Landing = ({history}) => {
     fetchPrivateDate();
     }, [history]);
 
-    const logoutHandler = () =>{
-        localStorage.removeItem("authToken");
-        history.push("/")
-    }
-
      return error ? (
          <span ClassName= "error-message">{error}</span>
         ) : (
     <div>
     <div>{privateData}</div>
-    <button onClick={logoutHandler}>LogOut</button>
     </div>
     );
 };
