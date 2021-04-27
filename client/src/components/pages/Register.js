@@ -11,7 +11,6 @@ const Register = ({ history }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmpassword, setConfirmPassword] = useState("");
-    const [role, setRole] = useState("");
     const [error, setError] = useState("");
 
     
@@ -41,8 +40,6 @@ const Register = ({ history }) => {
             username,
             email,
             password,
-            role,
-            
         },
         config
     );
@@ -109,14 +106,7 @@ const Register = ({ history }) => {
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         />
                 </div>
-                <div className="form-group">
-                    <label htmlFor="role"> Role:</label>
-                    <select value={role} onChange={(e) => setRole(e.target.value)} >
-                        <option value=""></option>
-                        <option value="Instructor">Instructor</option>
-                        <option value="Student">Student</option>
-                    </select>
-                </div>                    
+                                    
                 <button type="submit" className="btn btn-primary"> Sign Up</button>
                 <span className="register-screen__subtext">
                     Already have an account? <Link to="/login">Login</Link>

@@ -19,17 +19,19 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: [true, "Please add a password"],
+    required: [true, "Please enter a password"],
     minlength: 6,
     select: false,
   },
-  role: {
-    type: String,
-    required: true,
-  },
+  teams: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Team",
+    },
+  ],
   userCreated: {
-  type: Date,
-  default: Date.now
+    type: Date,
+    default: Date.now,
   },
   resetPasswordToken: String,
   resetPasswordExpire: Date,
@@ -65,7 +67,7 @@ UserSchema.methods.getResetPasswordToken = function () {
     .digest("hex");
 
   // Set token expire date
-  this.resetPasswordExpire = Date.now() + 15 * (60 * 1000); 
+  this.resetPasswordExpire = Date.now() + 15 * (60 * 1000);
 
   return resetToken;
 };
