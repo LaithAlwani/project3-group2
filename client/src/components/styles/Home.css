@@ -1,0 +1,60 @@
+#title {
+  text-align: center;
+
+}
+
+
+#card {
+  background-color: black;
+  text-align: center;
+  margin: auto;
+  width: 350px;
+  height: 150px;
+  position: fixed;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+
+}
+
+
+
+
+
+
+
+
+HTML CSSResult Skip Results Iframe
+EDIT ON
+ul {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  /* 
+  if we did this instead of the template it would be a problem:
+  grid-auto-flow: column;
+  */
+  font: 120% system-ui;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+#signup {
+  text-decoration: none;
+  color: black;
+}
+#login:hover {
+  font-weight: 900;
+ 
+}
+#signup:hover {
+  font-weight: 900;
+
+}
+
+#signup {
+  font-size: 30px;
+}
+
+#login {
+  font-size: 30px;
+}
