@@ -7,7 +7,7 @@ function Navbar() {
 
     const logoutHandler = () =>{
         localStorage.removeItem("authToken");
-        history.push("/")
+        history.push("/login")
     }
 
     

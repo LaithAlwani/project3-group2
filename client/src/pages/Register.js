@@ -44,9 +44,9 @@ const Register = ({ history }) => {
         config
     );
 
-    localStorage.setItem("authToken", data.token);
+    // localStorage.setItem("authToken", data.token);
 
-    history.push("/portal");
+    history.push("/login");
     } catch (error) {
         setError(error.response.data.error);
         setTimeout(() => {
