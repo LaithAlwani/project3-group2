@@ -21,7 +21,7 @@ const Landing = ({history}) => {
 
     try {
         const { data } = await axios.get("/api/private", config);
-        setPrivateData(data.data);
+        setPrivateData(data);
     } catch (error) {
         localStorage.removeItem("authToken");
         setError("You are not authorized please login");
@@ -35,7 +35,8 @@ const Landing = ({history}) => {
          <span ClassName= "error-message">{error}</span>
         ) : (
     <div>
-    <div>{privateData}</div>
+    <div>
+        <h1>{privateData}</h1></div>
     </div>
     );
 };
