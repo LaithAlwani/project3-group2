@@ -1,0 +1,104 @@
+
+/* title */
+#title {
+  text-align: center;
+  display: inline;
+	position: relative;
+	font: 90px Helvetica, Sans-Serif;
+	letter-spacing: -5px;
+	color: white; 
+}
+#title:after {
+	/* content: "Management Systems"; */
+	position: absolute; left: 10px; top: 5px;
+	color: rgba(255,0,0,0.5);   
+}
+
+
+/* back-ground image */
+body {
+  background-image: url("../images/800px_COLOURBOX31048858.png");
+
+}
+
+
+
+
+
+
+
+/* login/create new account card */
+#card {
+  background-color: rgb(203, 255, 251);
+  text-align: center;
+  margin: auto;
+  width: 300px;
+  height: 150px;
+  position: fixed;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+
+}
+
+
+
+
+
+/* 
+
+
+HTML CSSResult Skip Results Iframe
+EDIT ON
+ul {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  font: 120% system-ui;
+  text-align: center;
+  padding: 2rem 1rem;
+} */
+
+/* signout/create new account hover effects */
+#signup {
+  text-decoration: none;
+  color: black;
+}
+#login:hover {
+  font-weight: 900;
+ 
+}
+#signup:hover {
+  font-weight: 900;
+
+}
+
+#signup {
+  font-size: 25px;
+}
+
+#login {
+  font-size: 25px;
+  color: white;
+}
+
+
+/* #title {
+  text-align: center;
+  font-family: 'Oswald', Helvetica, sans-serif;
+  font-size: 60px;
+  transform: skewY(-10deg);
+  letter-spacing: 0px;
+  word-spacing: -8x;
+  color: tomato;
+  text-shadow: 
+    -1px -1px 0 firebrick,
+    -2px -2px 0 firebrick,
+    -3px -3px 0 firebrick,
+    -4px -4px 0 firebrick,
+    -5px -5px 0 firebrick,
+    -6px -6px 0 firebrick,
+    -7px -7px 0 firebrick,
+    -8px -8px 0 firebrick,
+    -30px 20px 40px dimgrey
+} */
