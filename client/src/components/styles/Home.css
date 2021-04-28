@@ -1,3 +1,5 @@
+
+/* title */
 #title {
   text-align: center;
   display: inline;
@@ -13,7 +15,7 @@
 }
 
 
-
+/* back-ground image */
 body {
   background-image: url("800px_COLOURBOX31048858.png");
 
@@ -25,7 +27,7 @@ body {
 
 
 
-
+/* login/create new account card */
 #card {
   background-color: rgb(203, 255, 251);
   text-align: center;
@@ -57,7 +59,7 @@ ul {
   padding: 2rem 1rem;
 } */
 
-
+/* signout/create new account hover effects */
 #signup {
   text-decoration: none;
   color: black;
