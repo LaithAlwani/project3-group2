@@ -1,14 +1,36 @@
 #title {
   text-align: center;
+  display: inline;
+	position: relative;
+	font: 90px Helvetica, Sans-Serif;
+	letter-spacing: -5px;
+	color: white; 
+}
+#title:after {
+	/* content: "Management Systems"; */
+	position: absolute; left: 10px; top: 5px;
+	color: rgba(255,0,0,0.5);   
+}
+
+
+
+body {
+  background-image: url("800px_COLOURBOX31048858.png");
 
 }
 
 
+
+
+
+
+
+
 #card {
-  background-color: black;
+  background-color: rgb(203, 255, 251);
   text-align: center;
   margin: auto;
-  width: 350px;
+  width: 300px;
   height: 150px;
   position: fixed;
 left: 50%;
@@ -21,7 +43,7 @@ transform: translate(-50%, -50%);
 
 
 
-
+/* 
 
 
 HTML CSSResult Skip Results Iframe
@@ -30,14 +52,12 @@ ul {
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  /* 
-  if we did this instead of the template it would be a problem:
-  grid-auto-flow: column;
-  */
   font: 120% system-ui;
   text-align: center;
   padding: 2rem 1rem;
-}
+} */
+
+
 #signup {
   text-decoration: none;
   color: black;
@@ -52,9 +72,31 @@ ul {
 }
 
 #signup {
-  font-size: 30px;
+  font-size: 25px;
 }
 
 #login {
-  font-size: 30px;
+  font-size: 25px;
+  color: white;
 }
+
+
+/* #title {
+  text-align: center;
+  font-family: 'Oswald', Helvetica, sans-serif;
+  font-size: 60px;
+  transform: skewY(-10deg);
+  letter-spacing: 0px;
+  word-spacing: -8x;
+  color: tomato;
+  text-shadow: 
+    -1px -1px 0 firebrick,
+    -2px -2px 0 firebrick,
+    -3px -3px 0 firebrick,
+    -4px -4px 0 firebrick,
+    -5px -5px 0 firebrick,
+    -6px -6px 0 firebrick,
+    -7px -7px 0 firebrick,
+    -8px -8px 0 firebrick,
+    -30px 20px 40px dimgrey
+} */

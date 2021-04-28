@@ -6,29 +6,26 @@ import "../styles/Home.css"
 const Home = () => {
      return (
         <div>
-
-
-           <h1 id="title">Management Systems App</h1>
+          
+          <div class="float">
+             {/* <h1 id="title">Management Systems</h1> */}
     
-         {/* <ul>
-                <li><Link to="/register"> Sign Up </Link></li>
-                <li><Link to="/login"> Login</Link></li>
-            </ul> */}
 
 
 
-
-<div id="card">
+        <div id="card">
             <ul>
-               <div id="signup"> <Link to="/register"> Sign Up </Link></div>
+            <div id="login">  <Link to="/login"> Login</Link></div>
+            OR
                 <br></br>
-              <div id="login">  <Link to="/login"> Login</Link></div>
+             <div id="signup"> <Link to="/register"> Create a free account </Link></div>
             </ul>
   
+        </div>
+        </div>
+    
+
 </div>
-
-
-         </div>
 
 
 
