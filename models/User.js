@@ -47,6 +47,12 @@ UserSchema.pre("save", async function (next) {
   next();
 });
 
+UserSchema.pre('findOneAndUpdate', function (next) {
+  this._update.password = bcrypt.hashSync(this._update.password, 10)
+  next();
+});
+
+
 UserSchema.methods.matchPassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };

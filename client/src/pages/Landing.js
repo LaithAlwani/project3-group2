@@ -1,10 +1,18 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import UserContext from "../utils/UserContext";
+import {Profile, UpdateProfile} from "../components/Profile";
 
 const Landing = ({ history }) => {
   const [error, setError] = useState("");
-  const [userData, setUserData] = useState("");
+  const [userData, setUserData] = useState({
+    username: "",
+    _id: "",
+    email: "",
+    teams:"", 
+    userCreated:""
+  })
 
   useEffect(() => {
     if (!localStorage.getItem("authToken")) {
@@ -24,6 +32,7 @@ const Landing = ({ history }) => {
       } catch (error) {
         localStorage.removeItem("authToken");
         setError("You are not authorized please login");
+        history.push("/login");
       }
     };
 
@@ -33,19 +42,17 @@ const Landing = ({ history }) => {
   return error ? (
     <span ClassName="error-message">{error}</span>
   ) : (
+    <UserContext.Provider value={userData}>
     <div>
       <div>
-        <h1>Welcome {userData.username} !!</h1>
-        <h3>{userData.username} Information:</h3>
-        <ul>
-            <li>Email: {userData.email}</li>
-            <li>Id: {userData._id}</li>
-            <li>My Teams:{userData.teams}</li>
-            <li>Joined: {userData.userCreated}</li>
-        </ul>
+        <h1 style={{textAlign:"center", marginTop:"20px"}}>Welcome {userData.username} !!</h1>
       </div>
+      <Profile/>
+      <UpdateProfile/>
     </div>
+    </UserContext.Provider>
   );
 };
 
 export default Landing;
+
