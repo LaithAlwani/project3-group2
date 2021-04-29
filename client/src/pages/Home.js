@@ -5,8 +5,13 @@ import "../styles/Home.css";
 const Home = () => {
   return (
     <div>
-      <h1 id="title">My Team</h1>
 
+<div id="titlebox">
+      <h1 id="title">My Team</h1>
+      </div>
+
+
+      
 <div className="container">
       <Link to="/register" className="mr-4">
         Sign Up
