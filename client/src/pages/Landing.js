@@ -45,7 +45,7 @@ const Landing = ({ history }) => {
     <UserContext.Provider value={userData}>
     <div>
       <div>
-        <h1 style={{textAlign:"center", marginTop:"20px"}}>Welcome {userData.username} !!</h1>
+        <h1 style={{textAlign:"center", marginTop:"25px"}}>Welcome {userData.username} !!!</h1>
       </div>
       <Profile/>
       <UpdateProfile/>
