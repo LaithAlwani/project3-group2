@@ -1,21 +1,36 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PrivateRoute from "./routing/PrivateRoute";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
+import Landing from "./pages/Landing";
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const App = () => {
+  return (
+    <div className="app">
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <>
+            <Navbar />
+            <PrivateRoute exact path="/portal" component={Landing} />
+            <Route path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+            <Route exact path="/forgotpassword" component={ForgotPassword} />
+            <Route
+              exact
+              path="/passwordreset/:resetToken"
+              component={ResetPassword}
+            />
+          </>
+        </Switch>
+      </Router>
+    </div>
+  );
+};
 
 export default App;
