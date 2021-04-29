@@ -7,8 +7,6 @@ const errorHandler = require("./middleware/error");
 const PORT = process.env.PORT || 5000;
 const app = express();
 
-connectDB();
-
 app.use(express.json());
 
 app.use(errorHandler);
@@ -20,6 +18,8 @@ app.use("/api/private", require("./routes/private"));
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+connectDB();
 
 app.use(express.json());
 
