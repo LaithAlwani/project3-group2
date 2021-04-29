@@ -135,6 +135,23 @@ exports.resetPassword = async (req, res, next) => {
   }
 };
 
+// Update
+exports.update = async (req, res, next) => {
+
+  try {
+    const id = req.params.id
+    const {username, email, password} = req.body
+    const options = {new: true}
+
+    const user = await User.findOneAndUpdate( id,  {username, email, password}, options);
+    res.send(user)
+   
+  } catch (err) {
+    console.log(err)
+    next()
+  }
+}
+
 const sendToken = (user, statusCode, res) => {
   const token = user.getSignedJwtToken();
   res.status(statusCode).json({ sucess: true, token });
