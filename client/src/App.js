@@ -8,6 +8,7 @@ import ResetPassword from "./pages/ResetPassword";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
+import './styles/Home.css'
 
 const App = () => {
   return (
