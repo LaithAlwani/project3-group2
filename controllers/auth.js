@@ -67,14 +67,19 @@ exports.forgotPassword = async (req, res, next) => {
 
     await user.save();
 
-    // Create reset url to email to provided email
-    const resetUrl = `http://localhost:3000/passwordreset/${resetToken}`;
+     // Create reset url to email to provided email
+     const resetUrlDev = `http://localhost:3000/passwordreset/${resetToken}`;
+     const resetUrlProd = `https://group2-project3.herokuapp.com/passwordreset/${resetToken}`;
 
     // HTML Message
     const message = `
     <h1>Password Reset</h1>
     <p> Seems like you forgot your password. Click on the link below to reset your password</p>
-    <a href=${resetUrl} clicktracking=off>${resetUrl}</a>
+    <a href=${
+      process.env.NODE_ENV === "production" ? resetUrlProd : resetUrlDev
+    } clicktracking=off>${
+      process.env.NODE_ENV === "production" ? resetUrlProd : resetUrlDev
+    }</a>
     <p> If you did not forget your password, you can safely ignore this email.</p>
     `
 

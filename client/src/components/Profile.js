@@ -1,12 +1,12 @@
 import React , {useContext, useState} from "react";
 import UserContext from "../utils/UserContext";
-import { Modal, Button} from "react-bootstrap";
+import  {Modal}  from "react-bootstrap";
 import axios from  "axios";
 import "../styles/Profile.css";
 
 const Profile = () => {
   const {username, email} = useContext(UserContext);
-
+ 
   return ( 
     <div className="container">
       <div className="row profile">

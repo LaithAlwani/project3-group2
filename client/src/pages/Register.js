@@ -13,8 +13,6 @@ const Register = ({ history }) => {
     const [confirmpassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
 
-    
-
     const registerHandler = async (e) => {
         e.preventDefault();
 
@@ -43,7 +41,7 @@ const Register = ({ history }) => {
         },
         config
     );
-
+        console.log(data)
     // localStorage.setItem("authToken", data.token);
 
     history.push("/login");
