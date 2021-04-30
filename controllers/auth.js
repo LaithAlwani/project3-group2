@@ -67,7 +67,7 @@ exports.forgotPassword = async (req, res, next) => {
     await user.save();
 
     // Create reset url to email to provided email
-    const resetUrlProd = `http://localhost:3000/passwordreset/${resetToken}`;
+    const resetUrlDev = `http://localhost:3000/passwordreset/${resetToken}`;
     const resetUrlProd = `https://group2-project3.herokuapp.com/passwordreset/${resetToken}`;
 
     // HTML Message
