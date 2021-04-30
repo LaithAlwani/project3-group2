@@ -3,7 +3,6 @@ const ErrorResponse = require("../utils/errorResponse");
 const User = require("../models/User");
 const sendEmail = require("../utils/sendEmail");
 
-
 exports.login = async (req, res, next) => {
   const { email, password } = req.body;
 
@@ -67,9 +66,9 @@ exports.forgotPassword = async (req, res, next) => {
 
     await user.save();
 
-     // Create reset url to email to provided email
-     const resetUrlDev = `http://localhost:3000/passwordreset/${resetToken}`;
-     const resetUrlProd = `https://group2-project3.herokuapp.com/passwordreset/${resetToken}`;
+    // Create reset url to email to provided email
+    const resetUrl = `http://localhost:3000/passwordreset/${resetToken}`;
+    const resetUrlProd = `https://group2-project3.herokuapp.com/passwordreset/${resetToken}`;
 
     // HTML Message
     const message = `
