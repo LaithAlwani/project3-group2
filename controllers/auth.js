@@ -3,7 +3,6 @@ const ErrorResponse = require("../utils/errorResponse");
 const User = require("../models/User");
 const sendEmail = require("../utils/sendEmail");
 
-
 exports.login = async (req, res, next) => {
   const { email, password } = req.body;
 
@@ -68,15 +67,20 @@ exports.forgotPassword = async (req, res, next) => {
     await user.save();
 
     // Create reset url to email to provided email
-    const resetUrl = `http://localhost:3000/passwordreset/${resetToken}`;
+    const resetUrlDev = `http://localhost:3000/passwordreset/${resetToken}`;
+    const resetUrlProd = `https://group2-project3.herokuapp.com/passwordreset/${resetToken}`;
 
     // HTML Message
     const message = `
     <h1>Password Reset</h1>
     <p> Seems like you forgot your password. Click on the link below to reset your password</p>
-    <a href=${resetUrl} clicktracking=off>${resetUrl}</a>
+    <a href=${
+      process.env.NODE_ENV === "production" ? resetUrlProd : resetUrlDev
+    } clicktracking=off>${
+      process.env.NODE_ENV === "production" ? resetUrlProd : resetUrlDev
+    }</a>
     <p> If you did not forget your password, you can safely ignore this email.</p>
-    `
+    `;
 
     try {
       await sendEmail({
@@ -137,20 +141,22 @@ exports.resetPassword = async (req, res, next) => {
 
 // Update
 exports.update = async (req, res, next) => {
-
   try {
-    const id = req.params.id
-    const {username, email, password} = req.body
-    const options = {new: true}
+    const id = req.params.id;
+    const { username, email, password } = req.body;
+    const options = { new: true };
 
-    const user = await User.findOneAndUpdate( id,  {username, email, password}, options);
-    res.send(user)
-   
+    const user = await User.findOneAndUpdate(
+      id,
+      { username, email, password },
+      options
+    );
+    res.send(user);
   } catch (err) {
-    console.log(err)
-    next()
+    console.log(err);
+    next();
   }
-}
+};
 
 const sendToken = (user, statusCode, res) => {
   const token = user.getSignedJwtToken();
