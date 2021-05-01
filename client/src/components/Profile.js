@@ -8,9 +8,10 @@ const Profile = () => {
   const { username, email } = useContext(UserContext);
 
   return (
-    <div className="container">
+    <>
       <div className="profile-userpic">
         <img
+        className="img-fluid"
           src={
             "https://racemph.com/wp-content/uploads/2016/09/profile-image-placeholder.png"
           }
@@ -18,15 +19,15 @@ const Profile = () => {
         />
       </div>
       <div className="text-left mt-3">
-        <p> Username: {username}</p>
+        <p> Name: {username}</p>
         <p> Email: {email}</p>
       </div>
-      {/* <UpdateProfile /> */}
-    </div>
+      <UpdateProfile />
+    </>
   );
 };
 
-const UpdateProfile = () => {
+const UpdateProfile = (e) => {
   const { _id } = useContext(UserContext);
 
   const [username, setUsername] = useState("");
@@ -64,11 +65,10 @@ const UpdateProfile = () => {
   };
   return (
     <div>
-      
-        <button className="btn btn-primary btn-block" onClick={handleShow}>
-          Update User Information
-        </button>
-      
+      <button className="btn btn-primary" onClick={handleShow}>
+        Update User Information
+      </button>
+
       <div
         className="d-flex align-items-center justify-content-center"
         style={{ height: "100vh" }}

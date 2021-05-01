@@ -58,17 +58,17 @@ const Landing = ({ getUsername }) => {
       <div className="container">
         <h1 className="text-center mt-3">Welcome {userData.username} !!</h1>
         <div className="row text-center">
-          <div className="col-md-4">
+          <div className="col-sm-3">
             <Profile />
           </div>
-          <div className="col-md-8">
+          <div className="col-sm-9">
             {/* <MyTeams/> */}
             Hello from my teams
           </div>
           
         </div>
         
-        <UpdateProfile />
+        
       </div>
     </UserContext.Provider>
   );

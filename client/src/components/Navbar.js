@@ -10,7 +10,7 @@ function Navbar({username}) {
 
   return (
     <div className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link exact className="navbar-brand" to="/portal">
+      <Link className="navbar-brand" to="/portal">
         My Team
       </Link>
       <button
