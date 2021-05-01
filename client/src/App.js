@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import PrivateRoute from "./routing/PrivateRoute";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -21,15 +20,17 @@ const App = () => {
     <div className="app">
       <Router>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/"  >
+            <Home />
+          </Route>
           <>
             <Navbar username={username}/>
-            <PrivateRoute exact path="/portal">
+            <Route path="/portal">
               <Landing getUsername={getUsername}/>
-            </PrivateRoute>
+            </Route>
             <Route path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/forgotpassword" component={ForgotPassword} />
+            <Route path="/register" component={Register} />
+            <Route path="/forgotpassword" component={ForgotPassword} />
             <Route
               exact
               path="/passwordreset/:resetToken"

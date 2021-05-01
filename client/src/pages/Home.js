@@ -7,7 +7,7 @@ const logo = require("../styles/team.png");
 const Home = () => {
   return (
     <div
-        class="bg_image"
+        className="bg_image"
         style={{
           backgroundImage: 'url('+logo+')',
           backgroundSize: "cover",
@@ -21,7 +21,7 @@ const Home = () => {
       </div>
 
     
-<div className="container">
+<div className="home">
       <Link to="/register" className="mr-4">
         Sign Up
       </Link>
