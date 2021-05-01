@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PrivateRoute from "./routing/PrivateRoute";
 import Login from "./pages/Login";
@@ -10,14 +10,22 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 
 const App = () => {
+
+  const [username, setUsername] = useState("");
+
+  const getUsername = (username)=>{
+    setUsername(username);
+  }
   return (
     <div className="app">
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
           <>
-            <Navbar />
-            <PrivateRoute exact path="/portal" component={Landing} />
+            <Navbar username={username}/>
+            <PrivateRoute exact path="/portal">
+              <Landing getUsername={getUsername}/>
+            </PrivateRoute>
             <Route path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/forgotpassword" component={ForgotPassword} />

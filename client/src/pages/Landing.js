@@ -4,7 +4,7 @@ import axios from "axios";
 import UserContext from "../utils/UserContext";
 import {Profile, UpdateProfile} from "../components/Profile";
 
-const Landing = ({ history }) => {
+const Landing = ({ history, getUsername }) => {
   const [error, setError] = useState("");
   const [userData, setUserData] = useState({
     username: "",
@@ -29,6 +29,7 @@ const Landing = ({ history }) => {
       try {
         const { data } = await axios.get("/api/private", config);
         setUserData(data);
+        getUsername(data.username);
       } catch (error) {
         localStorage.removeItem("authToken");
         setError("You are not authorized please login");
@@ -37,6 +38,7 @@ const Landing = ({ history }) => {
     };
 
     fetchPrivateDate();
+    
   }, [history]);
 
   return error ? (

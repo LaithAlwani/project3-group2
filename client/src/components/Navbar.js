@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-function Navbar() {
+function Navbar({username}) {
   const location = useLocation();
 
   const logoutHandler = () => {
@@ -28,6 +28,11 @@ function Navbar() {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         {localStorage.getItem("authToken") && (
           <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <Link to="#" className = "nav-link">
+                Hi {username}!
+              </Link>
+            </li>
             <li className="nav-item ">
               <Link
                 className={
