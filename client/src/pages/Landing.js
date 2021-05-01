@@ -56,14 +56,13 @@ const Landing = ({ getUsername }) => {
   ) : (
     <UserContext.Provider value={userData}>
       <div className="container">
-        <h1 className="text-center mt-3">Welcome {userData.username} !!</h1>
         <div className="row text-center">
           <div className="col-sm-3">
             <Profile />
           </div>
           <div className="col-sm-9">
             {/* <MyTeams/> */}
-            Hello from my teams
+           <h1> Hello from My Teams !!!</h1> 
           </div>
           
         </div>

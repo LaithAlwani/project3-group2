@@ -1,9 +1,8 @@
 .profile-userpic img {
   border-radius: 50%;
-  
+  margin-top: 20px;
   vertical-align: middle;
   border-style: none;
-  
   margin-bottom: 10px;
 }
 
