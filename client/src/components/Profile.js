@@ -27,7 +27,8 @@ const Profile = () => {
   );
 };
 
-const UpdateProfile = (e) => {
+const UpdateProfile = () => {
+  
   const { _id } = useContext(UserContext);
 
   const [username, setUsername] = useState("");
@@ -38,6 +39,9 @@ const UpdateProfile = (e) => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [error, setErorr] = useState("");
+
+
   const submitHandler = async () => {
     const config = {
       header: {
@@ -46,7 +50,7 @@ const UpdateProfile = (e) => {
     };
 
     try {
-      const { data } = await axios.put(
+      await axios.put(
         `/api/auth/update/${_id}`,
         {
           username,
@@ -55,20 +59,25 @@ const UpdateProfile = (e) => {
         },
         config
       );
-      console.log(data);
-
-      // window.location.reload();
+      window.location.reload();
     } catch (error) {
       console.log(error);
-      handleClose();
+      setErorr("Email Already Exists in Database");
+      if(!error)
+        handleClose();
+      setTimeout(()=>{
+        setErorr("");
+      },2000)
     }
   };
+
+
   return (
     <div>
       <button className="btn btn-primary" onClick={handleShow}>
         Update User Information
       </button>
-
+      
       <div
         className="d-flex align-items-center justify-content-center"
         style={{ height: "100vh" }}
@@ -78,6 +87,7 @@ const UpdateProfile = (e) => {
           <Modal.Title>Update User Information</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+        {error && <div className="alert alert-danger">{error}</div>}
           <form onSubmit={submitHandler}>
             <div className="form-group">
               <label htmlFor="name">Username:</label>
