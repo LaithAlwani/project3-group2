@@ -1,13 +1,13 @@
-img {
+.profile-userpic img {
   border-radius: 50%;
-  height: 200px;
+  
   vertical-align: middle;
   border-style: none;
-  width: 200px;
+  
   margin-bottom: 10px;
 }
 
-li {
+/* li {
   display: block !important;
   padding: 10px;
-}
+} */

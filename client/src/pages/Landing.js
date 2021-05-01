@@ -20,9 +20,9 @@ const Landing = ({ getUsername }) => {
   useEffect(() => {
     if (!localStorage.getItem("authToken")) {
       setError("You are not authorized please login! redirecting to login");
-      setTimeout(()=>{
+      setTimeout(() => {
         history.push("/login");
-      },2000);
+      }, 2000);
     }
     const fetchPrivateDate = async () => {
       const config = {
@@ -39,9 +39,9 @@ const Landing = ({ getUsername }) => {
       } catch (error) {
         localStorage.removeItem("authToken");
         setError("You are not authorized please login! Redirecting to login");
-        setTimeout(()=>{
+        setTimeout(() => {
           history.push("/login");
-        },2000);
+        }, 2000);
       }
     };
 
@@ -49,20 +49,26 @@ const Landing = ({ getUsername }) => {
   }, [history]);
 
   return error ? (
-    // <div ClassName="alert alert-danger">{error}</div>
-    <div class="alert alert-danger" role="alert">
+  
+    <div className="alert alert-danger" role="alert">
       {error}
     </div>
   ) : (
     <UserContext.Provider value={userData}>
-      <div>
-        <div>
-          <h1 style={{ textAlign: "center", marginTop: "20px" }}>
-            Welcome {userData.username} !!
-          </h1>
+      <div className="container">
+        <h1 className="text-center mt-3">Welcome {userData.username} !!</h1>
+        <div className="row text-center">
+          <div className="col-sm-3">
+            <Profile />
+          </div>
+          <div className="col-sm-9">
+            {/* <MyTeams/> */}
+            Hello from my teams
+          </div>
+          
         </div>
-        <Profile />
-        <UpdateProfile />
+        
+        
       </div>
     </UserContext.Provider>
   );

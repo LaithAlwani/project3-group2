@@ -146,7 +146,7 @@ exports.update = async (req, res, next) => {
     const { username, email, password } = req.body;
     const options = { new: true };
 
-    const user = await User.findOneAndUpdate(
+    const user = await User.findByIdAndUpdate(
       id,
       { username, email, password },
       options
