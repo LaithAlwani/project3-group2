@@ -1,26 +1,30 @@
 import React from "react";
+import Jumbotron from "../components/jumbotron/jumbotron";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
 const logo = require("../styles/team.png");
 
 
+
 const Home = () => {
   return (
-    <div
-        className="bg_image"
+    <div>
+      <div id="titlebox">
+      <h1 id="title">My</h1>
+      </div>
+
+
+      <div className="bg_image"
         style={{
           backgroundImage: 'url('+logo+')',
           backgroundSize: "cover",
           height: "100vh",
           // color: "#f5f5f5"
         }}
-      >
+        ></div>
 
-<div id="titlebox">
-      <h1 id="title">My</h1>
-      </div>
 
-<div class="container" style={{background: "black"}}>
+<div class="container" style={{position: "fixed"}}>
     <div className="home"> 
       <Link to="/register" className="mr-4">
         Sign Up
