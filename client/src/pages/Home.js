@@ -20,16 +20,28 @@ const Home = () => {
       <h1 id="title">My</h1>
       </div>
 
-    
-<div className="home">
+<div class="container" style={{background: "black"}}>
+    <div className="home"> 
       <Link to="/register" className="mr-4">
         Sign Up
       </Link>
       <br></br>
       <Link to="/login"> Login</Link>
     </div>
-  </div>
-    );
+   </div>
+
+
+   <div class="footer">
+
+
+  <div class="footer-content-right">
+  <a href="https://github.com/nashwalters"><img src="images/github.jpeg" class="icon-style" alt="Github icon"/></a>
+  <a href="https://github.com/LaithAlwani"><img src="images/github.jpeg" class="icon-style" alt="Github icon"/></a>
+  <a href="https://github.com/ttmgs"><img src="images/github.jpeg" class="icon-style" alt="Github icon"/></a>
+</div>
+</div>
+   </div>
+     );
 };
 
 
