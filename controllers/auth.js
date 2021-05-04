@@ -1,6 +1,7 @@
 const crypto = require("crypto");
 const ErrorResponse = require("../utils/errorResponse");
 const User = require("../models/User");
+const Team = require("../models/Team");
 const sendEmail = require("../utils/sendEmail");
 
 exports.login = async (req, res, next) => {
@@ -156,6 +157,33 @@ exports.update = async (req, res, next) => {
     console.log(err);
     next();
   }
+};
+
+exports.createTeam = async (req, res, next) => {
+  const { _id, teamName, sport } = req.body;
+  Team.create({
+    teamName,
+    sport,
+    players:{_id, isAdmin:true}
+  }, (err, team) => {
+    if(err){
+      console.log(err);
+      return
+    }
+    User.findById(_id, (err, user)=>{
+      if(err){
+        console.log(err);
+        
+      }else{
+        user.teams.push(team._id);
+        user.save();
+      }
+    })
+    console.log("team created");
+    console.log(_id);
+    return(team);
+  });
+  
 };
 
 const sendToken = (user, statusCode, res) => {

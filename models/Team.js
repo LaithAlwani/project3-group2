@@ -4,6 +4,7 @@ const TeamSchema = new mongoose.Schema({
   teamName: {
     type: String,
     required: [true, "Please provide a Team name"],
+    unique:true
   },
   sport:{
       type:String,

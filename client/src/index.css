@@ -36,20 +36,14 @@ body {
 }
 
 .btn {
-  padding: 10px 20px;
-  cursor: pointer;
-  width: 100%;
-  font-size: 1rem;
+  
   border: none;
+  background-color: coral;
+  color: white;
 }
 
 .btn:hover {
   opacity: 0.8;
-}
-
-.btn-primary {
-  background-color: coral;
-  color: #fff;
 }
 
 .error-message {

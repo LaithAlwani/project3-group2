@@ -74,8 +74,8 @@ const UpdateProfile = () => {
 
   return (
     <div>
-      <button className="btn btn-primary" onClick={handleShow}>
-        Update User Information
+      <button className="btn btn-block" onClick={handleShow}>
+        Update
       </button>
       
       <div
@@ -97,7 +97,7 @@ const UpdateProfile = () => {
                 id="name"
                 placeholder="Enter Full Name"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={e => setUsername(e.target.value)}
               />
             </div>
             <div className="form-group">
