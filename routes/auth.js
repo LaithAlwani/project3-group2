@@ -1,8 +1,15 @@
 const express = require("express");
 const router = express.Router();
 
-
-const { login, register, forgotPassword, resetPassword, update} = require("../controllers/auth");
+const {
+  login,
+  register,
+  forgotPassword,
+  resetPassword,
+  update,
+  createTeam,
+  getTeamsByUserId
+} = require("../controllers/auth");
 
 router.route("/register").post(register);
 
@@ -13,5 +20,9 @@ router.route("/forgotpassword").post(forgotPassword);
 router.route("/passwordreset/:resetToken").put(resetPassword);
 
 router.route("/update/:id").put(update);
+
+router.route("/createteam").post(createTeam);
+
+router.route("/teams/:id").get(getTeamsByUserId);
 
 module.exports = router;

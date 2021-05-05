@@ -1,6 +1,7 @@
 const crypto = require("crypto");
 const ErrorResponse = require("../utils/errorResponse");
 const User = require("../models/User");
+const Team = require("../models/Team");
 const sendEmail = require("../utils/sendEmail");
 
 exports.login = async (req, res, next) => {
@@ -162,3 +163,41 @@ const sendToken = (user, statusCode, res) => {
   const token = user.getSignedJwtToken();
   res.status(statusCode).json({ sucess: true, token });
 };
+
+exports.createTeam =  (req, res) => {
+  
+  const { _id, teamName, sport } = req.body;
+  Team.create({
+    teamName,
+    sport,
+    players:{_id, isAdmin:true}
+  }, (err, team) => {
+    if(err){
+      console.log(err);
+      return 
+    }
+    User.findById(_id, (err, user)=>{
+      if(err){
+        console.log(err);
+        
+      }else{
+        user.teams.push(team._id);
+        user.save();
+      }
+    });
+    res.status(201).json({
+      success:true,
+      data:"Team Created"
+    });
+  });
+};
+
+exports.getTeamsByUserId = (req,res)=>{
+  User.findById(req.params.id).populate("teams").exec((err, teams)=>{
+    if(err){
+      console.log(err)
+      res.send("No teams found").status(500).end();
+    }
+    res.json(teams)
+  })
+}

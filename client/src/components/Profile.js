@@ -74,14 +74,14 @@ const UpdateProfile = () => {
 
   return (
     <div>
-      <button className="btn btn-primary" onClick={handleShow}>
-        Update User Information
+      <button className="btn btn-block" onClick={handleShow}>
+        Update
       </button>
       
-      <div
+      {/* <div
         className="d-flex align-items-center justify-content-center"
         style={{ height: "100vh" }}
-      ></div>
+      ></div> */}
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Update User Information</Modal.Title>
@@ -97,7 +97,7 @@ const UpdateProfile = () => {
                 id="name"
                 placeholder="Enter Full Name"
                 value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={e => setUsername(e.target.value)}
               />
             </div>
             <div className="form-group">

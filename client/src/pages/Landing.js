@@ -4,6 +4,8 @@ import axios from "axios";
 import UserContext from "../utils/UserContext";
 import { Profile } from "../components/Profile";
 import "../App.css";
+import MyTeamContainer from "../components/MyTeamContainer";
+
 
 const Landing = ({ getUsername }) => {
   const history = useHistory();
@@ -56,13 +58,13 @@ const Landing = ({ getUsername }) => {
   ) : (
     <UserContext.Provider value={userData}>
       <div className="container">
-        <div className="row text-center">
-          <div className="col-sm-3">
+        <div className="row ">
+          <div className="col-md-3">
             <Profile />
           </div>
-          <div className="col-sm-9">
+          <div className="col-md-9">
             {/* <MyTeams/> */}
-           <h1> Hello from My Teams !!!</h1> 
+           <MyTeamContainer />
           </div>
           
         </div>

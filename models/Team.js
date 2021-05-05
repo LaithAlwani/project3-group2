@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const TeamSchema = new mongoose.Schema({
   teamName: {
     type: String,
-    required: [true, "Please provide a Team name"],
+    required: [true, "Please provide a Team name"]
   },
   sport:{
       type:String,
