@@ -159,7 +159,13 @@ exports.update = async (req, res, next) => {
   }
 };
 
-exports.createTeam = async (req, res, next) => {
+const sendToken = (user, statusCode, res) => {
+  const token = user.getSignedJwtToken();
+  res.status(statusCode).json({ sucess: true, token });
+};
+
+exports.createTeam =  (req, res) => {
+  
   const { _id, teamName, sport } = req.body;
   Team.create({
     teamName,
@@ -168,7 +174,7 @@ exports.createTeam = async (req, res, next) => {
   }, (err, team) => {
     if(err){
       console.log(err);
-      return
+      return 
     }
     User.findById(_id, (err, user)=>{
       if(err){
@@ -178,15 +184,20 @@ exports.createTeam = async (req, res, next) => {
         user.teams.push(team._id);
         user.save();
       }
-    })
-    console.log("team created");
-    console.log(_id);
-    return(team);
+    });
+    res.status(201).json({
+      success:true,
+      data:"Team Created"
+    });
   });
-  
 };
 
-const sendToken = (user, statusCode, res) => {
-  const token = user.getSignedJwtToken();
-  res.status(statusCode).json({ sucess: true, token });
-};
+exports.getTeamsByUserId = (req,res)=>{
+  User.findById(req.params.id).populate("teams").exec((err, teams)=>{
+    if(err){
+      console.log(err)
+      res.send("No teams found").status(500).end();
+    }
+    res.json(teams)
+  })
+}

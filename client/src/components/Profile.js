@@ -78,10 +78,10 @@ const UpdateProfile = () => {
         Update
       </button>
       
-      <div
+      {/* <div
         className="d-flex align-items-center justify-content-center"
         style={{ height: "100vh" }}
-      ></div>
+      ></div> */}
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Update User Information</Modal.Title>

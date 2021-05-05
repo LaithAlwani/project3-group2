@@ -16,10 +16,7 @@ function AddTeam({ getShowTeams }) {
       },
     };
     try {
-      
-      
-      const {data} = await axios.post(
-        
+      await axios.post(
         "api/auth/createteam",
         {
           _id,
@@ -27,15 +24,11 @@ function AddTeam({ getShowTeams }) {
           sport,
         },
         config
-        
       );
-      console.log(data);
+      getShowTeams(true);
       
-      // console.log(_id, teamName, sport); 
-    }
-    
-    catch (error) {
-        console.log(error);
+    } catch (error) {
+      console.log(error);
       setError(error.response.data.error);
       setTimeout(() => {
         setError("");
@@ -47,9 +40,9 @@ function AddTeam({ getShowTeams }) {
     <>
       {error && <span className="error-message">{error}</span>}
       <div className="text-center mt-4">
-        <h3>please enter the team informaitoin</h3>
+        <h3>please enter the team information</h3>
         <form onSubmit={handleSubmit} className="add-team-form">
-          <div className="input-group">
+          <div className="form-group">
             <input
               type="text"
               className="form-control"
@@ -59,7 +52,7 @@ function AddTeam({ getShowTeams }) {
               required
             />
           </div>
-          <div className="input-group">
+          <div className="form-group">
             <input
               type="text"
               className="form-control"

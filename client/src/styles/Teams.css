@@ -1,0 +1,23 @@
+.team-card{
+    background: linear-gradient(
+     white, white 50%, #333 50%, #333
+  );
+  background-size: 100% 200%;
+  transition: all 0.2s ease;
+}
+
+.team-card:hover {
+    background-position: 100% 100%;
+    cursor: pointer;
+    color: white;
+  }
+
+
+
+.team-list .card:hover{
+    box-shadow: 5px 5px 1px lightgray ;
+}
+img{
+    
+    width:3.5rem !important
+}
