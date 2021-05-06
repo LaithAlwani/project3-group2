@@ -63,7 +63,6 @@ Click [here](https://group2-project3.herokuapp.com/) to deploy.
 ### Click on the arrows to drop down more images of the app.
 
 
-
 ## Contributors
 * laith Alwani - [https://github.com/LaithAlwani](https://github.com/LaithAlwani)
 * Magdi Tiea - [https://github.com/ttmgs](https://github.com/ttmgs)
