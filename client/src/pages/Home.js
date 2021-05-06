@@ -3,26 +3,27 @@ import { Link } from "react-router-dom";
 import "../styles/Home.css";
 
 const Home = () => {
-  
+
 
 
   return (
       <div>
-       
+
+
 {/* title container */}
-        <div id="orange">
+<div id="orange">
         <h1 id="title">MY TEAM</h1>
         </div> 
 
 {/* button */}
- <div id="buttoncontainer">
+{/* button */}
+<div id="buttoncontainer">
  <Link to="/register" className="mr-4"><button class="button" type="button">
-            Sign Up
-            </button> </Link>
+            Sign Up   </button> </Link>
 
-          <br></br>
+<br></br>
 
-         <Link to="/login" className="mr-4"><button type="button">Login </button> </Link>         
+  <Link to="/login" className="mr-4"><button type="button">Login </button> </Link>         
   </div>  
 
 <div id="words">
@@ -30,7 +31,7 @@ const Home = () => {
   </div>
 
 {/* footer */}
-       
+
 <footer class="mainfooter" role="contentinfo">
   <div class="footer-middle">
   <div class="container">
@@ -56,31 +57,16 @@ const Home = () => {
 			<p class="text-center">&copy; Copyright 2021 - My Team.  All rights reserved.</p>
 		</div>
 	</div>
-
-
   </div>
   </div>
-</footer>
+  </footer>
+  </div>
   
-
-
-
-
-
-
-
-
-
-
-
-        </div>
-   
   )
-};
+}
+
 
 export default Home;
-
-
 
 
 

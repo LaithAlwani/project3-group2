@@ -1,14 +1,14 @@
-.home{
+.home {
   position: absolute;
   top: 50%;
   left: 50%;
   margin-top: -50px;
   margin-left: -100px;
-    /* color: black; */
-    /* border: 1px solid black; */
+  /* color: black; */
+  /* border: 1px solid black; */
 }
 
-/* buttons */
+/* button */
 button {
   display: inline-block;
   background-color: #4e4e4e;
@@ -51,15 +51,12 @@ button:hover span:after {
 
 
 
-
 /* wallpaper */
 #orange{
   background-image: url(./images.png);
   background-size: 53px;
   height: 400px;
 }
-
-
 
 /* container for button */
 #buttoncontainer {
@@ -81,15 +78,15 @@ button:hover span:after {
 
 
 
-/*FOOTER*/
-
+/* footer */
 footer {
-  background: #000000;
-  background: -webkit-linear-gradient(59deg, #000000, #16222A);
-  background: linear-gradient(59deg, #000000, #16222A);
-  color: white;
-  margin-top:100px;
+background: #000000;
+background: -webkit-linear-gradient(59deg, #000000, #16222A);
+background: linear-gradient(59deg, #000000, #16222A);
+color: white;
+margin-top:100px;
 }
+
 
 footer a {
   color: #fff;
@@ -130,7 +127,6 @@ ul.social-network li {
   margin: 0 5px;
 }
 
-
 /* footer social icons */
 
 .social-network a.icoFacebook:hover {
@@ -163,7 +159,6 @@ ul.social-network li {
   height: 30px;
   font-size: 15px;
 }
-
 .social-circle li i {
   margin: 0;
   line-height: 30px;
@@ -182,7 +177,6 @@ ul.social-network li {
   -ms-transition: all 0.2s;
   transition: all 0.2s;
 }
-
 .social-circle i {
   color: #595959;
   -webkit-transition: all 0.8s;
@@ -191,15 +185,9 @@ ul.social-network li {
   -ms-transition: all 0.8s;
   transition: all 0.8s;
 }
-
 .social-network a {
   background-color: #F9F9F9;
 }
-
-
-
- 
-
 
 
 h4 {
@@ -212,13 +200,13 @@ h4 {
 }
 /* title */
 
-
-
-
-
-
-
-
+#title{
+text-align: center;
+font-size: 100px;
+letter-spacing: -1px;
+color: rgb(0, 0, 0);
+font-family: cursive; 
+}
 
 
 
@@ -239,29 +227,19 @@ h4 {
 
 #title {
   /* font-family: "Arial Black", sans-serif; */
-  
+
   text-align: center;
   font-size: 100px;
   letter-spacing: -1px;
   color: rgb(0, 0, 0);
-  font-family: cursive; 
+  font-family: cursive;
   font-weight: 900;
- }
-
-#titlebox {
- z-index: 1;
 }
 
-
-
+#titlebox {
+  z-index: 1;
+}
 
 #box {
-       background-image:  url("images.png");
-    }
-   
-
-
-
-
-
-
+  background-image:  url("images.png");
+}

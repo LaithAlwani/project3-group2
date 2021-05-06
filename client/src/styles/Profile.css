@@ -1,4 +1,6 @@
-.profile-userpic img {
+.img  {
+  width: 250px !important;
+  height: 200px;
   border-radius: 50%;
   margin-top: 20px;
   vertical-align: middle;
