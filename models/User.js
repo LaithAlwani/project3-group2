@@ -23,6 +23,10 @@ const UserSchema = new mongoose.Schema({
     minlength: [6,"Password length 6 character at least"],
     select: false,
   },
+  image: {
+    type: String,
+    default: "images.png",
+  },
   teams: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -62,6 +66,14 @@ UserSchema.methods.getSignedJwtToken = function () {
     expiresIn: process.env.JWT_EXPIRE,
   });
 };
+
+UserSchema.post('save', function(error, doc, next) {
+  if (error.name === 'MongoError' && error.code === 11000) {
+    next(new Error('Email already exists'));
+  } else {
+    next(error);
+  }
+});
 
 UserSchema.methods.getResetPasswordToken = function () {
   const resetToken = crypto.randomBytes(20).toString("hex");
