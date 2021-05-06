@@ -8,10 +8,45 @@
     /* border: 1px solid black; */
 }
 
-/* button */
-
-
-
+/* buttons */
+button {
+  display: inline-block;
+  background-color: #4e4e4e;
+  border-radius: 10px;
+  border: 4px double #cccccc;
+  color: #e4e4e4;
+  text-align: center;
+  font-size: 28px;
+  padding: 10px;
+  width: 100px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+button:hover {
+  background-color: #0004f1;
+}
+button:hover span {
+  padding-right: 25px;
+}
+button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
 
 
 
@@ -26,19 +61,12 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* container for button */
+#buttoncontainer {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+}
 
 
 
@@ -170,10 +198,15 @@ ul.social-network li {
 
 
 
+ 
+h4 {
+  font-family: cursive;
+}
 
 
-
-
+#keywords {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
 
 
 
@@ -204,7 +237,7 @@ ul.social-network li {
   /* font-family: "Arial Black", sans-serif; */
   
   text-align: center;
-  font-size: 120px;
+  font-size: 100px;
   letter-spacing: -1px;
   color: rgb(0, 0, 0);
   font-family: cursive; 
