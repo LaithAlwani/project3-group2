@@ -1,4 +1,18 @@
 {
+<<<<<<< HEAD
+  "main.css": "/static/css/main.28bcb0be.chunk.css",
+  "main.js": "/static/js/main.d4dcd1f0.chunk.js",
+  "main.js.map": "/static/js/main.d4dcd1f0.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+  "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+  "static/js/2.cfd4cb72.chunk.js": "/static/js/2.cfd4cb72.chunk.js",
+  "static/js/2.cfd4cb72.chunk.js.map": "/static/js/2.cfd4cb72.chunk.js.map",
+  "index.html": "/index.html",
+  "precache-manifest.0d75397699b278c254eb980dbf057921.js": "/precache-manifest.0d75397699b278c254eb980dbf057921.js",
+  "service-worker.js": "/service-worker.js",
+  "static/css/main.28bcb0be.chunk.css.map": "/static/css/main.28bcb0be.chunk.css.map",
+  "static/media/Login.css": "/static/media/flow.1fb16dd0.jpg",
+=======
   "main.css": "/static/css/main.df89eaab.chunk.css",
   "main.js": "/static/js/main.d1e13eed.chunk.js",
   "main.js.map": "/static/js/main.d1e13eed.chunk.js.map",
@@ -11,5 +25,6 @@
   "service-worker.js": "/service-worker.js",
   "static/css/main.df89eaab.chunk.css.map": "/static/css/main.df89eaab.chunk.css.map",
   "static/media/Home.css": "/static/media/image.dd5d205d.png",
+>>>>>>> main
   "static/media/orange.png": "/static/media/orange.e5ec82fa.png"
 }
