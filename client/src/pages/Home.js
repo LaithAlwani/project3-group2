@@ -18,12 +18,12 @@ const Home = () => {
 {/* button */}
 {/* button */}
 <div id="buttoncontainer">
- <Link to="/register" className="mr-4"><button class="button" type="button">
+ <Link to="/register" className="mr-4"><button className="button" type="button">
             Sign Up   </button> </Link>
 
 <br></br>
 
-  <Link to="/login" className="mr-4"><button type="button">Login </button> </Link>         
+  <Link to="/login" className="mr-4"><button className="button">Login </button> </Link>         
   </div>  
 
 <div id="words">
@@ -32,29 +32,29 @@ const Home = () => {
 
 {/* footer */}
 
-<footer class="mainfooter" role="contentinfo">
-  <div class="footer-middle">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-3 col-sm-6">
+<footer className="mainfooter" role="contentinfo">
+  <div className="footer-middle">
+  <div className="container">
+    <div className="row">
+      <div className="col-md-3 col-sm-6">
       </div>
-      <div class="col-md-3 col-sm-6">
+      <div className="col-md-3 col-sm-6">
       </div>
-      <div class="col-md-3 col-sm-6">
+      <div className="col-md-3 col-sm-6">
 
       </div>
-    	<div class="col-md-3">
+    	<div className="col-md-3">
     		<h4>Creators</h4>
-            <ul class="social-network social-circle">
-             <li><a href="https://github.com/nashwalters" class="icoFacebook" title="Github"><i class="fa fa-github"></i></a></li>
-             <li><a href="https://github.com/ttmgs" class="icoLinkedin" title="Githb"><i class="fa fa-github"></i></a></li>
-             <li><a href="https://github.com/LaithAlwani" class="icoLinkedin" title="Github"><i class="fa fa-github"></i></a></li>
+            <ul className="social-network social-circle">
+             <li><a href="https://github.com/nashwalters" className="icoFacebook" title="Github"><i className="fa fa-github"></i></a></li>
+             <li><a href="https://github.com/ttmgs" className="icoLinkedin" title="Githb"><i className="fa fa-github"></i></a></li>
+             <li><a href="https://github.com/LaithAlwani" className="icoLinkedin" title="Github"><i className="fa fa-github"></i></a></li>
             </ul>				
 		</div>
     </div>
-	<div class="row">
-		<div class="col-md-12 copy">
-			<p class="text-center">&copy; Copyright 2021 - My Team.  All rights reserved.</p>
+	<div className="row">
+		<div className="col-md-12 copy">
+			<p className="text-center">&copy; Copyright 2021 - My Team.  All rights reserved.</p>
 		</div>
 	</div>
   </div>

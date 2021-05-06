@@ -17,7 +17,8 @@
 .team-list .card:hover{
     box-shadow: 5px 5px 1px lightgray ;
 }
-img{
+.team-img{
     
-    width:3.5rem !important
+  width:3.5rem !important
 }
+

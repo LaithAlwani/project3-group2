@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
+
 function Navbar({username}) {
   const location = useLocation();
 
@@ -28,10 +29,13 @@ function Navbar({username}) {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         {localStorage.getItem("authToken") && (
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <Link to="#" className = "nav-link">
+            <li className="nav-item dropdown">
+              <Link to="#" className = "nav-link  dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Hi {username}!
               </Link>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a className="dropdown-item" href="/profile">Profile</a>
+              </div>
             </li>
             <li className="nav-item ">
               <Link
@@ -46,7 +50,7 @@ function Navbar({username}) {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/login" onClick={logoutHandler}>
+              <Link className="nav-link" to="/" onClick={logoutHandler}>
                 Logout
               </Link>
             </li>

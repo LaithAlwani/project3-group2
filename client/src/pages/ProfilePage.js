@@ -2,11 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import UserContext from "../utils/UserContext";
-import "../App.css";
-import MyTeamContainer from "../components/MyTeamContainer";
+import {UpdateProfile } from "../components/Profile";
 
-
-const Landing = ({ getUsername }) => {
+const ProfilePage = ({ getUsername }) => {
   const history = useHistory();
 
   const [error, setError] = useState("");
@@ -56,14 +54,11 @@ const Landing = ({ getUsername }) => {
     </div>
   ) : (
     <UserContext.Provider value={userData}>
-      <div>
-        
-            {/* <MyTeams/> */}
-           <MyTeamContainer />
-          </div>
-
+      <div className="container">
+        <UpdateProfile/>
+    </div>
     </UserContext.Provider>
   );
 };
 
-export default Landing;
+export default ProfilePage;

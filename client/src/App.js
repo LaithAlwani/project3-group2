@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
+import ProfilePage from "./pages/ProfilePage";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
@@ -31,11 +32,11 @@ const App = () => {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/forgotpassword" component={ForgotPassword} />
-            <Route
-              exact
-              path="/passwordreset/:resetToken"
-              component={ResetPassword}
-            />
+            <Route exact path="/passwordreset/:resetToken" component={ResetPassword}/>
+            <Route path="/profile">
+              <ProfilePage getUsername={getUsername}/>
+            </Route>
+            
           </>
         </Switch>
       </Router>
@@ -44,3 +45,4 @@ const App = () => {
 };
 
 export default App;
+

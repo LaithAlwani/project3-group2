@@ -8,7 +8,7 @@ function Teams({ myTeams }) {
         <div key={team._id} className="team-card">
           <div className="row text-center mb-2 p-3">
             <div className="col-4">
-              <img
+              <img className="team-img"
                 src="https://image.shutterstock.com/image-vector/furious-eagle-head-athletic-club-260nw-693912817.jpg"
                 alt=""
               />
