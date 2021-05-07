@@ -10,7 +10,7 @@ function MyTeam({ location }) {
       console.log(data._id);
       axios.get(`/api/auth/teams/${data._id}/players`).then((res) => {
         console.log("it's working");
-        console.log(res);
+        setPlayers(res.data.players);
       });
     }
   }, [data._id]);
@@ -22,16 +22,19 @@ function MyTeam({ location }) {
       <div className="row text-center">
         <div className="col-md-2">
           <img src={data.image} alt="" className="img-fluid" />
-            <button className="btn mt-2">Updated</button>
+          <button className="btn mt-2">Updated</button>
         </div>
         <div className="col-md-6">
           <h3>Posts</h3>
         </div>
         <div className="col-md-4">
           <h3>Team Roster</h3>
-          {/* {data.team.players.map(player=>{
-                       p<
-                   })} */}
+          {players.map((player) => (
+            <>
+              <span>{player.player.username}</span>
+              {player.isAdmin && <span>   (Admin)</span>}
+            </>
+          ))}
         </div>
       </div>
     </div>
