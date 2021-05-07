@@ -66,3 +66,8 @@ body {
   margin: 0.5rem 0;
 }
 
+.dropdown-item:hover {
+  color:white !important; 
+  background-color: #ff7f50 ;
+}
+
