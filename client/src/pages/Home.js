@@ -1,6 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
+import sports from "../images/sports.png";
+import everyone from "../images/everyone.png";
+import multi from "../images/multi.png";
+import build from "../images/build.png";
+import together from "../images/together.png";
 
 const Home = () => {
   return (
@@ -17,8 +22,8 @@ const Home = () => {
       <div id="buttoncontainer">
         <Link to="/register" className="mr-4">
           <button className="button" type="button">
-            Sign Up{" "}
-          </button>{" "}
+            Sign Up
+          </button>
         </Link>
 
         <br></br>
@@ -28,40 +33,35 @@ const Home = () => {
         </Link>
       </div>
 
+<div id="words">
+
+</div>
+
+
+
+
+
+
       {/* footer */}
+
       <div class="footer">
-        <div class="footer">
-          <p class="footer-text-left">
-            <a href="index.html" class="menu">
-              home
-            </a>
-            <a href="https://css.sammy-codes.com/about.html" class="menu">
-              about
-            </a>
-            <a href="https://css.sammy-codes.com/credits.html" class="menu">
-              credits
-            </a>
-          </p>
-        </div>
-        <div class="footer-content-right">
-          <a href="https://github.com/digitalocean">
-            <img
-              src="images/github.jpeg"
-              class="icon-style"
-              alt="Github icon"
-            />
-          </a>
-          <a href="https://www.twitter.com/DigitalOcean">
-            <img
-              src="images/twitter.jpeg"
-              class="icon-style"
-              alt="Twitter icon"
-            />
-          </a>
-          <a href="https://www.twitter.com">
-            <img src="images/email.jpeg" class="icon-style" alt="Emailicon" />
-          </a>
-        </div>
+        
+      <div class="row"/>
+  <div class="column">
+    <img src={sports} alt="Snow"/>
+    <img src={everyone} alt="Forest"/>
+    <img src={multi} alt="Forest"/>
+    <img src={build} alt="Forest"/>
+    <img src={together} alt="Forest"/>
+    <img src={multi} alt="Forest"/>
+    <img src={multi} alt="Forest"/>
+
+  </div>
+ 
+
+
+
+
       </div>
     </div>
   );
