@@ -172,7 +172,7 @@ exports.createTeam =  (req, res) => {
   Team.create({
     teamName,
     sport,
-    players:{_id, isAdmin:true}
+    players:{player:_id, isAdmin:true}
   }, (err, team) => {
     if(err){
       console.log(err);
@@ -211,7 +211,7 @@ exports.getPlayersByTeamId = (req,res)=>{
       console.log(err)
       res.send("No teams found").status(500).end();
     }
-    console.log(team);
+    console.log(team.players)
     res.json(team);
   })
 }
