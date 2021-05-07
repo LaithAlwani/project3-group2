@@ -14,7 +14,7 @@ const Home = () => {
 
       <div id="orange">
         <div id="titlebox">
-          <h1 id="title">MY TEAM</h1>
+          <h1 id="title">TEAM</h1>
         </div>
       </div>
 
@@ -33,9 +33,9 @@ const Home = () => {
         </Link>
       </div>
 
-<div id="words">
+{/* <div id="words">
 
-</div>
+</div> */}
 
 
 
@@ -45,24 +45,10 @@ const Home = () => {
       {/* footer */}
 
       <div class="footer">
-        
-      <div class="row"/>
-  <div class="column">
-    <img src={sports} alt="Snow"/>
-    <img src={everyone} alt="Forest"/>
-    <img src={multi} alt="Forest"/>
-    <img src={build} alt="Forest"/>
-    <img src={together} alt="Forest"/>
-    <img src={multi} alt="Forest"/>
-    <img src={multi} alt="Forest"/>
-
-  </div>
- 
-
-
-
-
+        <h1>Chat</h1> <br></br><h1>Build</h1>
       </div>
+
+
     </div>
   );
 };
