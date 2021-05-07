@@ -11,11 +11,12 @@ const Home = () => {
 
 
 {/* title container */}
-<div id="orange">
-        <h1 id="title">MY TEAM</h1>
-        </div> 
 
-{/* button */}
+<div id="orange">
+  <div id="titlebox">
+        <h1 id="title">MY TEAM</h1>
+        </div>
+
 {/* button */}
 <div id="buttoncontainer">
  <Link to="/register" className="mr-4"><button className="button" type="button">
@@ -30,36 +31,28 @@ const Home = () => {
   <h3 id="keywords"> Chat</h3>   <h3 id="keywords" dangerouslySetInnerHTML={{__html:'Build'}}></h3> 
   </div>
 
+
+
+
+
 {/* footer */}
+<div class="footer">
 
-<footer className="mainfooter" role="contentinfo">
-  <div className="footer-middle">
-  <div className="container">
-    <div className="row">
-      <div className="col-md-3 col-sm-6">
-      </div>
-      <div className="col-md-3 col-sm-6">
-      </div>
-      <div className="col-md-3 col-sm-6">
-
-      </div>
-    	<div className="col-md-3">
-    		<h4>Creators</h4>
-            <ul className="social-network social-circle">
-             <li><a href="https://github.com/nashwalters" className="icoFacebook" title="Github"><i className="fa fa-github"></i></a></li>
-             <li><a href="https://github.com/ttmgs" className="icoLinkedin" title="Githb"><i className="fa fa-github"></i></a></li>
-             <li><a href="https://github.com/LaithAlwani" className="icoLinkedin" title="Github"><i className="fa fa-github"></i></a></li>
-            </ul>				
-		</div>
-    </div>
-	<div className="row">
-		<div className="col-md-12 copy">
-			<p className="text-center">&copy; Copyright 2021 - My Team.  All rights reserved.</p>
-		</div>
-	</div>
-  </div>
-  </div>
-  </footer>
+<div class="footer">
+  <p class="footer-text-left">
+    <a href="index.html" class="menu">home</a>
+    <a href="https://css.sammy-codes.com/about.html" class="menu">about</a>
+    <a href="https://css.sammy-codes.com/credits.html" class="menu">credits</a>
+  </p>
+</div>
+<div class="footer-content-right">
+  <a href="https://github.com/digitalocean"><img src="images/github.jpeg" class="icon-style" alt="Github icon"/></a>
+  <a href="https://www.twitter.com/DigitalOcean"><img src="images/twitter.jpeg" class="icon-style" alt="Twitter icon"/></a>
+  <a href="https://www.twitter.com"><img src="images/email.jpeg" class="icon-style" alt="Emailicon"/></a>
+</div>
+</div>
+ 
+  </div> 
   </div>
   
   )
