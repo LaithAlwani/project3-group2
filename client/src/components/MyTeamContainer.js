@@ -30,7 +30,7 @@ function MyTeamContainer() {
     }, 3000);
   };
   return (
-    <div className="mt-3">
+    <div className="container mt-3">
       {showTeams && (
         <div className="text-right">
           <button className="btn" onClick={() => setShowTeams(false)}>

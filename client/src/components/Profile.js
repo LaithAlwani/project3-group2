@@ -9,14 +9,6 @@ const Profile = () => {
 
   return (
     <>
-<<<<<<< HEAD
-      <div className="profile-userpic my-2">
-        <img className="img-fluid"
-          src={ `/uploads/${image}`}
-          alt={username}
-        />
-      <UpdatePic />
-=======
     <div className="card h-100">
 			<div className="card-body">
         <div>
@@ -27,7 +19,6 @@ const Profile = () => {
         <div className="center-button">
         <UpdatePic/>
         </div>
->>>>>>> e4e5542c8080a790a12533b7eaec07ae774c39c8
       </div>
     </div>
     </>
