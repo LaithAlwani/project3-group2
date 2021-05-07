@@ -9,8 +9,8 @@ const Profile = () => {
 
   return (
     <>
-      <div className="profile-userpic">
-        <img className="img"
+      <div className="profile-userpic my-2">
+        <img className="img-fluid"
           src={ `/uploads/${image}`}
           alt={username}
         />
@@ -96,7 +96,7 @@ const UpdateProfile = ({history}) => {
 
   return (
     <div>
-      <button className="btn btn-primary" onClick={handleShow}>
+      <button className="btn btn-block" onClick={handleShow}>
         Update Profile
       </button>
       <Modal show={showModal} onHide={handleClose}>
@@ -229,7 +229,7 @@ const UpdatePic = ({history}) => {
   return (
   <div>
     <div>
-      <button className="btn btn-primary" onClick={handleShow}>
+      <button className="btn btn-block mt-2" onClick={handleShow}>
         Update Image
       </button>
     </div>
@@ -245,7 +245,7 @@ const UpdatePic = ({history}) => {
                 <input type="file" filename="image"  className ="form-control-file" onChange={(e)=>{setFileName(e.target.files[0])
               }}/>
             </div>
-            <button type="submit" className="btn btn-block"> {" "} Update </button>
+            <button type="submit" className="btn btn-block">Update</button>
         </form>
         </Modal.Body>
       </Modal>

@@ -3,6 +3,8 @@ const ErrorResponse = require("../utils/errorResponse");
 const User = require("../models/User");
 const Team = require("../models/Team");
 const sendEmail = require("../utils/sendEmail");
+const { isRegExp } = require("util");
+const { populate } = require("../models/User");
 
 exports.login = async (req, res, next) => {
   const { email, password } = req.body;
@@ -198,6 +200,18 @@ exports.getTeamsByUserId = (req,res)=>{
       console.log(err)
       res.send("No teams found").status(500).end();
     }
+    console.log(teams)
     res.json(teams)
+  })
+}
+
+exports.getPlayersByTeamId = (req,res)=>{
+  Team.findById(req.params.id).populate("players.player").exec((err,team)=>{
+    if(err){
+      console.log(err)
+      res.send("No teams found").status(500).end();
+    }
+    console.log(team);
+    res.json(team);
   })
 }
