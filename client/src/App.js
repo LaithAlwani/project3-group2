@@ -8,6 +8,7 @@ import ProfilePage from "./pages/ProfilePage";
 import Landing from "./pages/Landing";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
+import MyTeam from "./components/MyTeam";
 import './styles/Home.css'
 
 const App = () => {
@@ -26,17 +27,26 @@ const App = () => {
           </Route>
           <>
             <Navbar username={username}/>
-            <Route path="/portal">
+            <Route exact path="/portal">
               <Landing getUsername={getUsername}/>
             </Route>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/forgotpassword" component={ForgotPassword} />
+            <Route
+              exact
+              path="/passwordreset/:resetToken"
+              component={ResetPassword}
+            />
+            <Route
+              exact
+              path="/portal/:myteam"
+              component={MyTeam}
+            />
             <Route exact path="/passwordreset/:resetToken" component={ResetPassword}/>
             <Route path="/profile">
               <ProfilePage getUsername={getUsername}/>
             </Route>
-            
           </>
         </Switch>
       </Router>

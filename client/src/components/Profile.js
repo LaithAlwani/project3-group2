@@ -210,7 +210,7 @@ const UpdatePic = () => {
   return (
   <div>
     <div>
-      <button className="btn btn-primary" onClick={handleShow}>
+      <button className="btn btn-block mt-2" onClick={handleShow}>
         Update Image
       </button>
     </div>
@@ -227,7 +227,7 @@ const UpdatePic = () => {
                 <input type="file" filename="image"  className ="form-control-file" onChange={(e)=>{setFileName(e.target.files[0])
               }}/>
             </div>
-            <button type="submit" className="btn btn-block"> {" "} Update </button>
+            <button type="submit" className="btn btn-block">Update</button>
         </form>
         </Modal.Body>
       </Modal>

@@ -5,6 +5,10 @@ const TeamSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide a Team name"]
   },
+  image:{
+    type:String,
+    default:"https://image.shutterstock.com/image-vector/furious-eagle-head-athletic-club-260nw-693912817.jpg"
+  },
   sport:{
       type:String,
       required: [true, "please enter the sport that your team plays"]  

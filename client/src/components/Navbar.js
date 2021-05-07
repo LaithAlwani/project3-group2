@@ -30,11 +30,15 @@ function Navbar({username}) {
         {localStorage.getItem("authToken") && (
           <ul className="navbar-nav ml-auto">
             <li className="nav-item dropdown">
-              <Link to="#" className = "nav-link  dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <Link to="#" className={
+                  location.pathname === "/profile"
+                    ? "dropdown-toggle nav-link  active"
+                    : "dropdown-toggle nav-link"
+                }  to="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Hi {username}!
               </Link>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a className="dropdown-item" href="/profile">Profile</a>
+                <Link className="dropdown-item" to="/profile">Profile</Link>
               </div>
             </li>
             <li className="nav-item ">
