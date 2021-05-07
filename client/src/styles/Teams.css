@@ -1,6 +1,6 @@
 .team-card{
     background: linear-gradient(
-     white, white 50%, #333 50%, #333
+     white, white 50%, rgb(122, 122, 122) 50%, #333
   );
   background-size: 100% 200%;
   transition: all 0.2s ease;
@@ -12,13 +12,7 @@
     color: white;
   }
 
-
-
-.team-list .card:hover{
-    box-shadow: 5px 5px 1px lightgray ;
-}
-.team-img{
-    
-  width:3.5rem !important
+.team-card img{
+    width:3.5rem !important
 }
 

@@ -9,6 +9,14 @@ const Profile = () => {
 
   return (
     <>
+<<<<<<< HEAD
+      <div className="profile-userpic my-2">
+        <img className="img-fluid"
+          src={ `/uploads/${image}`}
+          alt={username}
+        />
+      <UpdatePic />
+=======
     <div className="card h-100">
 			<div className="card-body">
         <div>
@@ -19,6 +27,7 @@ const Profile = () => {
         <div className="center-button">
         <UpdatePic/>
         </div>
+>>>>>>> e4e5542c8080a790a12533b7eaec07ae774c39c8
       </div>
     </div>
     </>
@@ -210,7 +219,7 @@ const UpdatePic = () => {
   return (
   <div>
     <div>
-      <button className="btn btn-primary" onClick={handleShow}>
+      <button className="btn btn-block mt-2" onClick={handleShow}>
         Update Image
       </button>
     </div>
@@ -227,7 +236,7 @@ const UpdatePic = () => {
                 <input type="file" filename="image"  className ="form-control-file" onChange={(e)=>{setFileName(e.target.files[0])
               }}/>
             </div>
-            <button type="submit" className="btn btn-block"> {" "} Update </button>
+            <button type="submit" className="btn btn-block">Update</button>
         </form>
         </Modal.Body>
       </Modal>
