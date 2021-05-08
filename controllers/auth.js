@@ -225,7 +225,6 @@ exports.getAllUsers = (req,res)=>{
 
 exports.addTeamMember = (req,res)=>{
   const {searchInput, teamId} = req.body;
-  console.log(`${searchInput} and ${teamId}`);
   User.findOne({email:searchInput},(err,user)=>{
     if(err){
       console.log(err);

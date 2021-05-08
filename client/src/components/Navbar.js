@@ -34,7 +34,7 @@ function Navbar({username}) {
                   location.pathname === "/profile"
                     ? "dropdown-toggle nav-link  active"
                     : "dropdown-toggle nav-link"
-                }  to="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                }  id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Hi {username}!
               </Link>
               <div className="dropdown-menu" aria-labelledby="navbarDropdown">

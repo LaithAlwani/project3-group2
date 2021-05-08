@@ -1,17 +1,10 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-function SearchUser({teamId,addedPlayers}) {
+function AddMember({teamId,addedPlayers}) {
   const [searchInput, setSearchInput] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  
-
-  useEffect(() => {
-    
-  }, []);
-
-  
 
   const handleInputChange = (e) => {
     setSearchInput(e.target.value);
@@ -60,4 +53,4 @@ function SearchUser({teamId,addedPlayers}) {
   );
 }
 
-export default SearchUser;
+export default AddMember;
