@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import MyTeam from "./components/MyTeam";
 import './styles/Home.css'
+import PostView from "./pages/PostView";
 
 const App = () => {
 
@@ -33,20 +34,13 @@ const App = () => {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/forgotpassword" component={ForgotPassword} />
-            <Route
-              exact
-              path="/passwordreset/:resetToken"
-              component={ResetPassword}
-            />
-            <Route
-              exact
-              path="/portal/:myteam"
-              component={MyTeam}
-            />
+            <Route exact path="/passwordreset/:resetToken" component={ResetPassword} />
+            <Route exact path="/portal/:myteam" component={MyTeam} />
             <Route exact path="/passwordreset/:resetToken" component={ResetPassword}/>
             <Route path="/profile">
               <ProfilePage getUsername={getUsername}/>
             </Route>
+            <Route exact path="/update/:id" component={PostView} />
           </>
         </Switch>
       </Router>
