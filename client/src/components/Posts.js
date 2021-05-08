@@ -146,7 +146,7 @@ const ViewPost = () => {
           <h1 class="display-4">{title}</h1>
           <span>Written by: {postAuthor}</span>
           <p>{post}</p>
-          <img src={ `/uploads/${file}`}></img>
+          <img src={ `/uploads/${file}`} alt=""></img>
         </div>
         <div>
         <a class="btn btn-primary btn-lg" href="javascript:history.back()" role="button">Back</a>
@@ -166,10 +166,15 @@ const Post = () => {
   const [post, setPost]= useState([])
 
   useEffect(() =>{
+    getAllPosts();
+    
+  },[])
+
+  const getAllPosts = ()=>{
     axios.get(`/api/posts/getposts/team/${id}`)
     .then(res => setPost(res.data.posts))
-    
-  })
+    .catch(err => console.log(err))
+  }
 
   return (
     <div>

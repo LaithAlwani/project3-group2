@@ -11,7 +11,9 @@ const {
   update,
   createTeam,
   getTeamsByUserId,
-  getPlayersByTeamId
+  getPlayersByTeamId,
+  getAllUsers,
+  addTeamMember
 } = require("../controllers/auth");
 
 const storage = multer.diskStorage({
@@ -59,6 +61,8 @@ router.route("/teams/:id").get(getTeamsByUserId);
 
 router.route("/teams/:id/players").get(getPlayersByTeamId);
 
+router.route("/users").get(getAllUsers);
 
+router.route("/teams/addmember").post(addTeamMember);
 
 module.exports = router;

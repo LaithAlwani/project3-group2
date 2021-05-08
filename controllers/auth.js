@@ -200,9 +200,8 @@ exports.getTeamsByUserId = (req,res)=>{
       console.log(err)
       res.send("No teams found").status(500).end();
     }
-    console.log(teams)
     res.json(teams)
-  })
+  });
 }
 
 exports.getPlayersByTeamId = (req,res)=>{
@@ -211,7 +210,47 @@ exports.getPlayersByTeamId = (req,res)=>{
       console.log(err)
       res.send("No teams found").status(500).end();
     }
-    console.log(team.players)
     res.json(team);
+  });
+}
+
+exports.getAllUsers = (req,res)=>{
+  User.find({},(err,users)=>{
+    if(err){
+      res.send("No users found").status(500).end();
+    }
+    res.json(users);
   })
+}
+
+exports.addTeamMember = (req,res)=>{
+  const {searchInput, teamId} = req.body;
+  User.findOne({email:searchInput},(err,user)=>{
+    if(err){
+      console.log(err);
+      res.send("No user found").status(500).end();
+    }
+    if(user === null){
+      res.json("User not found");
+      return
+    }
+    console.log(user);
+    if(!user.teams.includes(teamId)){
+      user.teams.push(teamId);
+      user.save();
+      Team.findById({_id:teamId}, (err,team)=>{
+        if(err){
+          res.send("Team not found").status(500).end();
+        }
+        team.players.push({player:user._id})
+        team.save();
+      })
+      res.json("Member Added");
+    }else{
+      res.json("Already in team");
+    }
+    
+    
+  })
+  
 }
