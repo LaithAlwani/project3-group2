@@ -11,9 +11,6 @@ app.use(express.json());
 
 app.use(errorHandler);
 
-app.use("/api/auth", require("./routes/auth"));
-app.use("/api/private", require("./routes/private"));
-
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -27,6 +24,7 @@ app.use(errorHandler);
 
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/private", require("./routes/private"));
+app.use("/api/posts", require("./routes/post"));
 
 
 // Send every request to the React app

@@ -14,17 +14,19 @@ function Teams({ myTeams }) {
         >
           <div  className="team-card">
             <div className="row text-center mb-2 p-3">
-              <div className="col-4">
+              <div className="col-3">
                 <img
                   src={team.image}
                   alt=""
                 />
-                <span className="">{team.teamName}</span>
               </div>
-              <div className="col-4">
+              <div className="col-3">
+                <p className="mt-3">{team.teamName}</p>
+              </div>
+              <div className="col-3">
                 <p className="mt-3">{team.sport}</p>
               </div>
-              <div className="col-4 ">
+              <div className="col-3">
                 <button className="btn mt-3">Delete</button>
               </div>
             </div>
