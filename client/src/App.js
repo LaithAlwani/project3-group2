@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PrivateRoute from "./routing/PrivateRoute"
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -40,7 +41,7 @@ const App = () => {
             <Route path="/profile">
               <ProfilePage getUsername={getUsername}/>
             </Route>
-            <Route exact path="/update/:id" component={PostView} />
+            <PrivateRoute exact path="/update/:id" component={PostView} />
           </>
         </Switch>
       </Router>
