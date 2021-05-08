@@ -15,11 +15,13 @@ const Home = () => {
       <div id="orange">
         <div id="titlebox">
           <h1 id="title">TEAM</h1>
-        </div>
-      </div>
 
-      {/* button */}
-      <div id="buttoncontainer">
+
+
+
+
+
+          <div id="buttoncontainer">
         <Link to="/register" className="mr-4">
           <button className="button" type="button">
             Sign Up
@@ -33,6 +35,24 @@ const Home = () => {
         </Link>
       </div>
 
+        </div>
+      </div>
+
+      {/* button */}
+      {/* <div id="buttoncontainer">
+        <Link to="/register" className="mr-4">
+          <button className="button" type="button">
+            Sign Up
+          </button>
+        </Link>
+
+        <br></br>
+
+        <Link to="/login" className="mr-4">
+          <button className="button">Login </button>{" "}
+        </Link>
+      </div> */}
+
 {/* <div id="words">
 
 </div> */}
@@ -45,7 +65,7 @@ const Home = () => {
       {/* footer */}
 
       <div class="footer">
-        <h1>Chat</h1> <br></br><h1>Build</h1>
+        <h2>Chat</h2>
       </div>
 
 
