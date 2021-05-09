@@ -23,7 +23,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage:storage})
 
-//Add new post
+//Add new post with image
 router.post("/addpost/:id", upload.single("postImage"), (req, res) => {
 
 const _id = req.params.id;
@@ -50,6 +50,36 @@ const  { title, post, postAuthor} = req.body;
     res.status(201).json({
       success:true,
       data:"Post Created"
+    });
+  });
+})
+
+//Add post without image
+router.post("/addnew/:id", (req, res) => {
+
+  const _id = req.params.id;
+  const  { title, post, postAuthor} = req.body;
+    Post.create({
+      title,
+      post,
+      postAuthor
+    }, (err, post) => {
+      if(err){
+        console.log(err);
+        return 
+      }
+      Team.findById(_id, (err, team )=>{
+        if(err){
+          console.log(err);
+  
+        }else{
+          team.posts.push(post._id);
+          team.save();
+        }
+      });
+      res.status(201).json({
+        success:true,
+        data:"Post Created"
     });
   });
 })

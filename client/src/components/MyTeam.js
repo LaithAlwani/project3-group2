@@ -3,8 +3,6 @@ import React, { useEffect, useState } from "react";
 import SearchUser from "./AddMember";
 import { AddPost, Post } from "./Posts";
 
-
-
 function MyTeam({ location }) {
   
   const data = location.state.team;
@@ -28,21 +26,20 @@ function MyTeam({ location }) {
   }, [data._id, addedPlayers]);
   return (
     <div>
-      <h1 className="text">{data.teamName}</h1>
       <div className="container">
+      <h1 className="text">{data.teamName}</h1>
         <div className="row gutters-sm">
           <div className="col-md-4 mb-3">
             <div className="card">
               <div className="card-body">
                 <div className="d-flex flex-column align-items-center text-center">
-                  <img src={data.image} alt="" className="img-fluid" />
+                  <img src={`/uploads/${data.image}`} alt="" className="img-fluid" />
                   <button className="btn mt-2">Updated</button>
                 </div>
               </div>
             </div>
             <div className="card mt-3">
               <div className="card-body">
-
               <h3>Team Roster</h3>
               {players.map((player) => (
                 <div key={player.player._id}>

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const moment = require('moment');
 
 const PostSchema = new mongoose.Schema({
 	title: {
@@ -21,7 +22,10 @@ const PostSchema = new mongoose.Schema({
 		type: Date,
 		default: Date.now
 	},
-
+	timestamp: {
+		type: String,
+		default: () => moment().format("D  MMM ,YYYY")
+	},
 });
 
 const Post = mongoose.model("Post", PostSchema);

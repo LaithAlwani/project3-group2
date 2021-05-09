@@ -7,7 +7,7 @@ const TeamSchema = new mongoose.Schema({
   },
   image:{
     type:String,
-    default:"sports.JPG"
+    default:"team-image.png"
   },
   sport:{
       type:String,
