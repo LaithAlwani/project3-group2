@@ -165,7 +165,7 @@ const ViewPost = () => {
           <span>Written by: {postAuthor}</span>
           <p>{post}</p>
         <div>
-          {file.endsWith("mp4")? 
+          {file && file.endsWith("mp4")? 
           <video controls loop muted width="75%">
           <source src={ `/uploads/${file}`} type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
         </video> : <img src={ `/uploads/${file}`} alt="" /> }
