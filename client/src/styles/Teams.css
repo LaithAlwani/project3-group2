@@ -10,12 +10,8 @@
     background-position: 100% 100%;
     cursor: pointer;
     color: white;
-  }
-
-.team-card img{
-    width:3.5rem !important;
-    
 }
+
 .card-link{
   color:black;
   text-shadow: 1px 1px 1px rgb(156, 156, 155, 0.5);

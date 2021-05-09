@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import SearchUser from "./AddMember";
-import { UpdateTeam } from "./AddTeam";
+import { DeleteTeam, UpdateTeam } from "./AddTeam";
 import { AddPost, Post } from "./Posts";
 
 function MyTeam({ location, history }) {
@@ -22,14 +22,6 @@ function MyTeam({ location, history }) {
     //this 
   }
   
-  const deleteTeam = (e) => {
-    e.preventDefault();
-    axios.delete("/api/auth/teams/delete/"+ data._id)
-    .then(res =>history.push("/portal"))
-    .catch(err =>console.log(err))
-    
-  };
-  
   useEffect(() => {
     getPlayers();
   }, [data._id, addedPlayers]);
@@ -42,8 +34,8 @@ function MyTeam({ location, history }) {
             <div className="card">
               <div className="card-body">
                 <div className="d-flex flex-column align-items-center text-center ">
-                  <img src={`/uploads/${data.image}`} alt="" className="img-fluid" />
-                  <button className="btn mt-2">Updated</button>
+                  <img src={`/uploads/${data.teamImage}`} alt="" className="img-fluid" />
+                  <UpdateTeam />
                 </div>
               </div>
             </div>
@@ -68,7 +60,7 @@ function MyTeam({ location, history }) {
             </div>
             <div className="card-mt-3">
               <div className="text-right ">
-                <button className="btn btn-block mt-3" onClick={deleteTeam}>Delete Team</button>
+                <DeleteTeam />
               </div>
             </div>
           </div>
