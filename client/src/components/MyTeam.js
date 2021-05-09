@@ -4,7 +4,7 @@ import SearchUser from "./AddMember";
 import { UpdateTeam } from "./AddTeam";
 import { AddPost, Post } from "./Posts";
 
-function MyTeam({ location }) {
+function MyTeam({ location, history }) {
   
   const data = location.state.team;
   const [players, setPlayers] = useState([]);
@@ -18,7 +18,15 @@ function MyTeam({ location }) {
     }
   };
   
-  const addedPlayers = () => {
+  const addedPlayers = ()=>{
+    //this 
+  }
+  
+  const deleteTeam = (e) => {
+    e.preventDefault();
+    axios.delete("/api/auth/teams/delete/"+ data._id)
+    .then(res =>history.push("/portal"))
+    .catch(err =>console.log(err))
     
   };
   
@@ -33,9 +41,9 @@ function MyTeam({ location }) {
           <div className="col-md-4 mb-3">
             <div className="card">
               <div className="card-body">
-                <div className="d-flex flex-column align-items-center text-center">
-                  <img src={`/uploads/${data.teamImage}`} alt="" className="img-fluid" />
-                  <UpdateTeam />
+                <div className="d-flex flex-column align-items-center text-center ">
+                  <img src={`/uploads/${data.image}`} alt="" className="img-fluid" />
+                  <button className="btn mt-2">Updated</button>
                 </div>
               </div>
             </div>
@@ -56,6 +64,11 @@ function MyTeam({ location }) {
               <div className="card-body">
               <h3>Add players</h3>
               <SearchUser teamId={data._id} addedPlayers={addedPlayers} />
+              </div>
+            </div>
+            <div className="card-mt-3">
+              <div className="text-right ">
+                <button className="btn btn-block mt-3" onClick={deleteTeam}>Delete Team</button>
               </div>
             </div>
           </div>

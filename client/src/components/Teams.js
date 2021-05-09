@@ -7,6 +7,7 @@ function Teams({ myTeams }) {
     <div className="mt-3">
       {myTeams.map(team => (
         <Link
+          className="card-link"
           to={{pathname:`/portal/${team._id}`,
           state:{team}
         }}
@@ -14,21 +15,19 @@ function Teams({ myTeams }) {
         >
           <div  className="team-card">
             <div className="row text-center mb-2 p-3">
-              <div className="col-3">
+              <div className="col-4">
                 <img className="teamcard-img"
                   src={`/uploads/${team.teamImage}`}
                   alt=""
                 />
               </div>
-              <div className="col-3">
+              <div className="col-4">
                 <p className="mt-3">{team.teamName}</p>
               </div>
-              <div className="col-3">
+              <div className="col-4">
                 <p className="mt-3">{team.sport}</p>
               </div>
-              <div className="col-3">
-                <button className="btn mt-3">Delete</button>
-              </div>
+              
             </div>
           </div>
         </Link>
