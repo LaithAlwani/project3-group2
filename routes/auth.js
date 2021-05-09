@@ -13,7 +13,8 @@ const {
   getTeamsByUserId,
   getPlayersByTeamId,
   getAllUsers,
-  addTeamMember,
+  addMember,
+  deleteMember,
   deleteTeam
 } = require("../controllers/auth");
 
@@ -64,8 +65,10 @@ router.route("/teams/:id/players").get(getPlayersByTeamId);
 
 router.route("/users").get(getAllUsers);
 
-router.route("/teams/addmember").post(addTeamMember);
+router.route("/teams/addmember").post(addMember);
 
 router.route("/teams/delete/:teamId").delete(deleteTeam);
+
+router.route("/teams/deletemember/:playerId").delete(deleteMember);
 
 module.exports = router;
