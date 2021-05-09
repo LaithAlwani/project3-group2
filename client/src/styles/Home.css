@@ -3,13 +3,13 @@
 /* button */
 .button {
   display: inline-block;
-  background-color: #cf1616;
+  background-color: #000000;
   border-radius: 10px;
   border: 4px double #cccccc;
   color: #e4e4e4;
   text-align: center;
   font-size: 20px;
-  padding: 5px;
+  padding: 3px;
   width: 100px;
   transition: all 0.5s;
   cursor: pointer;
@@ -45,26 +45,17 @@ button span {
 
 /* wallpaper */
 #orange{
-  background: url(../images/logo.png) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  position: static;
-  -o-background-size: cover;
-  background-size: cover;
+  /* background-image: url(../images/multisport.png);  */
+  background-size: contain;
+  width: 100%;
+  position: fixed;
   text-align: center;
-  background-size: cover;
-  height: 800px;
+  height: 750px;
 }
 
 /* container for button */
 #buttoncontainer {
-  /* width: 100%; */
-  padding: 10px;
-position: absolute;
-left: 50%;
-top: 50%;
-transform: translate(-50%, -50%);
-
+  margin-top: 420px;
 }
 
 
@@ -76,9 +67,15 @@ transform: translate(-50%, -50%);
 
 
 /* footer */
-
-
-
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(223, 223, 223);
+  color: rgb(0, 0, 0);
+  text-align: center;
+}
 
 
 
@@ -96,7 +93,6 @@ transform: translate(-50%, -50%);
 }
 
 #titlebox {
-  z-index: 1;
   text-align: center;
   
 }
