@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import {useHistory} from "react-router-dom";
+import {useHistory, Link} from "react-router-dom";
 import { Modal } from "react-bootstrap";
 import axios from "axios";
 
@@ -165,7 +165,7 @@ const ViewPost = () => {
           <span>Written by: {postAuthor}</span>
           <p>{post}</p>
         <div>
-          {file.endsWith("mp4")? 
+          {file && file.endsWith("mp4")? 
           <video controls loop muted width="75%">
           <source src={ `/uploads/${file}`} type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
         </video> : <img src={ `/uploads/${file}`} alt="" /> }
@@ -204,7 +204,7 @@ const Post = () => {
     {post.map((posts, key) => (
       <div className="card  register-screen__form w-100" key={key}>
         <div className="card-body">
-          <a href={`/view/${posts._id}`}> <h3>{posts.title}</h3> </a>
+          <Link to={`/view/${posts._id}`}> <h3>{posts.title}</h3> </Link>
           <span className="card-text">posted by: {posts.postAuthor}</span>
           <p><span className="card-text">post date: {posts.timestamp}</span></p>
         </div>
