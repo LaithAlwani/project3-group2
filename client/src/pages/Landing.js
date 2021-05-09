@@ -1,22 +1,29 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import UserContext from "../utils/UserContext";
-import {Profile, UpdateProfile} from "../components/Profile";
+import "../App.css";
+import MyTeamContainer from "../components/MyTeamContainer";
 
-const Landing = ({ history }) => {
+
+const Landing = ({ getUsername }) => {
+  const history = useHistory();
+
   const [error, setError] = useState("");
   const [userData, setUserData] = useState({
     username: "",
     _id: "",
     email: "",
-    teams:"", 
-    userCreated:""
-  })
+    teams: "",
+    userCreated: "",
+  });
 
   useEffect(() => {
     if (!localStorage.getItem("authToken")) {
-      history.push("/login");
+      setError("You are not authorized please login! redirecting to login");
+      setTimeout(() => {
+        history.push("/login");
+      }, 2000);
     }
     const fetchPrivateDate = async () => {
       const config = {
@@ -29,10 +36,13 @@ const Landing = ({ history }) => {
       try {
         const { data } = await axios.get("/api/private", config);
         setUserData(data);
+        getUsername(data.username);
       } catch (error) {
         localStorage.removeItem("authToken");
-        setError("You are not authorized please login");
-        history.push("/login");
+        setError("You are not authorized please login! Redirecting to login");
+        setTimeout(() => {
+          history.push("/login");
+        }, 2000);
       }
     };
 
@@ -40,16 +50,18 @@ const Landing = ({ history }) => {
   }, [history]);
 
   return error ? (
-    <span ClassName="error-message">{error}</span>
+  
+    <div className="alert alert-danger" role="alert">
+      {error}
+    </div>
   ) : (
     <UserContext.Provider value={userData}>
-    <div>
       <div>
-        <h1 style={{textAlign:"center", marginTop:"20px"}}>Welcome {userData.username} !!</h1>
-      </div>
-      <Profile/>
-      <UpdateProfile/>
-    </div>
+        
+            {/* <MyTeams/> */}
+           <MyTeamContainer />
+          </div>
+
     </UserContext.Provider>
   );
 };

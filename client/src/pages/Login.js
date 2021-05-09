@@ -32,8 +32,8 @@ const Login = ({ history }) => {
         );
   
         localStorage.setItem("authToken", data.token);
-  
         history.push("/portal");
+        
       } catch (error) {
         setError(error.response.data.error);
         setTimeout(() => {
@@ -77,7 +77,7 @@ const Login = ({ history }) => {
               tabIndex={2}
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-block">
             Login
           </button>
   

@@ -1,104 +1,132 @@
+.home {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+  /* color: black; */
+  /* border: 1px solid black; */
+}
+
+/* button */
+.button {
+  display: inline-block;
+  background-color: #cf1616;
+  border-radius: 10px;
+  border: 4px double #cccccc;
+  color: #e4e4e4;
+  text-align: center;
+  font-size: 20px;
+  padding: 5px;
+  width: 100px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+.button:hover {
+  background-color: #0004f1;
+}
+.button:hover span {
+  padding-right: 25px;
+}
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* wallpaper */
+#orange{
+  /* background-image: url(../images/images.png); */
+  background-size: 61px;
+  height: 500px;
+  text-align: center;
+}
+
+/* container for button */
+#buttoncontainer {
+  width: 100%;
+  padding: 10px;
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+border: 5px solid #FFFF00;
+padding: 10px;
+
+}
+
+
+
+
+
+
+img {
+  width: 150px;
+}
+
+
+
+
+
+
+/* footer */
+
+.footer {
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  height: 80px;
+  background-color: white;
+}
+
+
+
+
+
+
+
+
+
 
 /* title */
 #title {
   text-align: center;
-  display: inline;
-	position: relative;
-	font: 90px Helvetica, Sans-Serif;
-	letter-spacing: -5px;
-	color: white; 
-}
-#title:after {
-	/* content: "Management Systems"; */
-	position: absolute; left: 10px; top: 5px;
-	color: rgba(255,0,0,0.5);   
+  font-size: 100px;
+  letter-spacing: -1px;
+  color: rgb(0, 0, 0);
+  font-family: fantasy;
+  font-weight: 900;
 }
 
-
-/* back-ground image */
-body {
-  background-image: url("../images/800px_COLOURBOX31048858.png");
-
-}
-
-
-
-
-
-
-
-/* login/create new account card */
-#card {
-  background-color: rgb(203, 255, 251);
+#titlebox {
+  z-index: 1;
+  background-color: white;
+  width: auto;
+  border-radius: 100px;
+  height: 500px;
   text-align: center;
-  margin: auto;
-  width: 300px;
-  height: 150px;
-  position: fixed;
-left: 50%;
-top: 50%;
-transform: translate(-50%, -50%);
-
+  
 }
 
 
 
-
-
-/* 
-
-
-HTML CSSResult Skip Results Iframe
-EDIT ON
-ul {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  font: 120% system-ui;
-  text-align: center;
-  padding: 2rem 1rem;
+/* #words {
+  background-color: white;
 } */
 
-/* signout/create new account hover effects */
-#signup {
-  text-decoration: none;
-  color: black;
-}
-#login:hover {
-  font-weight: 900;
- 
-}
-#signup:hover {
-  font-weight: 900;
 
-}
-
-#signup {
-  font-size: 25px;
-}
-
-#login {
-  font-size: 25px;
-  color: white;
-}
-
-
-/* #title {
-  text-align: center;
-  font-family: 'Oswald', Helvetica, sans-serif;
-  font-size: 60px;
-  transform: skewY(-10deg);
-  letter-spacing: 0px;
-  word-spacing: -8x;
-  color: tomato;
-  text-shadow: 
-    -1px -1px 0 firebrick,
-    -2px -2px 0 firebrick,
-    -3px -3px 0 firebrick,
-    -4px -4px 0 firebrick,
-    -5px -5px 0 firebrick,
-    -6px -6px 0 firebrick,
-    -7px -7px 0 firebrick,
-    -8px -8px 0 firebrick,
-    -30px 20px 40px dimgrey
-} */

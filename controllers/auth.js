@@ -1,8 +1,10 @@
 const crypto = require("crypto");
 const ErrorResponse = require("../utils/errorResponse");
 const User = require("../models/User");
+const Team = require("../models/Team");
 const sendEmail = require("../utils/sendEmail");
-
+const { isRegExp } = require("util");
+const { populate } = require("../models/User");
 
 exports.login = async (req, res, next) => {
   const { email, password } = req.body;
@@ -59,7 +61,7 @@ exports.forgotPassword = async (req, res, next) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return next(new ErrorResponse("the email is not registered", 404));
+      return next(new ErrorResponse("The email is not registered", 404));
     }
 
     // Reset Token Gen and add to database hashed (private) version of token
@@ -68,15 +70,20 @@ exports.forgotPassword = async (req, res, next) => {
     await user.save();
 
     // Create reset url to email to provided email
-    const resetUrl = `http://localhost:3000/passwordreset/${resetToken}`;
+    const resetUrlDev = `http://localhost:3000/passwordreset/${resetToken}`;
+    const resetUrlProd = `https://group2-project3.herokuapp.com/passwordreset/${resetToken}`;
 
     // HTML Message
     const message = `
     <h1>Password Reset</h1>
     <p> Seems like you forgot your password. Click on the link below to reset your password</p>
-    <a href=${resetUrl} clicktracking=off>${resetUrl}</a>
+    <a href=${
+      process.env.NODE_ENV === "production" ? resetUrlProd : resetUrlDev
+    } clicktracking=off>${
+      process.env.NODE_ENV === "production" ? resetUrlProd : resetUrlDev
+    }</a>
     <p> If you did not forget your password, you can safely ignore this email.</p>
-    `
+    `;
 
     try {
       await sendEmail({
@@ -137,22 +144,131 @@ exports.resetPassword = async (req, res, next) => {
 
 // Update
 exports.update = async (req, res, next) => {
-
   try {
-    const id = req.params.id
-    const {username, email, password} = req.body
-    const options = {new: true}
+    const id = req.params.id;
+    const { username, email, password } = req.body;
+    const options = { new: true };
 
-    const user = await User.findOneAndUpdate( id,  {username, email, password}, options);
-    res.send(user)
-   
+    const user = await User.findByIdAndUpdate(
+      id,
+      { username, email, password },
+      options
+    );
+    res.send(user);
   } catch (err) {
-    console.log(err)
-    next()
+    console.log(err);
+    next();
   }
-}
+};
 
 const sendToken = (user, statusCode, res) => {
   const token = user.getSignedJwtToken();
   res.status(statusCode).json({ sucess: true, token });
 };
+
+exports.createTeam =  (req, res) => {
+  
+  const { _id, teamName, sport } = req.body;
+  Team.create({
+    teamName,
+    sport,
+    players:{player:_id, isAdmin:true}
+  }, (err, team) => {
+    if(err){
+      console.log(err);
+      return 
+    }
+    User.findById(_id, (err, user)=>{
+      if(err){
+        console.log(err);
+        
+      }else{
+        user.teams.push(team._id);
+        user.save();
+      }
+    });
+    res.status(201).json({
+      success:true,
+      data:"Team Created"
+    });
+  });
+};
+
+exports.getTeamsByUserId = (req,res)=>{
+  User.findById(req.params.id).populate("teams").exec((err, teams)=>{
+    if(err){
+      console.log(err)
+      res.send("No teams found").status(500).end();
+    }
+    res.json(teams)
+  });
+}
+
+exports.getPlayersByTeamId = (req,res)=>{
+  Team.findById(req.params.id).populate("players.player").exec((err,team)=>{
+    if(err){
+      console.log(err)
+      res.send("No teams found").status(500).end();
+    }
+    res.json(team);
+  });
+}
+
+exports.updatetnp = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const { teamName, sport } = req.body;
+    const options = { new: true };
+
+    const team = await Team.findByIdAndUpdate(
+      id,
+      { teamName, sport },
+      options
+    );
+    res.send(team);
+  } catch (err) {
+    console.log(err);
+    next();
+  }
+};
+
+exports.getAllUsers = (req,res)=>{
+  User.find({},(err,users)=>{
+    if(err){
+      res.send("No users found").status(500).end();
+    }
+    res.json(users);
+  })
+}
+
+exports.addTeamMember = (req,res)=>{
+  const {searchInput, teamId} = req.body;
+  User.findOne({email:searchInput},(err,user)=>{
+    if(err){
+      console.log(err);
+      res.send("No user found").status(500).end();
+    }
+    if(user === null){
+      res.json("User not found");
+      return
+    }
+    console.log(user);
+    if(!user.teams.includes(teamId)){
+      user.teams.push(teamId);
+      user.save();
+      Team.findById({_id:teamId}, (err,team)=>{
+        if(err){
+          res.send("Team not found").status(500).end();
+        }
+        team.players.push({player:user._id})
+        team.save();
+      })
+      res.json("Member Added");
+    }else{
+      res.json("Already in team");
+    }
+    
+    
+  })
+  
+}

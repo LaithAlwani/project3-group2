@@ -1,19 +1,17 @@
 import React from "react";
-import {Link, useLocation, useHistory} from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-function Navbar() {
-    const location = useLocation();
-    const history = useHistory();
 
-    const logoutHandler = () =>{
-        localStorage.removeItem("authToken");
-        history.push("/login")
-    }
+function Navbar({username}) {
+  const location = useLocation();
 
-    
+  const logoutHandler = () => {
+    localStorage.removeItem("authToken");
+  };
+
   return (
     <div className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link exact className="navbar-brand" to="/portal">
+      <Link className="navbar-brand" to="/portal">
         My Team
       </Link>
       <button
@@ -29,32 +27,67 @@ function Navbar() {
       </button>
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          {/* when user is loogged in  */}
+        {localStorage.getItem("authToken") && (
           <ul className="navbar-nav ml-auto">
-          <li className="nav-item ">
-            <Link className={location.pathname === "/portal" ? "nav-link active" : "nav-link"} to="/portal">
-              Teams <span className="sr-only"></span>
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" onClick={logoutHandler}>
-              Logout 
-            </Link>
-          </li>
-        </ul>
-        {/* when user is not logged in */}
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item ">
-            <Link className={location.pathname === "/login" ? "nav-link active" : "nav-link"} to="/login">
-              Login <span className="sr-only"></span>
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className={location.pathname === "/register" ? "nav-link active" : "nav-link"} to="/register" >
-              Register 
-            </Link>
-          </li>
-        </ul>
+            <li className="nav-item dropdown">
+              <Link to="#" className={
+                  location.pathname === "/profile"
+                    ? "dropdown-toggle nav-link  active"
+                    : "dropdown-toggle nav-link"
+                }  id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Hi {username}!
+              </Link>
+              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <Link className="dropdown-item" to="/profile">Profile</Link>
+              </div>
+            </li>
+            <li className="nav-item ">
+              <Link
+                className={
+                  location.pathname === "/portal"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+                to="/portal"
+              >
+                Teams <span className="sr-only"></span>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/" onClick={logoutHandler}>
+                Logout
+              </Link>
+            </li>
+          </ul>
+        )}
+        {!localStorage.getItem("authToken") && (
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item ">
+              <Link
+                className={
+                  location.pathname === "/login"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+                to="/login"
+              >
+                Login <span className="sr-only"></span>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className={
+                  location.pathname === "/register"
+                    ? "nav-link active"
+                    : "nav-link"
+                }
+                to="/register"
+              >
+                Register
+              </Link>
+            </li>
+          </ul>
+        )}
       </div>
     </div>
   );

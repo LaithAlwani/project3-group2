@@ -1,13 +1,29 @@
-img {
-  border-radius: 50%;
-  height: 200px;
-  vertical-align: middle;
-  border-style: none;
-  width: 200px;
-  margin-bottom: 10px;
+/* Profile Page Styles*/
+.card {
+  margin-top: 3.125rem;
+}
+.user-details {
+  text-align: center;
+}
+.center-button,  .text {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.button-sub {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
-li {
-  display: block !important;
-  padding: 10px;
+.profile-userpic {
+  border-radius: 50%;
+  display: block;
+  margin: 20px auto;
+  width: 50%;
+}
+
+.card-space{
+  margin-bottom: 20px;
 }

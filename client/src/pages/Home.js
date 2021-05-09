@@ -1,26 +1,74 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
+import sports from "../images/sports.png";
+import everyone from "../images/everyone.png";
+import multi from "../images/multi.png";
+import build from "../images/build.png";
+import together from "../images/together.png";
 
 const Home = () => {
   return (
     <div>
-      <div class="float">
-        {/* <h1 id="title">Management Systems</h1> */}
+      {/* title container */}
 
-        <div id="card">
-          <ul>
-            <div id="login">
-              <Link to="/login"> Login</Link>
-            </div>
-            OR
-            <br />
-            <div id="signup">
-              <Link to="/register"> Create a free account </Link>
-            </div>
-          </ul>
+      <div id="orange">
+        <div id="titlebox">
+          <h1 id="title">TEAM</h1>
+
+
+
+
+
+
+          <div id="buttoncontainer">
+        <Link to="/register" className="mr-4">
+          <button className="button" type="button">
+            Sign Up
+          </button>
+        </Link>
+
+        <br></br>
+
+        <Link to="/login" className="mr-4">
+          <button className="button">Login </button>{" "}
+        </Link>
+      </div>
+
         </div>
       </div>
+
+      {/* button */}
+      {/* <div id="buttoncontainer">
+        <Link to="/register" className="mr-4">
+          <button className="button" type="button">
+            Sign Up
+          </button>
+        </Link>
+
+        <br></br>
+
+        <Link to="/login" className="mr-4">
+          <button className="button">Login </button>{" "}
+        </Link>
+      </div> */}
+
+{/* <div id="words">
+
+</div> */}
+
+
+
+
+
+
+      {/* footer */}
+
+      <div className="footer">
+        <h2>Chat</h2>
+      </div>
+
+
     </div>
   );
 };
