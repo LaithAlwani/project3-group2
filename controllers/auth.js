@@ -166,91 +166,111 @@ const sendToken = (user, statusCode, res) => {
   res.status(statusCode).json({ sucess: true, token });
 };
 
-exports.createTeam =  (req, res) => {
-  
+exports.createTeam = (req, res) => {
   const { _id, teamName, sport } = req.body;
-  Team.create({
-    teamName,
-    sport,
-    players:{player:_id, isAdmin:true}
-  }, (err, team) => {
-    if(err){
-      console.log(err);
-      return 
-    }
-    User.findById(_id, (err, user)=>{
-      if(err){
+  Team.create(
+    {
+      teamName,
+      sport,
+      players: { player: _id, isAdmin: true },
+    },
+    (err, team) => {
+      if (err) {
         console.log(err);
-        
-      }else{
-        user.teams.push(team._id);
-        user.save();
+        return;
       }
-    });
-    res.status(201).json({
-      success:true,
-      data:"Team Created"
-    });
-  });
+      User.findById(_id, (err, user) => {
+        if (err) {
+          console.log(err);
+        } else {
+          user.teams.push(team._id);
+          user.save();
+        }
+      });
+      res.status(201).json({
+        success: true,
+        data: "Team Created",
+      });
+    }
+  );
 };
 
-exports.getTeamsByUserId = (req,res)=>{
-  User.findById(req.params.id).populate("teams").exec((err, teams)=>{
-    if(err){
-      console.log(err)
-      res.send("No teams found").status(500).end();
-    }
-    res.json(teams)
-  });
-}
+exports.getTeamsByUserId = (req, res) => {
+  User.findById(req.params.id)
+    .populate("teams")
+    .exec((err, teams) => {
+      if (err) {
+        console.log(err);
+        res.send("No teams found").status(500).end();
+      }
+      res.json(teams);
+    });
+};
 
-exports.getPlayersByTeamId = (req,res)=>{
-  Team.findById(req.params.id).populate("players.player").exec((err,team)=>{
-    if(err){
-      console.log(err)
-      res.send("No teams found").status(500).end();
-    }
-    res.json(team);
-  });
-}
+exports.getPlayersByTeamId = (req, res) => {
+  Team.findById(req.params.id)
+    .populate("players.player")
+    .exec((err, team) => {
+      if (err) {
+        console.log(err);
+        res.send("No teams found").status(500).end();
+      }
+      res.json(team);
+    });
+};
 
-exports.getAllUsers = (req,res)=>{
-  User.find({},(err,users)=>{
-    if(err){
+exports.getAllUsers = (req, res) => {
+  User.find({}, (err, users) => {
+    if (err) {
       res.send("No users found").status(500).end();
     }
     res.json(users);
-  })
-}
+  });
+};
 
-exports.addTeamMember = (req,res)=>{
-  const {searchInput, teamId} = req.body;
-  User.findOne({email:searchInput},(err,user)=>{
-    if(err){
+exports.addTeamMember = (req, res) => {
+  const { searchInput, teamId } = req.body;
+  User.findOne({ email: searchInput }, (err, user) => {
+    if (err) {
       console.log(err);
       res.send("No user found").status(500).end();
     }
-    if(user === null){
+    if (user === null) {
       res.json("User not found");
-      return
+      return;
     }
-    console.log(user);
-    if(!user.teams.includes(teamId)){
+    if (!user.teams.includes(teamId)) {
       user.teams.push(teamId);
       user.save();
-      Team.findById({_id:teamId}, (err,team)=>{
-        if(err){
+      Team.findById({ _id: teamId }, (err, team) => {
+        if (err) {
           res.send("Team not found").status(500).end();
         }
-        team.players.push({player:user._id})
+        team.players.push({ player: user._id });
         team.save();
-      })
+      });
       res.json("Member Added");
-    }else{
+    } else {
       res.json("Already in team");
     }
-    
-    
-  })
-  
+  });
+};
+
+exports.deleteTeam = (req,res)=>{
+  Team.findById({_id:req.params.teamId}, (err, team)=>{
+    if(err){
+      res.send("Cannot Delet Team").status(500).end();
+    }
+    team.players.forEach(player=>{
+      
+      User.findById(player.player._id, (err,user)=>{
+       const newTeams =  user.teams.filter(newTeam => newTeam._id.toString() !== team._id.toString())
+       user.teams = newTeams;
+       user.save() 
+      })
+    });
+    team.delete();
+    console.log("team deleted")
+    res.json("Team Deleted");
+  });
 }
