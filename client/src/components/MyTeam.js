@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import AddMember from "./AddMember";
+import { UpdateTeam } from "./AddTeam";
 import { AddPost, Post } from "./Posts";
 
 function MyTeam({ location, history }) {
