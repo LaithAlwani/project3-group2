@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Profile } from "./Profile";
 import Teams from "./Teams";
 import AddTeam from "./AddTeam";
 
@@ -10,7 +9,7 @@ function LandingPageContainer() {
     <div className="container">
       <div className="row text-center">
         <div className="col-sm-3">
-          <Profile />
+
         </div>
         <div className="col-sm-9">
           {/* <MyTeams/> */}

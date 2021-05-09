@@ -104,4 +104,28 @@ router.get("/getposts/team/:id", (req,res) => {
   })
 });
 
+//delete a post from team and post schema
+router.delete("/:teamid/:postid", async (req, res) => {
+  try {
+    const team = await Team.findByIdAndUpdate(
+      req.params.teamid,
+      {
+        $pull: { posts: req.params.postid },
+      },
+      { new: true }
+    );
+
+    if (!team) {
+      return res.status(400).send("Team not found");
+    }
+
+    await Post.findByIdAndDelete(req.params.postid);
+
+    res.send("Success");
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Something went wrong");
+  }
+});
+
 module.exports = router;

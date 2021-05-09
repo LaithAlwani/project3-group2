@@ -3,8 +3,6 @@ import {useHistory, Link} from "react-router-dom";
 import { Modal } from "react-bootstrap";
 import axios from "axios";
 
-
-
 //Add Post
 const AddPost = () => {
 
@@ -145,18 +143,27 @@ const ViewPost = () => {
 
   const url = window.location.pathname
   const id = url.substring(url.lastIndexOf('/')+ 1)
-  
-  useEffect(() => {
+  const delid = url.split("/").slice(-2).join("/")
+
+  const deletePost = () => {
+    axios.delete(`/api/posts/${delid}`)
+    .then(res => console.log(res.data))
+    history.go(-1)
+  }
+
+  const viewPost = () => { 
     axios.get(`/api/posts/getpost/${id}`)
-    .then(res => [console.log(res.data),
-     setTitle(res.data.title),
-     setPostAuthor(res.data.postAuthor),
-     setPost(res.data.post),
-     setFile(res.data.postFile)
-    ])  
+    .then(res => [console.log(res),
+      setTitle(res.data.title),
+      setPostAuthor(res.data.postAuthor),
+      setPost(res.data.post),
+      setFile(res.data.postFile)
+    ]) }
+
+  useEffect(() => {
+    viewPost();
   }, []);
 
-    
   return ( 
     <div className="container">
       <div className="card">
@@ -172,6 +179,9 @@ const ViewPost = () => {
         </div>
         <div>
           <button className="btn btn-primary" onClick={() => history.go(-1)}>Back</button>
+        </div>
+        <div>
+          <button className="btn btn-primary" onClick={deletePost}>Delete Post</button>
         </div>
         </div>
       </div>
@@ -204,7 +214,7 @@ const Post = () => {
     {post.map((posts, key) => (
       <div className="card  register-screen__form w-100" key={key}>
         <div className="card-body">
-          <Link to={`/view/${posts._id}`}> <h3>{posts.title}</h3> </Link>
+          <Link to={`/view/${id}/${posts._id}`}> <h3>{posts.title}</h3> </Link>
           <span className="card-text">posted by: {posts.postAuthor}</span>
           <p><span className="card-text">post date: {posts.timestamp}</span></p>
         </div>

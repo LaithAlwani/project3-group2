@@ -5,7 +5,7 @@ const TeamSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide a Team name"]
   },
-  image:{
+  teamImage:{
     type:String,
     default:"team-image.png"
   },

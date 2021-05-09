@@ -214,6 +214,24 @@ exports.getPlayersByTeamId = (req,res)=>{
   });
 }
 
+exports.updatetnp = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const { teamName, sport } = req.body;
+    const options = { new: true };
+
+    const team = await Team.findByIdAndUpdate(
+      id,
+      { teamName, sport },
+      options
+    );
+    res.send(team);
+  } catch (err) {
+    console.log(err);
+    next();
+  }
+};
+
 exports.getAllUsers = (req,res)=>{
   User.find({},(err,users)=>{
     if(err){

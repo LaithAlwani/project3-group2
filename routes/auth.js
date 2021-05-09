@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const Team = require("../models/Team")
 const multer = require("multer");
 
 const {
@@ -13,7 +14,8 @@ const {
   getTeamsByUserId,
   getPlayersByTeamId,
   getAllUsers,
-  addTeamMember
+  addTeamMember, 
+  updatetnp
 } = require("../controllers/auth");
 
 const storage = multer.diskStorage({
@@ -60,6 +62,20 @@ router.route("/createteam").post(createTeam);
 router.route("/teams/:id").get(getTeamsByUserId);
 
 router.route("/teams/:id/players").get(getPlayersByTeamId);
+
+router.route("/updatetnp/:id").put(updatetnp);
+
+router.put("/updateteam/:id", upload.single("teamImage"), (req, res) => {
+  Team.findById(req.params.id)
+  .then( team => {
+    team.teamName = req.body.teamName || team.teamName
+    team.sport = req.body.sport || team.sport
+    team.teamImage = req.file.originalname || team.teamImage
+  
+    team.save().then(() => res.json("Team updated")).catch(err => res.status(400).json(`Error:${err}`))
+  })
+  .catch(err => res.status(400).json(`Error:${err}`))
+});
 
 router.route("/users").get(getAllUsers);
 

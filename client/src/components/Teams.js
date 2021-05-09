@@ -16,7 +16,7 @@ function Teams({ myTeams }) {
             <div className="row text-center mb-2 p-3">
               <div className="col-3">
                 <img className="teamcard-img"
-                  src={`/uploads/${team.image}`}
+                  src={`/uploads/${team.teamImage}`}
                   alt=""
                 />
               </div>
