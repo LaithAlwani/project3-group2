@@ -14,9 +14,9 @@ const PostSchema = new mongoose.Schema({
 		type: String,
     required: true,
 	},
-	postImage:{
+	postFile:{
 		type:String,
-		required: true,
+		required: false,
 	},
 	postCreated: {
 		type: Date,

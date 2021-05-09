@@ -64,7 +64,7 @@ const Home = () => {
 
       {/* footer */}
 
-      <div class="footer">
+      <div className="footer">
         <h2>Chat</h2>
       </div>
 

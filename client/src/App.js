@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import PrivateRoute from "./routing/PrivateRoute"
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -12,6 +11,7 @@ import Navbar from "./components/Navbar";
 import MyTeam from "./components/MyTeam";
 import './styles/Home.css'
 import PostView from "./pages/PostView";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
 
@@ -21,14 +21,11 @@ const App = () => {
     setUsername(username);
   }
   return (
-    <div className="app">
-      <Router>
-        <Switch>
-          <Route exact path="/"  >
-            <Home />
-          </Route>
-          <>
-            <Navbar username={username}/>
+    <Router>
+      <div className="app">
+        <Navbar username={username}/>
+          <Switch>
+            <Route exact path="/" component={Home} />
             <Route exact path="/portal">
               <Landing getUsername={getUsername}/>
             </Route>
@@ -41,13 +38,14 @@ const App = () => {
             <Route path="/profile">
               <ProfilePage getUsername={getUsername}/>
             </Route>
-            <PrivateRoute exact path="/update/:id" component={PostView} />
-          </>
+            <Route exact path="/view/:id">
+              <PostView  username={username}/>
+            </Route>
+            <Route path="*" component={NotFound}/>
         </Switch>
-      </Router>
-    </div>
+      </div> 
+    </Router>
   );
 };
 
 export default App;
-

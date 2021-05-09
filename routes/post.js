@@ -24,7 +24,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage:storage})
 
 //Add new post with image
-router.post("/addpost/:id", upload.single("postImage"), (req, res) => {
+router.post("/addpost/:id", upload.single("postFile"), (req, res) => {
 
 const _id = req.params.id;
 const  { title, post, postAuthor} = req.body;
@@ -32,7 +32,7 @@ const  { title, post, postAuthor} = req.body;
     title,
 		post,
 		postAuthor, 
-    postImage: req.file.originalname
+    postFile: req.file.originalname
   }, (err, post) => {
     if(err){
       console.log(err);

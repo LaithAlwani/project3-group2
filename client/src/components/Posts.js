@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
+import {useHistory} from "react-router-dom";
 import { Modal } from "react-bootstrap";
 import axios from "axios";
+
 
 
 //Add Post
@@ -31,7 +33,7 @@ const AddPost = () => {
     formData.append("title",title);
     formData.append("postAuthor",postAuthor);
     formData.append("post",post);
-    formData.append("postImage",fileName);
+    formData.append("postFile",fileName);
   
     if (!fileName) {
       axios.post( `/api/posts/addnew/${id}`, {title, postAuthor, post} , config)
@@ -134,6 +136,8 @@ return (
 
 const ViewPost = () => {
 
+  const history = useHistory();
+
   const [title, setTitle] = useState("");
   const [post,  setPost] = useState("");
   const [postAuthor, setPostAuthor] = useState("");
@@ -144,14 +148,15 @@ const ViewPost = () => {
   
   useEffect(() => {
     axios.get(`/api/posts/getpost/${id}`)
-    .then(res => [console.log(res),
+    .then(res => [console.log(res.data),
      setTitle(res.data.title),
      setPostAuthor(res.data.postAuthor),
      setPost(res.data.post),
-     setFile(res.data.postImage)
+     setFile(res.data.postFile)
     ])  
   }, []);
 
+    
   return ( 
     <div className="container">
       <div className="card">
@@ -159,14 +164,16 @@ const ViewPost = () => {
           <h1 className="display-4">{title}</h1>
           <span>Written by: {postAuthor}</span>
           <p>{post}</p>
-          { file.split('.').pop() == 'mp4'? 
-          <video controls loop autoPlay muted className="video">
-            <source src={ `/uploads/${file}`} type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
-          </video> : <img className="profile-userpic" src={ `/uploads/${file}`} alt="" /> }
-          <div>
-            <a className="btn btn-primary btn-lg" href="javascript:history.back()" role="button">Back</a>
-            </div>
-            </div>
+        <div>
+          {file.endsWith("mp4")? 
+          <video controls loop muted width="75%">
+          <source src={ `/uploads/${file}`} type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+        </video> : <img src={ `/uploads/${file}`} alt="" /> }
+        </div>
+        <div>
+          <button className="btn btn-primary" onClick={() => history.go(-1)}>Back</button>
+        </div>
+        </div>
       </div>
     </div>
    );
@@ -197,7 +204,7 @@ const Post = () => {
     {post.map((posts, key) => (
       <div className="card  register-screen__form w-100" key={key}>
         <div className="card-body">
-          <a href={`/update/${posts._id}`}> <h3>{posts.title}</h3> </a>
+          <a href={`/view/${posts._id}`}> <h3>{posts.title}</h3> </a>
           <span className="card-text">posted by: {posts.postAuthor}</span>
           <p><span className="card-text">post date: {posts.timestamp}</span></p>
         </div>
