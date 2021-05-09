@@ -246,7 +246,7 @@ exports.getAllUsers = (req,res)=>{
   });
 };
 
-exports.addTeamMember = (req, res) => {
+exports.addMember = (req, res) => {
   const { searchInput, teamId } = req.body;
   User.findOne({ email: searchInput }, (err, user) => {
     if (err) {
@@ -274,21 +274,53 @@ exports.addTeamMember = (req, res) => {
   });
 };
 
-exports.deleteTeam = (req,res)=>{
-  Team.findById({_id:req.params.teamId}, (err, team)=>{
-    if(err){
+exports.deleteTeam = (req, res) => {
+  Team.findById({ _id: req.params.teamId }, (err, team) => {
+    if (err) {
       res.send("Cannot Delet Team").status(500).end();
     }
-    team.players.forEach(player=>{
-      
-      User.findById(player.player._id, (err,user)=>{
-       const newTeams =  user.teams.filter(newTeam => newTeam._id.toString() !== team._id.toString())
-       user.teams = newTeams;
-       user.save() 
-      })
+    team.players.forEach((player) => {
+      User.findById(player.player._id, (err, user) => {
+        const newTeams = user.teams.filter(
+          (newTeam) => newTeam._id.toString() !== team._id.toString()
+        );
+        user.teams = newTeams;
+        user.save();
+      });
     });
     team.delete();
-    console.log("team deleted")
+    console.log("team deleted");
     res.json("Team Deleted");
   });
-}
+};
+
+exports.deleteMember = (req, res) => {
+  const teamId = req.body.teamId;
+  User.findOne({ _id: req.params.playerId }, (err, user) => {
+    if (err) {
+      res.send("Cannot find Player").status(500).end();
+    }
+    const teamsList = user.teams.filter(
+      (team) => team._id.toString() !== teamId.toString()
+    );
+    user.teams = teamsList;
+    user.save();
+
+    //remove user from Teams list
+    Team.findById(teamId, (err, team) => {
+      if (err) {
+        res.send("Cannot find Team").status(500).end();
+      }
+      if (team.players.length > 1) {
+        const playersList = team.players.filter(
+          (player) => player.player.toString() !== user._id.toString()
+        );
+        team.players = playersList;
+        team.save();
+        res.json("Player Deleted");
+      } else {
+        res.json("please delete team");
+      }
+    });
+  });
+};
