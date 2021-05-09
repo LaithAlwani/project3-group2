@@ -7,7 +7,7 @@ const TeamSchema = new mongoose.Schema({
   },
   image:{
     type:String,
-    default:"https://image.shutterstock.com/image-vector/furious-eagle-head-athletic-club-260nw-693912817.jpg"
+    default:"team-image.png"
   },
   sport:{
       type:String,
@@ -25,6 +25,12 @@ const TeamSchema = new mongoose.Schema({
         default: false,
       },
     },
+  ],
+  posts: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+        ref: "Post",
+      }
   ],
   teamCreated: {
     type: Date,

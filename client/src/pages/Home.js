@@ -40,6 +40,9 @@ const Home = () => {
 </div>
 
 
+      <div className="footer">
+        <h2>Chat</h2>
+      </div>
 
 
     </div>

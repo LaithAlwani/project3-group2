@@ -40,7 +40,7 @@ function AddTeam({ getShowTeams }) {
     <>
       {error && <span className="error-message">{error}</span>}
       <div className="text-center mt-4">
-        <h3>please enter the team information</h3>
+        <h3>Please Enter The Team Information</h3>
         <form onSubmit={handleSubmit} className="add-team-form">
           <div className="form-group">
             <input

@@ -4,7 +4,7 @@ const UserContext = React.createContext({
   username: "",
   email: "",
   _id: "",
-  teams:""
+  teams:[]
 });
 
 export default UserContext;

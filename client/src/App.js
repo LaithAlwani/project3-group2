@@ -10,6 +10,8 @@ import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import MyTeam from "./components/MyTeam";
 import './styles/Home.css'
+import PostView from "./pages/PostView";
+import NotFound from "./pages/NotFound";
 
 const App = () => {
 
@@ -19,40 +21,31 @@ const App = () => {
     setUsername(username);
   }
   return (
-    <div className="app">
-      <Router>
-        <Switch>
-          <Route exact path="/"  >
-            <Home />
-          </Route>
-          <>
-            <Navbar username={username}/>
+    <Router>
+      <div className="app">
+        <Navbar username={username}/>
+          <Switch>
+            <Route exact path="/" component={Home} />
             <Route exact path="/portal">
               <Landing getUsername={getUsername}/>
             </Route>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/forgotpassword" component={ForgotPassword} />
-            <Route
-              exact
-              path="/passwordreset/:resetToken"
-              component={ResetPassword}
-            />
-            <Route
-              exact
-              path="/portal/:myteam"
-              component={MyTeam}
-            />
+            <Route exact path="/passwordreset/:resetToken" component={ResetPassword} />
+            <Route exact path="/portal/:myteam" component={MyTeam} />
             <Route exact path="/passwordreset/:resetToken" component={ResetPassword}/>
             <Route path="/profile">
               <ProfilePage getUsername={getUsername}/>
             </Route>
-          </>
+            <Route exact path="/view/:id">
+              <PostView  username={username}/>
+            </Route>
+            <Route path="*" component={NotFound}/>
         </Switch>
-      </Router>
-    </div>
+      </div> 
+    </Router>
   );
 };
 
 export default App;
-
