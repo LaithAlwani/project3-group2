@@ -106,9 +106,7 @@ exports.deleteMember = (req, res) => {
       const teamsList = user.teams.filter(
         (team) => team._id.toString() !== teamId.toString()
       );
-      user.teams = teamsList;
-      user.save();
-  
+      
       //remove user from Teams list
       db.Team.findById(teamId, (err, team) => {
         if (err) {
@@ -117,9 +115,11 @@ exports.deleteMember = (req, res) => {
         if (team.players.length > 1) {
           const playersList = team.players.filter(
             (player) => player.player.toString() !== user._id.toString()
-          );
-          team.players = playersList;
-          team.save();
+            );
+            team.players = playersList;
+            team.save();
+            user.teams = teamsList;
+            user.save();
           res.json("Player Deleted");
         } else {
           res.json("please delete team");
