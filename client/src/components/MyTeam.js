@@ -2,11 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import AddMember from "./AddMember";
 import { UpdateTeam, DeleteTeam } from "./AddTeam";
-import { AddPost, Post } from "./Posts";
+import { Post } from "./Posts";
+import AddPost from "./AddPost"
 
 function MyTeam({ location, history }) {
   const data = location.state.team;
   const [players, setPlayers] = useState([]);
+  const [addDelPlayer, setAddDelPlayer] = useState(false);
   const [message, setMessage] = useState("");
 
   const getPlayers = () => {
@@ -18,17 +20,20 @@ function MyTeam({ location, history }) {
     }
   };
 
-  const addedPlayers = () => {
-    //this
+  const addedPlayers = (value) => {
+    setAddDelPlayer(true);
+    setTimeout(()=>{
+      setAddDelPlayer(false);
+    },100)
   };
 
   const deletePlayer = (id) => {
-    console.log("deleting");
     axios
       .delete("/api/teams/deletemember/" + id, {
         data: { teamId: data._id },
       })
       .then((res) => {
+        setAddDelPlayer(true);
         setMessage(res.data);
         setTimeout(() => {
           setMessage("");
@@ -39,7 +44,7 @@ function MyTeam({ location, history }) {
 
   useEffect(() => {
     getPlayers();
-  }, [data._id, addedPlayers, deletePlayer]);
+  }, [data._id,addDelPlayer]);
   return (
     <>
       <div className="container">
@@ -62,8 +67,8 @@ function MyTeam({ location, history }) {
               <div className="card-body">
                 <h3>Team Roster</h3>
                 {players.map((player) => (
-                  <div className="card my-2">
-                    <div key={player.player._id} className="d-flex p-2">
+                  <div key={player.player._id} className="card my-2">
+                    <div  className="d-flex p-2">
                       <div>
                         {player.player.username}
                         {player.isAdmin && <span> (Admin)</span>}

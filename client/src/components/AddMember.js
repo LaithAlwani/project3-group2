@@ -1,5 +1,5 @@
-import axios from "axios";
 import React, { useState } from "react";
+import axios from "axios";
 
 function AddMember({ teamId, addedPlayers }) {
   const [searchInput, setSearchInput] = useState("");
@@ -12,11 +12,10 @@ function AddMember({ teamId, addedPlayers }) {
 
   const addUserToTeam = (e) => {
     e.preventDefault();
-    console.log(searchInput);
     axios
       .post("/api/teams/addmember", { searchInput, teamId })
       .then((res) => {
-        addedPlayers();
+        addedPlayers(true);
         if (res.data === "Member Added") {
           setMessage(res.data);
           setTimeout(() => {

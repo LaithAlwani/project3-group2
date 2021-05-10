@@ -1,6 +1,7 @@
 const db = require("../models");
 
 exports.getTeamPosts = (req,res) => {
+  console.log("hitting end point get all posts");
     const id = req.params.id
     db.Team.findById(id).populate('posts').exec((err, posts)=>{
       if(err){

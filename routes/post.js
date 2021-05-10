@@ -23,11 +23,10 @@ const storage = multer.diskStorage({
   }
 })
 
-const upload = multer({storage:storage})
+const upload = multer({storage:storage});
 
 //Add new post with image
 router.post("/addpost/:id", upload.single("postFile"), (req, res) => {
-
 const _id = req.params.id;
 const  { title, post, postAuthor} = req.body;
 db.Post.create({
