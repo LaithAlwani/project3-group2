@@ -1,6 +1,6 @@
 
 
-/* button */
+/* button login & signup */
 .button {
   display: inline-block;
   background-color: #000000;
@@ -40,12 +40,16 @@ button span {
   right: 0;
 }
 
+
+
+
 /* wallpaper */
 #orange{
   /* background-image: url(../images/multisport.png);  */
   background-size: contain;
   width: 100%;
   position: fixed;
+  /* background-image: url("../images/chat.png"); */
   text-align: center;
   height: 750px;
 }
@@ -54,14 +58,6 @@ button span {
 #buttoncontainer {
   margin-top: 350px;
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -81,5 +77,13 @@ button span {
 
 #titlebox {
   text-align: center;
+  position: relative;
   
 }
+
+
+#imagecontainer {
+  text-align: center;
+  width: 200px;
+}
+

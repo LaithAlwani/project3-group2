@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
-
+import chat from "../images/chat.png"
 const Home = () => {
   return (
     <div>
@@ -11,6 +11,11 @@ const Home = () => {
         <div id="titlebox">
           <h1 id="title">TEAM</h1>
         </div>
+
+{/* chat icon container */}
+       {/* <div id="imagecontainer">
+        <img src={chat}></img>
+        </div>  */}
 
         <div id="buttoncontainer">
           <Link to="/register" className="mr-4">
