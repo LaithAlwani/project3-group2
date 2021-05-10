@@ -19,7 +19,7 @@ function AddTeam({ getShowTeams }) {
     };
     try {
       await axios.post(
-        "api/auth/createteam",
+        "/api/teams/createteam",
         {
           _id,
           teamName,
@@ -105,7 +105,7 @@ const UpdateTeam = () => {
     formData.append("teamImage",fileName);
 
     if (!fileName) {
-      axios.put( `/api/auth/updatetnp/${id}`, {teamName, sport} , config)
+      axios.put( `/api/teams/${id}/updatenp`, {teamName, sport} , config)
       .then( () => {
         setSuccess(`Team Updated Successfully`)
         setTimeout(()=>{
@@ -120,7 +120,7 @@ const UpdateTeam = () => {
       },5000)
     }) 
     } else {
-        axios.put( `/api/auth/updateteam/${id}`, formData , config)
+        axios.put( `/api/teams/${id}/update`, formData , config)
         .then( () => {
           setSuccess(`Post Added Successfully`)
           setTimeout(()=>{
@@ -199,7 +199,7 @@ const DeleteTeam = () => {
 
   const deleteTeam = (e) => {
       e.preventDefault();
-      axios.delete(`/api/auth/teams/delete/${id}`)
+      axios.delete(`/api/teams/delete/${id}`)
       .then(() => {history.push("/portal")
       })
       .catch(err =>console.log(err))

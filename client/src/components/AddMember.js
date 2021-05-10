@@ -8,17 +8,15 @@ function AddMember({ teamId, addedPlayers }) {
 
   const handleInputChange = (e) => {
     setSearchInput(e.target.value);
-    console.log(searchInput);
   };
 
   const addUserToTeam = (e) => {
     e.preventDefault();
     console.log(searchInput);
     axios
-      .post("/api/auth/teams/addmember", { searchInput, teamId })
+      .post("/api/teams/addmember", { searchInput, teamId })
       .then((res) => {
         addedPlayers();
-        console.log(res.data);
         if (res.data === "Member Added") {
           setMessage(res.data);
           setTimeout(() => {

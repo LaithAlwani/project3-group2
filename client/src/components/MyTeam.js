@@ -12,7 +12,7 @@ function MyTeam({ location, history }) {
   const getPlayers = () => {
     if (data._id) {
       axios
-        .get(`/api/auth/teams/${data._id}/players`)
+        .get(`/api/teams/${data._id}/players`)
         .then((res) => setPlayers(res.data.players))
         .catch((err) => console.log(err));
     }
@@ -25,7 +25,7 @@ function MyTeam({ location, history }) {
   const deletePlayer = (id) => {
     console.log("deleting");
     axios
-      .delete("/api/auth/teams/deletemember/" + id, {
+      .delete("/api/teams/deletemember/" + id, {
         data: { teamId: data._id },
       })
       .then((res) => {
@@ -62,24 +62,20 @@ function MyTeam({ location, history }) {
               <div className="card-body">
                 <h3>Team Roster</h3>
                 {players.map((player) => (
-                  <>
-                    <div className="card my-2">
-                      <div key={player.player._id} className="d-flex p-2">
-                        <div>
-                          {player.player.username}
-                          {player.isAdmin && <span> (Admin)</span>}
-                        </div>
-                        <div
-                          className="far fa-trash-alt ml-auto mt-1"
-                          onClick={() => deletePlayer(player.player._id)}
-                        ></div>
+                  <div className="card my-2">
+                    <div key={player.player._id} className="d-flex p-2">
+                      <div>
+                        {player.player.username}
+                        {player.isAdmin && <span> (Admin)</span>}
                       </div>
+                      <div
+                        className="far fa-trash-alt ml-auto mt-1"
+                        onClick={() => deletePlayer(player.player._id)}
+                      ></div>
                     </div>
-                    {message && (
-                      <div className="alert alert-danger">{message}</div>
-                    )}
-                  </>
+                  </div>
                 ))}
+                {message && <div className="alert alert-danger">{message}</div>}
                 <hr></hr>
                 <div className="mt-3">
                   <h3>Add Players</h3>

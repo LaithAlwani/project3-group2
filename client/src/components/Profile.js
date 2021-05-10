@@ -77,7 +77,7 @@ const UpdateProfile = ({history}) => {
     };
 
     try {
-      await axios.put( `/api/auth/update/${_id}`,{username, email, password,},config
+      await axios.put( `/api/users/${_id}/update`,{username, email, password,},config
       );
       setSuccess(`Profile Updated Successfully`)
       setTimeout(()=>{
@@ -187,7 +187,7 @@ const UpdatePic = () => {
 
     try {
       const { data } = await axios.put(
-        `/api/auth/updatepic/${_id}`, formData,
+        `/api/users/${_id}/updatepic`, formData,
         config
       );
       console.log(data);

@@ -17,7 +17,7 @@ function MyTeamContainer() {
   const getUserTeams = () => {
     if (_id) {
       axios
-        .get(`/api/auth/teams/${_id}`)
+        .get(`/api/users/${_id}/teams`)
         .then(res => setMyTeams(res.data.teams));
     }
   };

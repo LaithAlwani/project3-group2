@@ -25,6 +25,8 @@ app.use(errorHandler);
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/private", require("./routes/private"));
 app.use("/api/posts", require("./routes/post"));
+app.use("/api/users", require("./routes/user"));
+app.use("/api/teams", require("./routes/team"));
 
 
 // Send every request to the React app
