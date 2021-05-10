@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import "../styles/ResetPassword.css";
 
-const ResetPassword = ({match }) => {
+const ResetPassword = ({match,history }) => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
@@ -39,6 +39,9 @@ const ResetPassword = ({match }) => {
 
     console.log(data);
     setSuccess(data.data);
+    setTimeout(()=>{
+        history.push("/login")
+    },2000)
 
     } catch (error) {
         setError(error.response.data.error);
@@ -55,7 +58,7 @@ const ResetPassword = ({match }) => {
                     {error && <span className="error-message">{error} </span>}
                     {success && (
                     <span className="success-message">
-                        {success} <Link to="/login">Login</Link>
+                        {success} 
                     </span>)}
                 <div className="form-group">
                     <label htmlFor="password">New Password:</label>
