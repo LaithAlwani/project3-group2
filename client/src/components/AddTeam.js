@@ -110,14 +110,14 @@ const UpdateTeam = () => {
         setSuccess(`Team Updated Successfully`)
         setTimeout(()=>{
         setSuccess("");
-        },5000)
+        },3000)
         history.push("/portal")
       })
       .catch (error =>  { setError(error);
         if(error)
         setTimeout(()=>{
         setError("");
-      },5000)
+      },3000)
     }) 
     } else {
         axios.put( `/api/teams/${id}/update`, formData , config)
@@ -125,14 +125,14 @@ const UpdateTeam = () => {
           setSuccess(`Post Added Successfully`)
           setTimeout(()=>{
           setSuccess("");
-          },5000)
+          },3000)
           history.push("/portal")
         })
         .catch (error =>  { setError(`Image Required/ File Unsupported`);
           if(error)
           setTimeout(()=>{
           setError("");
-      },5000)
+      },3000)
     })
   }
 }

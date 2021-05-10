@@ -12,6 +12,7 @@ import MyTeam from "./components/MyTeam";
 import './styles/Home.css'
 import PostView from "./pages/PostView";
 import NotFound from "./pages/NotFound";
+import Footer from "./components/Footer"
 
 const App = () => {
 
@@ -43,6 +44,7 @@ const App = () => {
             </Route>
             <Route path="*" component={NotFound}/>
         </Switch>
+        <Footer />
       </div> 
     </Router>
   );
