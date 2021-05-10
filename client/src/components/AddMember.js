@@ -12,7 +12,6 @@ function AddMember({ teamId, addedPlayers }) {
 
   const addUserToTeam = (e) => {
     e.preventDefault();
-    console.log(searchInput);
     axios
       .post("/api/teams/addmember", { searchInput, teamId })
       .then((res) => {

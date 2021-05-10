@@ -50,6 +50,7 @@ exports.updatetnp = async (req, res, next) => {
   
   
   exports.getPlayersByTeamId = (req, res) => {
+    console.log("hitting end point")
     db.Team.findById(req.params.id)
       .populate("players.player")
       .exec((err, team) => {
