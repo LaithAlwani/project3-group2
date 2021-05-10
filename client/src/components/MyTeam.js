@@ -8,6 +8,7 @@ import AddPost from "./AddPost"
 function MyTeam({ location, history }) {
   const data = location.state.team;
   const [players, setPlayers] = useState([]);
+  const [addDelPlayer, setAddDelPlayer] = useState(false);
   const [message, setMessage] = useState("");
 
   const getPlayers = () => {
@@ -19,17 +20,20 @@ function MyTeam({ location, history }) {
     }
   };
 
-  const addedPlayers = () => {
-    
+  const addedPlayers = (value) => {
+    setAddDelPlayer(true);
+    setTimeout(()=>{
+      setAddDelPlayer(false);
+    },100)
   };
 
   const deletePlayer = (id) => {
-    console.log("deleting");
     axios
       .delete("/api/teams/deletemember/" + id, {
         data: { teamId: data._id },
       })
       .then((res) => {
+        setAddDelPlayer(true);
         setMessage(res.data);
         setTimeout(() => {
           setMessage("");
@@ -40,7 +44,7 @@ function MyTeam({ location, history }) {
 
   useEffect(() => {
     getPlayers();
-  }, [data._id]);
+  }, [data._id,addDelPlayer]);
   return (
     <>
       <div className="container">
