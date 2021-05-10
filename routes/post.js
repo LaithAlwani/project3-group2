@@ -1,7 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const Post = require("../models/Post");
-const Team = require("../models/Team");
+const db = require("../models");
+
+
+const postController = require("../controllers/postController")
 
 const multer = require("multer")
 
@@ -28,7 +30,7 @@ router.post("/addpost/:id", upload.single("postFile"), (req, res) => {
 
 const _id = req.params.id;
 const  { title, post, postAuthor} = req.body;
-	Post.create({
+db.Post.create({
     title,
 		post,
 		postAuthor, 
@@ -38,7 +40,7 @@ const  { title, post, postAuthor} = req.body;
       console.log(err);
       return 
     }
-    Team.findById(_id, (err, team )=>{
+    db.Team.findById(_id, (err, team )=>{
       if(err){
         console.log(err);
 
@@ -55,77 +57,15 @@ const  { title, post, postAuthor} = req.body;
 })
 
 //Add post without image
-router.post("/addnew/:id", (req, res) => {
+router.route("/addnew/:id").post(postController.addPostNoImage)
 
-  const _id = req.params.id;
-  const  { title, post, postAuthor} = req.body;
-    Post.create({
-      title,
-      post,
-      postAuthor
-    }, (err, post) => {
-      if(err){
-        console.log(err);
-        return 
-      }
-      Team.findById(_id, (err, team )=>{
-        if(err){
-          console.log(err);
-  
-        }else{
-          team.posts.push(post._id);
-          team.save();
-        }
-      });
-      res.status(201).json({
-        success:true,
-        data:"Post Created"
-    });
-  });
-})
 
-//Get post by id 
-router.get("/getpost/:id", (req, res) => {
-    Post.findById(req.params.id)
-    .then(post => res.json(post))
-    .catch(err => res.status(400).json(`Error:${err}`))
-});
+router.route("/getpost/:id" ).get(postController.getPost);
 
 // Get Post by TeamId
-router.get("/getposts/team/:id", (req,res) => {
-  const id = req.params.id
-  Team.findById(id).populate('posts').exec((err, posts)=>{
-    if(err){
-      console.log(err)
-      res.send("No posts found").status(500).end();
-    }
-    console.log(posts);
-    res.json(posts);
-  })
-});
+router.route("/getposts/team/:id").get(postController.getTeamPosts);
 
 //delete a post from team and post schema
-router.delete("/:teamid/:postid", async (req, res) => {
-  try {
-    const team = await Team.findByIdAndUpdate(
-      req.params.teamid,
-      {
-        $pull: { posts: req.params.postid },
-      },
-      { new: true }
-    );
-
-    if (!team) {
-      return res.status(400).send("Team not found");
-    }
-
-    await Post.findByIdAndDelete(req.params.postid);
-
-    res.send("Success");
-  } catch (err) {
-    console.log(err);
-    res.status(500).send("Something went wrong");
-  }
-});
+router.route("/:teamid/:postid").delete(postController.deletPost);
 
 module.exports = router;
