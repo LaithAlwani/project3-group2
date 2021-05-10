@@ -18,10 +18,6 @@ if (process.env.NODE_ENV === "production") {
 
 connectDB();
 
-app.use(express.json());
-
-app.use(errorHandler);
-
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/private", require("./routes/private"));
 app.use("/api/posts", require("./routes/post"));
@@ -30,9 +26,7 @@ app.use("/api/teams", require("./routes/team"));
 
 
 // Send every request to the React app
-// Define any API routes before this runs
 app.get("*", function(req, res) {
-  
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 

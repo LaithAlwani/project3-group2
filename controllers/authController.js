@@ -2,8 +2,6 @@ const crypto = require("crypto");
 const ErrorResponse = require("../utils/errorResponse");
 const User = require("../models/user");
 const sendEmail = require("../utils/sendEmail");
-const { isRegExp } = require("util");
-const { populate } = require("../models/user");
 
 exports.login = async (req, res, next) => {
   const { email, password } = req.body;

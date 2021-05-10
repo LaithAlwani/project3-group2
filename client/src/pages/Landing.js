@@ -3,8 +3,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 import UserContext from "../utils/UserContext";
 import "../App.css";
-import MyTeamContainer from "../components/MyTeamContainer";
-
+import TeamsContainer from "../components/TeamsContainer";
 
 const Landing = ({ getUsername }) => {
   const history = useHistory();
@@ -50,18 +49,14 @@ const Landing = ({ getUsername }) => {
   }, [history]);
 
   return error ? (
-  
     <div className="alert alert-danger" role="alert">
       {error}
     </div>
   ) : (
     <UserContext.Provider value={userData}>
       <div>
-        
-            {/* <MyTeams/> */}
-           <MyTeamContainer />
-          </div>
-
+        <TeamsContainer />
+      </div>
     </UserContext.Provider>
   );
 };

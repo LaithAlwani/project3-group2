@@ -25,26 +25,7 @@ const Home = () => {
             <button className="button">Login </button>{" "}
           </Link>
         </div>
-
-       {/* <div id="words">
-        <h2>Chat</h2> <h2>Build</h2>
-      </div> */}
       </div>
-
-
-
-{/* footer */}
-
-<div class="footer">
-  <p>Footer</p>
-</div>
-
-
-      <div className="footer">
-        <h2>Chat</h2>
-      </div>
-
-
     </div>
   );
 };

@@ -11,7 +11,7 @@ function Navbar({username}) {
 
   return (
     <div className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link className="navbar-brand" to="/portal">
+      <Link className="navbar-brand" to={localStorage.getItem("authToken")?"/portal":"/"}>
         My Team
       </Link>
       <button
