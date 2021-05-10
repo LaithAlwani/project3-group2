@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import AddMember from "./AddMember";
-import { UpdateTeam } from "./AddTeam";
+import { UpdateTeam, DeleteTeam } from "./AddTeam";
 import { AddPost, Post } from "./Posts";
 
 function MyTeam({ location, history }) {
@@ -37,14 +37,6 @@ function MyTeam({ location, history }) {
       .catch((err) => console.log(err));
   };
 
-  const deleteTeam = (e) => {
-    e.preventDefault();
-    axios
-      .delete("/api/auth/teams/delete/" + data._id)
-      .then((res) => history.push("/portal"))
-      .catch((err) => console.log(err));
-  };
-
   useEffect(() => {
     getPlayers();
   }, [data._id, addedPlayers, deletePlayer]);
@@ -58,11 +50,11 @@ function MyTeam({ location, history }) {
               <div className="card-body">
                 <div className="d-flex flex-column align-items-center text-center ">
                   <img
-                    src={`/uploads/${data.image}`}
+                    src={`/uploads/${data.teamImage}`}
                     alt=""
                     className="img-fluid"
                   />
-                  <button className="btn mt-2">Updated</button>
+                  <UpdateTeam />
                 </div>
               </div>
             </div>
@@ -90,16 +82,14 @@ function MyTeam({ location, history }) {
                 ))}
                 <hr></hr>
                 <div className="mt-3">
-                  <h3>Add players</h3>
+                  <h3>Add Players</h3>
                   <AddMember teamId={data._id} addedPlayers={addedPlayers} />
                 </div>
               </div>
             </div>
             <div className="card-mt-3">
               <div className="text-right ">
-                <button className="btn btn-block mt-3" onClick={deleteTeam}>
-                  Delete Team
-                </button>
+                <DeleteTeam />
               </div>
             </div>
           </div>
