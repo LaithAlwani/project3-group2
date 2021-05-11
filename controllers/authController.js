@@ -44,8 +44,8 @@ exports.register = async (req, res, next) => {
     });
 
     sendToken(user, 200, res);
-  } catch (err) {
-    next(err);
+  } catch (error) {
+    next(error);
   }
 };
 
