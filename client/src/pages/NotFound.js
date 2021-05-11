@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const NotFound = () => {
     return (  
         <div class="page-wrap d-flex flex-row align-items-center">

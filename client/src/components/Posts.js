@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
 import {useHistory, Link} from "react-router-dom";
 import axios from "axios";
-import AddPost from "./AddPost"
+import AddPost from "./AddPost";
+import "../styles/Post.css";
 
 const ViewPost = () => {
 
@@ -37,22 +38,21 @@ const ViewPost = () => {
 
   return ( 
     <div className="container">
-      <div className="card">
+      <div className="card card-post">
         <div className="card-body">
-          <h1 className="display-4">{title}</h1>
-          <span>Written by: {postAuthor}</span>
-          <p>{post}</p>
-        <div>
+          <h1 className="display-4 text">{title}</h1>
+          <span className="text">Written by: {postAuthor}</span>
+          <br></br>
+          <p className="align">{post}</p>
+        <div className="postfile">
           {file && file.endsWith("mp4")? 
-          <video controls loop muted width="75%">
+          <video controls loop muted width="75%" className="postvid">
           <source src={ `/uploads/${file}`} type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
         </video> : <img src={ `/uploads/${file}`} alt="" /> }
         </div>
-        <div>
-          <button className="btn btn-primary" onClick={() => history.go(-1)}>Back</button>
-        </div>
-        <div>
-          <button className="btn btn-primary" onClick={deletePost}>Delete Post</button>
+        <div className="post-btn">
+          <button className="btn btn-primary btn-animate" onClick={() => history.go(-1)}> Back</button>
+          <button className="btn btn-primary btn-animate" onClick={deletePost}>Delete Post</button>
         </div>
         </div>
       </div>
@@ -88,22 +88,26 @@ const Post = () => {
   return (
     <div>
       <div>
-        <button className="btn" onClick={()=>setNewPostModel(true)}>
+        <button className="btn modal-btn" onClick={()=>setNewPostModel(true)}>
           Add Post
         </button>
       </div>
+      <div className="clearfix">
       {newPostModel && <AddPost  newPostModel={newPostModel} updateNewPostModel={updateNewPostModel} />}
-    {post.map((posts, key) => (
-      <div className="card  register-screen__form w-100" key={key}>
-        <div className="card-body">
-          <Link to={`/view/${id}/${posts._id}`}> <h3>{posts.title}</h3> </Link>
+      {post.length === 0 ? <h5 className="text">No Posts Available</h5> :
+        post.map((posts, key) => (
+        <Link to={`/view/${id}/${posts._id}`}><div className="card w-80 card-post " key={key}>
+        <div className="card-body card-main ">
+          <h3>{posts.title}</h3> 
           <span className="card-text">posted by: {posts.postAuthor}</span>
           <p><span className="card-text">post date: {posts.timestamp}</span></p>
         </div>
-      </div> 
+      </div></Link> 
     )).reverse()}
+    </div>
   </div>
   );
 }
- 
-export { Post, ViewPost};
+
+
+export { Post, ViewPost}
