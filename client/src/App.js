@@ -8,7 +8,7 @@ import ProfilePage from "./pages/ProfilePage";
 import Teams from "./pages/Teams";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
-import MyTeam from "./components/MyTeam";
+import MyTeam from "./components/team/MyTeam";
 import './styles/Home.css'
 import PostView from "./pages/PostView";
 import NotFound from "./pages/NotFound";

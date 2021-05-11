@@ -3,15 +3,15 @@ const mongoose = require("mongoose");
 const TeamSchema = new mongoose.Schema({
   teamName: {
     type: String,
-    required: [true, "Please provide a Team name"]
+    required: [true, "Please provide a Team name"],
   },
-  teamImage:{
-    type:String,
-    default:"team-image.png"
+  teamImage: {
+    type: String,
+    default: "team-image.png",
   },
-  sport:{
-      type:String,
-      required: [true, "please enter the sport that your team plays"]  
+  sport: {
+    type: String,
+    required: [true, "please enter the sport that your team plays"],
   },
   players: [
     {
@@ -29,8 +29,8 @@ const TeamSchema = new mongoose.Schema({
   posts: [
     {
       type: mongoose.Schema.Types.ObjectId,
-        ref: "Post",
-      }
+      ref: "Post",
+    },
   ],
   teamCreated: {
     type: Date,

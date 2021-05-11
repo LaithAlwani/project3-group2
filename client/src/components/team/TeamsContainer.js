@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import UserContext from "../utils/UserContext";
+import UserContext from "../../utils/UserContext";
 import Teams from "./Teams";
 import {AddTeam} from "./AddTeam";
 import axios from "axios";
@@ -31,8 +31,8 @@ function MyTeamContainer() {
   };
   return (
     <div className="container mt-3">
-      <div class="card card-view">
-        <div class="card-body">
+      <div className="card card-view">
+        <div className="card-body">
           <h1 className="text">My Teams</h1>
       {showTeams && (
         <div className="text-right">

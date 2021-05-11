@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/Teams.css";
+import "../../styles/Teams.css";
 
 function Teams({ myTeams }) {
   return (
