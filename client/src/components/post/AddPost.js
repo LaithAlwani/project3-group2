@@ -66,7 +66,8 @@ const AddPost = ({newPostModel,updateNewPostModel}) => {
             <div className="form-group">
               <label htmlFor="title">Title</label>
                 <input
-                  type="text" 
+                  type="text"
+                  className="form-control" 
                   value={title} 
                   placeholder="Enter Title" 
                   onChange ={(e) => setTitle(e.target.value)}
@@ -76,6 +77,7 @@ const AddPost = ({newPostModel,updateNewPostModel}) => {
               <label>Author</label>
                 <input
                   type="text"
+                  className="form-control"
                   required
                   id="postAuthor"
                   placeholder="Author"
