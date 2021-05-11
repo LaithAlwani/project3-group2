@@ -3,8 +3,8 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import AddMember from "./AddMember";
 import UpdateTeam from "./UpdateTeam";
-import { DeleteTeam } from "./AddTeam";
-import  Post  from "../post/Post";
+import DeleteTeam from "./DeleteTeam";
+import Post from "../post/Post";
 import "../../styles/TeamPage.css";
 
 function MyTeam({ user }) {

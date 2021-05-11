@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../utils/UserContext";
 import Teams from "./Teams";
-import {AddTeam} from "./AddTeam";
+import AddTeam from "./AddTeam";
 import axios from "axios";
 
 function MyTeamContainer() {

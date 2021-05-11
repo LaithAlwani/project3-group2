@@ -147,12 +147,12 @@ exports.deleteMember = (req, res) => {
             res.send("Cannot find post").status(500).end();
           }else{
             console.log(`post ${post._id} deleted`);
-            team.delete();
-            console.log("team deleted");
-            res.json("Team Deleted");
           }
         })
       })
+      team.delete();
+      console.log("team deleted");
+      res.json("Team Deleted");
     });
   };
   
