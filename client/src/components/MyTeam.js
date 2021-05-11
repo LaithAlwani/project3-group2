@@ -114,7 +114,7 @@ function MyTeam({ user }) {
                 <div className="row">
                   <div className="col-sm-12 text-secondary">
                     <div>
-                      <Post />
+                      <Post isAdmin={isAdmin} />
                     </div>
                   </div>
                 </div>
