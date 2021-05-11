@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
-
 const Home = () => {
   return (
     <div>
@@ -12,10 +11,6 @@ const Home = () => {
           <h1 id="title">TEAM</h1>
         </div>
 
-{/* chat icon container */}
-       {/* <div id="imagecontainer">
-        <img src={chat}></img>
-        </div>  */}
 
         <div id="buttoncontainer">
           <Link to="/register" className="mr-4">
@@ -31,7 +26,9 @@ const Home = () => {
           </Link>
         </div>
       </div>
+
     </div>
+    
   );
 };
 
