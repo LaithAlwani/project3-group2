@@ -31,6 +31,9 @@ function MyTeamContainer() {
   };
   return (
     <div className="container mt-3">
+      <div class="card card-view">
+        <div class="card-body">
+          <h1 className="text">My Teams</h1>
       {showTeams && (
         <div className="text-right">
           <button className="btn" onClick={() => setShowTeams(false)}>
@@ -42,7 +45,10 @@ function MyTeamContainer() {
       {showTeams && <Teams myTeams={myTeams} />}
       {!showTeams && <AddTeam getShowTeams={getShowTeams} />}
     </div>
+    </div>
+    </div>
   );
 }
 
 export default MyTeamContainer;
+

@@ -140,7 +140,7 @@ const UpdateTeam = () => {
   return (
   <div>
     <div>
-      <button className="btn btn-block mt-2" onClick={handleShow}>
+      <button className="btn btn-block" onClick={handleShow}>
         Update Team
       </button>
     </div>
@@ -200,7 +200,7 @@ const DeleteTeam = () => {
   const deleteTeam = (e) => {
       e.preventDefault();
       axios.delete(`/api/teams/delete/${id}`)
-      .then(() => {history.push("/portal")
+      .then(() => {history.push("/teams")
       })
       .catch(err =>console.log(err))
       

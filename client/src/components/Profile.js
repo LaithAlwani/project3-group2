@@ -9,7 +9,7 @@ const Profile = () => {
 
   return (
     <>
-    <div className="card h-100">
+    <div className="card h-100 card-profile">
 			<div className="card-body">
         <div>
           <img className="profile-userpic" src={ `/uploads/${image}`} alt={username} />
@@ -102,7 +102,7 @@ const UpdateProfile = ({history}) => {
             <Profile/>
           </div>
           <div className="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 card-space">
-            <div className="card h-100">
+            <div className="card h-100 card-profile">
 			        <div className="card-body">
 				        <div className="row gutters">
                   <div className="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
