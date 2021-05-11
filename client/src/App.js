@@ -5,44 +5,53 @@ import Register from "./pages/Register";
 import ForgotPassword from "./pages/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword";
 import ProfilePage from "./pages/ProfilePage";
-import Landing from "./pages/Landing";
+import Teams from "./pages/Teams";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
-import MyTeam from "./components/MyTeam";
+import MyTeam from "./components/team/MyTeam";
 import './styles/Home.css'
 import PostView from "./pages/PostView";
 import NotFound from "./pages/NotFound";
 import Footer from "./components/Footer"
+import Landing from "./pages/Landing";
+
 
 const App = () => {
 
-  const [username, setUsername] = useState("");
+  const [user, setUser] = useState("");
 
-  const getUsername = (username)=>{
-    setUsername(username);
+  const getUser = (user)=>{
+    setUser(user);
   }
   return (
     <Router>
       <div className="app">
-        <Navbar username={username}/>
+        <Navbar username={user.username}/>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/portal">
-              <Landing getUsername={getUsername}/>
+              <Landing getUser={getUser}/>
+            </Route>
+            <Route exact path="/teams">
+              <Teams />
             </Route>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/forgotpassword" component={ForgotPassword} />
             <Route exact path="/passwordreset/:resetToken" component={ResetPassword} />
-            <Route exact path="/portal/:myteam" component={MyTeam} />
+            <Route exact path="/teams/:myteam">
+              <MyTeam user={user} />
+            </Route>
             <Route exact path="/passwordreset/:resetToken" component={ResetPassword}/>
             <Route path="/profile">
-              <ProfilePage getUsername={getUsername}/>
+              <ProfilePage/>
             </Route>
             <Route exact path="/view/:teamid/:id">
-              <PostView  username={username}/>
+              <PostView />
             </Route>
-            <Route path="*" component={NotFound}/>
+            <Route path="*">
+              <NotFound/>
+            </Route>
         </Switch>
         <Footer />
       </div> 

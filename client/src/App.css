@@ -1,4 +1,102 @@
+/*General App Styles*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.7;
+    background: #eee;
+    color: #333;
+}
+
+/*All form Styles*/
+.form-group,
+.form-group label,
+.form-group input {
+    width: 100%;
+    margin-bottom: 0.5rem;
+}
+.form-group label {
+    font-size: 0.8rem;
+}
+.form-group input {
+    padding: 10px 20px;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background-color: #eee;
+    outline-width: 0;
+    font-size: 1rem;
+}
+.form-group input:focus {
+    border-bottom: 3px solid coral;
+}
 .add-team-form{
     width: 75%;
     margin: 0 auto;
 }
+/*All button Styles*/
+.btn {
+    border: none;
+    background-color: coral;
+    color: white;
+}
+.btn:hover{
+    border: 0.063rem solid #ff7f50;
+    background-color: #ff7f50 !important;
+    opacity: 1 !important;
+    color: black;
+}
+.btn:active{
+    outline: none !important;   
+    box-shadow: none !important; 
+    border-color: none !important;
+}
+.btn:focus {
+    outline: 0;
+    box-shadow: none !important;
+}
+.btn-block {
+    margin-top: 20px !important;
+}
+.btn-main {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; 
+    margin-right: auto;
+    margin-left: auto;
+}
+/*Message styles*/
+.error-message {
+    width: 100%;
+    display: inline-block;
+    padding: 5px;
+    background: red;
+    color: #fff;
+    text-align: center;
+    margin: 0.5rem 0;
+}
+.success-message {
+    width: 100%;
+    display: inline-block;
+    padding: 5px;
+    background: green;
+    color: #fff;
+    text-align: center;
+    margin: 0.5rem 0;
+}
+/*Navbar style*/
+.dropdown-item:hover {
+    color:white !important; 
+    background-color: #ff7f50 ;
+}
+/*404 page styles*/
+.d-block{
+    margin-top: 100px;
+}
+.main-pics {
+    height:300px;
+    width:300px;
+}
+/*General Styles Ends*/

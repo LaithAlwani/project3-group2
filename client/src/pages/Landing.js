@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import UserContext from "../utils/UserContext";
 import "../App.css";
-import TeamsContainer from "../components/TeamsContainer";
 
-const Landing = ({ getUsername }) => {
+
+const Landing = ({ getUser }) => {
   const history = useHistory();
 
   const [error, setError] = useState("");
@@ -35,7 +35,7 @@ const Landing = ({ getUsername }) => {
       try {
         const { data } = await axios.get("/api/private", config);
         setUserData(data);
-        getUsername(data.username);
+        getUser(data);
       } catch (error) {
         localStorage.removeItem("authToken");
         setError("You are not authorized please login! Redirecting to login");
@@ -55,7 +55,39 @@ const Landing = ({ getUsername }) => {
   ) : (
     <UserContext.Provider value={userData}>
       <div>
-        <TeamsContainer />
+        <div className="jumbotron jumbotron-fluid">
+          <div className="container text-center">
+            <h1 className="display-4">Welcome {userData.username} !!!</h1>
+            <p className="text">Connect with your team today.</p>
+            <Link to="/teams"><button className="btn btn-main">Teams</button></Link>
+            <Link to="/profile"><button className="btn btn-main">Profile</button></Link>
+          </div>
+        </div>
+        <div className="container-fluid card-bottom">
+          <div className="row text-center slideanim">
+            <div className="col-sm-4">
+                <div className="thumbnail">
+                    <img src={`/uploads/sports.png`} alt="track" className="main-pics"/>
+                    <p><strong>Track Team</strong></p>
+                    <p>Track team activity</p>
+                </div>
+            </div>
+            <div className="col-sm-4">
+                <div className="thumbnail">
+                    <img src={`/uploads/football.png`} alt="team" className="main-pics"/>
+                    <p><strong>Team Work</strong></p>
+                    <p>Build your team</p>
+                </div>
+            </div>
+            <div className="col-sm-4">
+                <div className="thumbnail">
+                    <img src={`/uploads/message.png`} alt="post"className="main-pics"/>
+                    <p><strong>Team Posts</strong></p>
+                    <p>Post messages, schedule and other team information</p>
+                </div>
+            </div>
+          </div>
+        </div>
       </div>
     </UserContext.Provider>
   );

@@ -1,14 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../styles/Teams.css";
+import "../../styles/Teams.css";
 
 function Teams({ myTeams }) {
   return (
     <div className="mt-3">
-      {myTeams.map(team => (
+      {myTeams.length === 0 ? <h5 className="text">No Teams Available</h5> : 
+      myTeams.map(team => (
         <Link
           className="card-link"
-          to={{pathname:`/portal/${team._id}`,
+          to={{pathname:`/teams/${team._id}`,
           state:{team}
         }}
         key={team._id}

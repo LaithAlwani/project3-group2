@@ -1,15 +1,19 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
 import AddMember from "./AddMember";
-import { UpdateTeam, DeleteTeam } from "./AddTeam";
-import { Post } from "./Posts";
-import AddPost from "./AddPost"
+import UpdateTeam from "./UpdateTeam";
+import DeleteTeam from "./DeleteTeam";
+import Post from "../post/Post";
+import "../../styles/TeamPage.css";
 
-function MyTeam({ location, history }) {
+function MyTeam({ user }) {
+  const location = useLocation();
   const data = location.state.team;
   const [players, setPlayers] = useState([]);
-  const [addDelPlayer, setAddDelPlayer] = useState(false);
   const [message, setMessage] = useState("");
+  const [addDelPlayer, setAddDelPlayer] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const getPlayers = () => {
     if (data._id) {
@@ -20,20 +24,27 @@ function MyTeam({ location, history }) {
     }
   };
 
+  const checkAdmin = () => {
+    const checkedPlayer = data.players.find(
+      (player) => player.player === user._id
+    );
+    setIsAdmin(checkedPlayer.isAdmin);
+  };
+
   const addedPlayers = (value) => {
     setAddDelPlayer(true);
-    setTimeout(()=>{
+    setTimeout(() => {
       setAddDelPlayer(false);
-    },100)
+    }, 100);
   };
 
   const deletePlayer = (id) => {
+    console.log("deleting");
     axios
       .delete("/api/teams/deletemember/" + id, {
         data: { teamId: data._id },
       })
       .then((res) => {
-        setAddDelPlayer(true);
         setMessage(res.data);
         setTimeout(() => {
           setMessage("");
@@ -44,14 +55,15 @@ function MyTeam({ location, history }) {
 
   useEffect(() => {
     getPlayers();
-  }, [data._id,addDelPlayer]);
+    checkAdmin();
+  }, [data._id, addDelPlayer]);
   return (
     <>
       <div className="container">
-        <h1 className="text">{data.teamName}</h1>
+        <h1 className="text text-main">{data.teamName}</h1>
         <div className="row gutters-sm">
-          <div className="col-md-4 mb-3">
-            <div className="card">
+          <div className="col-md-4 mb-5">
+            <div className="card card-view">
               <div className="card-body">
                 <div className="d-flex flex-column align-items-center text-center ">
                   <img
@@ -59,24 +71,33 @@ function MyTeam({ location, history }) {
                     alt=""
                     className="img-fluid"
                   />
-                  <UpdateTeam />
+                  {isAdmin && <UpdateTeam />}
                 </div>
               </div>
             </div>
-            <div className="card mt-3">
+            <div className="card card-view mt-3">
               <div className="card-body">
                 <h3>Team Roster</h3>
                 {players.map((player) => (
-                  <div key={player.player._id} className="card my-2">
-                    <div  className="d-flex p-2">
+                  <div
+                    key={player.player._id}
+                    className={
+                      player.player._id === user._id
+                        ? "card my-2 current-user"
+                        : "card my-2"
+                    }
+                  >
+                    <div className="d-flex p-2">
                       <div>
                         {player.player.username}
                         {player.isAdmin && <span> (Admin)</span>}
                       </div>
-                      <div
-                        className="far fa-trash-alt ml-auto mt-1"
-                        onClick={() => deletePlayer(player.player._id)}
-                      ></div>
+                      {isAdmin && (
+                        <div
+                          className="far fa-trash-alt ml-auto mt-1"
+                          onClick={() => deletePlayer(player.player._id)}
+                        ></div>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -84,25 +105,24 @@ function MyTeam({ location, history }) {
                 <hr></hr>
                 <div className="mt-3">
                   <h3>Add Players</h3>
-                  <AddMember teamId={data._id} addedPlayers={addedPlayers} />
+                  {isAdmin && (
+                    <AddMember teamId={data._id} addedPlayers={addedPlayers} />
+                  )}
                 </div>
               </div>
             </div>
-            <div className="card-mt-3">
-              <div className="text-right ">
-                <DeleteTeam />
-              </div>
+            <div style={{ marginBottom: "20px" }} className="card-mt-3">
+              <div className="text-right ">{isAdmin && <DeleteTeam />}</div>
             </div>
           </div>
           <div className="col-md-8">
             <div className="card mb-3">
               <h3 className="text">Team Posts</h3>
               <div className="card-body">
-                <AddPost />
                 <div className="row">
                   <div className="col-sm-12 text-secondary">
                     <div>
-                      <Post />
+                      <Post isAdmin={isAdmin} />
                     </div>
                   </div>
                 </div>

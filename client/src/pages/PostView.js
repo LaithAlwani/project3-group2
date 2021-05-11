@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "../App.css";
-import { ViewPost } from "../components/Posts";
+import  ViewPost  from "../components/post/ViewPost";
 
 
 
@@ -27,8 +27,7 @@ const PostView = () => {
       };
 
       try {
-        const { data } = await axios.get("/api/private", config);
-        console.log(data)
+        await axios.get("/api/private", config);
         
       } catch (error) {
         localStorage.removeItem("authToken");

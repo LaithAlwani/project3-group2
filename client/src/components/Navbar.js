@@ -44,11 +44,11 @@ function Navbar({username}) {
             <li className="nav-item ">
               <Link
                 className={
-                  location.pathname === "/portal"
+                  location.pathname === "/teams"
                     ? "nav-link active"
                     : "nav-link"
                 }
-                to="/portal"
+                to="/teams"
               >
                 Teams <span className="sr-only"></span>
               </Link>

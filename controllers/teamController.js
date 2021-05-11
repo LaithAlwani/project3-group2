@@ -141,6 +141,15 @@ exports.deleteMember = (req, res) => {
           user.save();
         });
       });
+      team.posts.forEach(post =>{
+        db.Post.findByIdAndDelete({_id:post._id}, (err,post)=>{
+          if(err){
+            res.send("Cannot find post").status(500).end();
+          }else{
+            console.log(`post ${post._id} deleted`);
+          }
+        })
+      })
       team.delete();
       console.log("team deleted");
       res.json("Team Deleted");

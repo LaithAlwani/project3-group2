@@ -11,8 +11,7 @@ const AddPost = ({newPostModel,updateNewPostModel}) => {
     const [title, setTitle] = useState("");
     const [post, setPost] = useState("");
     const [postAuthor, setPostAuthor] = useState("");
-    const [success, setSuccess]= useState("");
-    const [error, setError]= useState("");
+    const [error, setError] = useState("");
     const [fileName, setFileName] = useState("");
   
     
@@ -30,8 +29,6 @@ const AddPost = ({newPostModel,updateNewPostModel}) => {
       formData.append("postAuthor",postAuthor);
       formData.append("post",post);
       formData.append("postFile",fileName);
-
-      
     
       if (!fileName) {
         axios.post( `/api/posts/addnew/${id}`, {title, postAuthor, post} , config)
@@ -44,7 +41,7 @@ const AddPost = ({newPostModel,updateNewPostModel}) => {
       }) 
       } else {
           axios.post( `/api/posts/addpost/${id}`, formData , config)
-          .then( () => {updateNewPostModel(false)})
+          .then( () => updateNewPostModel(false))
           .catch (error =>  { setError(`Image Required/ File Unsupported`);
             if(error)
             setTimeout(()=>{
@@ -66,7 +63,6 @@ const AddPost = ({newPostModel,updateNewPostModel}) => {
         <Modal.Body>
           <form onSubmit={submitHandler} encType="multipart/form-data" >
             {error && <span className="error-message">{error}</span>}
-            {success && <span className="success-message">{success}</span>}
             <div className="form-group">
               <label htmlFor="title">Title</label>
                 <input
