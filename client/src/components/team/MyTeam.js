@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import AddMember from "./AddMember";
-import { UpdateTeam, DeleteTeam } from "./AddTeam";
+import UpdateTeam from "./UpdateTeam";
+import { DeleteTeam } from "./AddTeam";
 import  Post  from "../post/Post";
 import "../../styles/TeamPage.css";
 
