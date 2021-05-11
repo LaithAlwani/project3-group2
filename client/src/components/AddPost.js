@@ -32,13 +32,7 @@ const AddPost = ({newPostModel,updateNewPostModel}) => {
     
       if (!fileName) {
         axios.post( `/api/posts/addnew/${id}`, {title, postAuthor, post} , config)
-        .then( () => {
-          setSuccess(`Post Added Successfully`)
-          setTimeout(()=>{
-          setSuccess("");
-          },2000)
-          updateNewPostModel(false);
-        })
+        .then( () => updateNewPostModel(false))
         .catch (error =>  { setError(error);
           if(error)
           setTimeout(()=>{
@@ -47,13 +41,7 @@ const AddPost = ({newPostModel,updateNewPostModel}) => {
       }) 
       } else {
           axios.post( `/api/posts/addpost/${id}`, formData , config)
-          .then( () => {
-            setSuccess(`Post Added Successfully`)
-            setTimeout(()=>{
-            setSuccess("");
-            },2000)
-            updateNewPostModel(false);
-          })
+          .then( () => updateNewPostModel(false))
           .catch (error =>  { setError(`Image Required/ File Unsupported`);
             if(error)
             setTimeout(()=>{

@@ -5,7 +5,7 @@ import UserContext from "../utils/UserContext";
 import "../App.css";
 import TeamsContainer from "../components/TeamsContainer";
 
-const Landing = ({ getUsername }) => {
+const Landing = () => {
   const history = useHistory();
 
   const [error, setError] = useState("");
@@ -35,7 +35,7 @@ const Landing = ({ getUsername }) => {
       try {
         const { data } = await axios.get("/api/private", config);
         setUserData(data);
-        getUsername(data.username);
+        
       } catch (error) {
         localStorage.removeItem("authToken");
         setError("You are not authorized please login! Redirecting to login");

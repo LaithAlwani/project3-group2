@@ -87,39 +87,6 @@ const Post = () => {
   return (
     <div>
       <div>
-<<<<<<< HEAD
-        <button className="btn" onClick={() => setNewPostModel(true)}>
-          Add Post
-        </button>
-      </div>
-      {newPostModel && (
-        <AddPost
-          newPostModel={newPostModel}
-          updateNewPostModel={updateNewPostModel}
-        />
-      )}
-      {post
-        .map((posts, key) => (
-          <div className="card  register-screen__form w-100" key={key}>
-            <div className="card-body">
-              <Link to={`/view/${id}/${posts._id}`}>
-                {" "}
-                <h3>{posts.title}</h3>{" "}
-              </Link>
-              <span className="card-text">posted by: {posts.postAuthor}</span>
-              <p>
-                <span className="card-text">post date: {posts.timestamp}</span>
-              </p>
-            </div>
-          </div>
-        ))
-        .reverse()}
-    </div>
-  );
-};
-
-export { Post, ViewPost };
-=======
         <button className="btn modal-btn" onClick={()=>setNewPostModel(true)}>
           Add Post
         </button>
@@ -143,4 +110,3 @@ export { Post, ViewPost };
 
 
 export { Post, ViewPost}
->>>>>>> 0e626bd71a31a229dfc133a48cde2503f31f2c78

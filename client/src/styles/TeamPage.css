@@ -4,3 +4,7 @@
 .card-bottom {
   margin-bottom: 5rem;
 }
+
+.current-user{
+  background-color: rgba(144, 238, 144, 0.5);
+}
