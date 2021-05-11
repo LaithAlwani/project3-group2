@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import AddMember from "./AddMember";
-import { UpdateTeam, DeleteTeam } from "./AddTeam";
-import { Post } from "./Posts";
-import "../styles/TeamPage.css";
+import UpdateTeam from "./UpdateTeam";
+import DeleteTeam from "./DeleteTeam";
+import Post from "../post/Post";
+import "../../styles/TeamPage.css";
 
 function MyTeam({ user }) {
   const location = useLocation();
@@ -15,7 +16,6 @@ function MyTeam({ user }) {
   const [isAdmin, setIsAdmin] = useState(false);
 
   const getPlayers = () => {
-    console.log(user._id);
     if (data._id) {
       axios
         .get(`/api/teams/${data._id}/players`)
@@ -79,17 +79,25 @@ function MyTeam({ user }) {
               <div className="card-body">
                 <h3>Team Roster</h3>
                 {players.map((player) => (
-                  <div key={player.player._id} className={player.player._id === user._id ? "card my-2 current-user":"card my-2"}>
+                  <div
+                    key={player.player._id}
+                    className={
+                      player.player._id === user._id
+                        ? "card my-2 current-user"
+                        : "card my-2"
+                    }
+                  >
                     <div className="d-flex p-2">
                       <div>
                         {player.player.username}
                         {player.isAdmin && <span> (Admin)</span>}
                       </div>
-                      {isAdmin &&
-                      <div
-                        className="far fa-trash-alt ml-auto mt-1"
-                        onClick={() => deletePlayer(player.player._id)}
-                      ></div>}
+                      {isAdmin && (
+                        <div
+                          className="far fa-trash-alt ml-auto mt-1"
+                          onClick={() => deletePlayer(player.player._id)}
+                        ></div>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -97,14 +105,14 @@ function MyTeam({ user }) {
                 <hr></hr>
                 <div className="mt-3">
                   <h3>Add Players</h3>
-                  {isAdmin && <AddMember teamId={data._id} addedPlayers={addedPlayers} />}
+                  {isAdmin && (
+                    <AddMember teamId={data._id} addedPlayers={addedPlayers} />
+                  )}
                 </div>
               </div>
             </div>
-            <div style={{marginBottom:"20px"}} className="card-mt-3">
-              <div className="text-right ">
-                {isAdmin && <DeleteTeam />}
-              </div>
+            <div style={{ marginBottom: "20px" }} className="card-mt-3">
+              <div className="text-right ">{isAdmin && <DeleteTeam />}</div>
             </div>
           </div>
           <div className="col-md-8">

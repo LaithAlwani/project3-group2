@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
-import chat from "../images/chat.png"
+
 const Home = () => {
   return (
     <div>

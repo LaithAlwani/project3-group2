@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import UserContext from "../utils/UserContext";
+import TeamsContainer from "../components/team/TeamsContainer";
 import "../App.css";
-import TeamsContainer from "../components/TeamsContainer";
 
 const Landing = () => {
   const history = useHistory();

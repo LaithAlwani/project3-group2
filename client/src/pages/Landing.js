@@ -56,14 +56,14 @@ const Landing = ({ getUser }) => {
     <UserContext.Provider value={userData}>
       <div>
         <div className="jumbotron jumbotron-fluid">
-          <div className="container">
-            <h1 className="display-4 text">Welcome {userData.username} !!!</h1>
+          <div className="container text-center">
+            <h1 className="display-4">Welcome {userData.username} !!!</h1>
             <p className="text">Connect with your team today.</p>
-            <Link to="/teams"><button className="btn btn-primary btn-main">Teams</button></Link>
-            <Link to="/profile"><button className="btn btn-primary btn-main">Profile</button></Link>
+            <Link to="/teams"><button className="btn btn-main">Teams</button></Link>
+            <Link to="/profile"><button className="btn btn-main">Profile</button></Link>
           </div>
         </div>
-        <div className="container-fluid text-center card-bottom">
+        <div className="container-fluid card-bottom">
           <div className="row text-center slideanim">
             <div className="col-sm-4">
                 <div className="thumbnail">

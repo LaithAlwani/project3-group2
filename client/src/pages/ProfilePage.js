@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import UserContext from "../utils/UserContext";
-import {UpdateProfile } from "../components/Profile";
+import UpdateProfile  from "../components/user/UpdateProfile";
 
 const ProfilePage = () => {
   const history = useHistory();

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import UserContext from "../utils/UserContext";
+import UserContext from "../../utils/UserContext";
 import Teams from "./Teams";
-import {AddTeam} from "./AddTeam";
+import AddTeam from "./AddTeam";
 import axios from "axios";
 
 function MyTeamContainer() {
@@ -18,7 +18,7 @@ function MyTeamContainer() {
     if (_id) {
       axios
         .get(`/api/users/${_id}/teams`)
-        .then(res => setMyTeams(res.data.teams));
+        .then((res) => setMyTeams(res.data.teams));
     }
   };
 
@@ -31,24 +31,23 @@ function MyTeamContainer() {
   };
   return (
     <div className="container mt-3">
-      <div class="card card-view">
-        <div class="card-body">
+      <div className="card card-view">
+        <div className="card-body">
+          {showTeams && (
+            <div className="text-right">
+              <button className="btn" onClick={() => setShowTeams(false)}>
+                Create Team
+              </button>
+            </div>
+          )}
           <h1 className="text">My Teams</h1>
-      {showTeams && (
-        <div className="text-right">
-          <button className="btn" onClick={() => setShowTeams(false)}>
-            Create Team
-          </button>
+          {message && <div className="alert alert-success">{message}</div>}
+          {showTeams && <Teams myTeams={myTeams} />}
+          {!showTeams && <AddTeam getShowTeams={getShowTeams} />}
         </div>
-      )}
-      {message && <div className="alert alert-success">{message}</div>}
-      {showTeams && <Teams myTeams={myTeams} />}
-      {!showTeams && <AddTeam getShowTeams={getShowTeams} />}
-    </div>
-    </div>
+      </div>
     </div>
   );
 }
 
 export default MyTeamContainer;
-
