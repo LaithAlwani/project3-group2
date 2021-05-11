@@ -35,7 +35,8 @@ const Login = ({ history }) => {
         history.push("/portal");
         
       } catch (error) {
-        console.log(error.response.data);
+        console.log(error)
+        setError(error);
         setTimeout(() => {
           setError("");
         }, 5000);

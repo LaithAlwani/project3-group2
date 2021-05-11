@@ -4,7 +4,7 @@ import axios from "axios";
 import "../styles/ForgotPassword.css"
 
 
-const ForgotPassword = () => {
+const ForgotPassword = ({history}) => {
     const [email, setEmail] = useState("");
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
@@ -26,8 +26,11 @@ const ForgotPassword = () => {
         );
 
         setSuccess(data.data);
+        setTimeout(() => {
+          history.push("/");
+        }, 2000);        
     } catch (error) {
-        setError(error.response.data.error);
+        setError(`Email address not found`);
         setEmail("");
         setTimeout(() => {
             setError("");

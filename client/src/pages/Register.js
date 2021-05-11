@@ -44,7 +44,7 @@ const Register = ({ history }) => {
 
       history.push("/login");
     } catch (error) {
-      setError(error.response.data.error);
+      setError(`Email already Exists`);
       setTimeout(() => {
         setError("");
       }, 5000);
