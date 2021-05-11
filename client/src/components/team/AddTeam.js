@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import UserContext from "../../utils/UserContext";
 
-
 function AddTeam({ getShowTeams }) {
   const { _id } = useContext(UserContext);
   const [teamName, setTeamName] = useState("");
@@ -27,7 +26,6 @@ function AddTeam({ getShowTeams }) {
         config
       );
       getShowTeams(true);
-      
     } catch (error) {
       console.log(error);
       setError(error.response.data.error);
@@ -35,15 +33,18 @@ function AddTeam({ getShowTeams }) {
         setError("");
       }, 5000);
     }
-    
   };
   return (
     <>
       {error && <span className="error-message">{error}</span>}
       <div className="text-center mt-4">
-        <h3>Please Enter The Team Information</h3>
+        <h1>Create New Team</h1>
+        <h5>Please Enter The Team Information</h5>
         <form onSubmit={handleSubmit} className="add-team-form">
-          <div className="form-group">
+          <div className="input-group">
+            <span class="input-group-addon">
+              <span class="fas fa-user icon"></span>
+            </span>
             <input
               type="text"
               className="form-control"
@@ -53,7 +54,11 @@ function AddTeam({ getShowTeams }) {
               required
             />
           </div>
-          <div className="form-group">
+          
+          <div className="input-group">
+            <span class="input-group-addon">
+              <span class="fas fa-basketball-ball icon"></span>
+            </span>
             <input
               type="text"
               className="form-control"
@@ -72,4 +77,4 @@ function AddTeam({ getShowTeams }) {
   );
 }
 
-export default AddTeam ;
+export default AddTeam;

@@ -29,3 +29,7 @@ width: 100% !important;
 border-radius: 50%;
 }
 
+.add-team-form {
+  width: 50%;
+  margin: 0 auto;
+}
