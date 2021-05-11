@@ -47,7 +47,7 @@ const App = () => {
               <ProfilePage/>
             </Route>
             <Route exact path="/view/:teamid/:id">
-              <PostView  username={user.username}/>
+              <PostView />
             </Route>
             <Route path="*">
               <NotFound/>

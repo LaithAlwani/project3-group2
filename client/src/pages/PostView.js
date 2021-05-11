@@ -28,7 +28,6 @@ const PostView = () => {
 
       try {
         const { data } = await axios.get("/api/private", config);
-        console.log(data)
         
       } catch (error) {
         localStorage.removeItem("authToken");
