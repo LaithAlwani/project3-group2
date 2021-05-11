@@ -1,28 +1,31 @@
 .team-card{
-    background: linear-gradient(
-     white, white 50%, rgb(122, 122, 122) 50%, #333
-  );
-  background-size: 100% 200%;
-  transition: all 0.2s ease;
+  border: 1px solid gray;
+  box-shadow: 0 0.25rem 0.5rem 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background: linear-gradient(
+   white, white 50%, rgb(122, 122, 122) 50%, #333
+);
+background-size: 100% 200%;
+transition: all 0.2s ease;
 }
 
 .team-card:hover {
-    background-position: 100% 100%;
-    cursor: pointer;
-    color: white;
-  }
+  background-position: 100% 100%;
+  cursor: pointer;
+  color: white;
+}
 
 .card-link{
-  color:black;
-  text-shadow: 1px 1px 1px rgb(156, 156, 155, 0.5);
+color:black;
+text-shadow: 1px 1px 1px rgb(156, 156, 155, 0.5);
 }
 
 .team-card img{
-  height: 3.75rem;
-  width: 6.25rem;
+height: 3.75rem;
+width: 6.25rem;
 }
 
 .img-fluid {
-  width: 100% !important;
+width: 100% !important;
+border-radius: 50%;
 }
 
