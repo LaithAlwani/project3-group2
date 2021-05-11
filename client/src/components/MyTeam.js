@@ -1,17 +1,21 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useLocation } from "react-router-dom";
 import AddMember from "./AddMember";
 import { UpdateTeam, DeleteTeam } from "./AddTeam";
 import { Post } from "./Posts";
-import AddPost from "./AddPost"
+import AddPost from "./AddPost";
 
-function MyTeam({ location, history }) {
+function MyTeam({ user }) {
+  const location = useLocation();
   const data = location.state.team;
   const [players, setPlayers] = useState([]);
   const [addDelPlayer, setAddDelPlayer] = useState(false);
   const [message, setMessage] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const getPlayers = () => {
+    console.log(user._id);
     if (data._id) {
       axios
         .get(`/api/teams/${data._id}/players`)
@@ -20,11 +24,18 @@ function MyTeam({ location, history }) {
     }
   };
 
+  const checkAdmin = () => {
+    const checkedPlayer = data.players.find(
+      (player) => player.player === user._id
+    );
+    setIsAdmin(checkedPlayer.isAdmin);
+  };
+
   const addedPlayers = (value) => {
     setAddDelPlayer(true);
-    setTimeout(()=>{
+    setTimeout(() => {
       setAddDelPlayer(false);
-    },100)
+    }, 100);
   };
 
   const deletePlayer = (id) => {
@@ -44,7 +55,8 @@ function MyTeam({ location, history }) {
 
   useEffect(() => {
     getPlayers();
-  }, [data._id,addDelPlayer]);
+    checkAdmin();
+  }, [data._id, addDelPlayer]);
   return (
     <>
       <div className="container">
@@ -59,7 +71,7 @@ function MyTeam({ location, history }) {
                     alt=""
                     className="img-fluid"
                   />
-                  <UpdateTeam />
+                  {isAdmin && <UpdateTeam />}
                 </div>
               </div>
             </div>
@@ -67,16 +79,17 @@ function MyTeam({ location, history }) {
               <div className="card-body">
                 <h3>Team Roster</h3>
                 {players.map((player) => (
-                  <div key={player.player._id} className="card my-2">
-                    <div  className="d-flex p-2">
+                  <div key={player.player._id} className={player.player._id === user._id ? "card my-2 current-user":"card my-2"}>
+                    <div className="d-flex p-2">
                       <div>
                         {player.player.username}
                         {player.isAdmin && <span> (Admin)</span>}
                       </div>
+                      {isAdmin &&
                       <div
                         className="far fa-trash-alt ml-auto mt-1"
                         onClick={() => deletePlayer(player.player._id)}
-                      ></div>
+                      ></div>}
                     </div>
                   </div>
                 ))}
@@ -84,13 +97,13 @@ function MyTeam({ location, history }) {
                 <hr></hr>
                 <div className="mt-3">
                   <h3>Add Players</h3>
-                  <AddMember teamId={data._id} addedPlayers={addedPlayers} />
+                  {isAdmin && <AddMember teamId={data._id} addedPlayers={addedPlayers} />}
                 </div>
               </div>
             </div>
             <div className="card-mt-3">
               <div className="text-right ">
-                <DeleteTeam />
+                {isAdmin && <DeleteTeam />}
               </div>
             </div>
           </div>

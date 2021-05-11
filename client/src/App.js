@@ -16,31 +16,33 @@ import Footer from "./components/Footer"
 
 const App = () => {
 
-  const [username, setUsername] = useState("");
+  const [user, setUser] = useState("");
 
-  const getUsername = (username)=>{
-    setUsername(username);
+  const getUser = (user)=>{
+    setUser(user);
   }
   return (
     <Router>
       <div className="app">
-        <Navbar username={username}/>
+        <Navbar username={user.username}/>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/portal">
-              <Landing getUsername={getUsername}/>
+              <Landing getUser={getUser}/>
             </Route>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/forgotpassword" component={ForgotPassword} />
             <Route exact path="/passwordreset/:resetToken" component={ResetPassword} />
-            <Route exact path="/portal/:myteam" component={MyTeam} />
+            <Route exact path="/portal/:myteam">
+              <MyTeam user={user} />
+            </Route>
             <Route exact path="/passwordreset/:resetToken" component={ResetPassword}/>
             <Route path="/profile">
-              <ProfilePage getUsername={getUsername}/>
+              <ProfilePage/>
             </Route>
             <Route exact path="/view/:teamid/:id">
-              <PostView  username={username}/>
+              <PostView  username={user.username}/>
             </Route>
             <Route path="*" component={NotFound}/>
         </Switch>

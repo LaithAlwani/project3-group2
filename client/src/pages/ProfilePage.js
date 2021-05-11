@@ -4,7 +4,7 @@ import axios from "axios";
 import UserContext from "../utils/UserContext";
 import {UpdateProfile } from "../components/Profile";
 
-const ProfilePage = ({ getUsername }) => {
+const ProfilePage = () => {
   const history = useHistory();
 
   const [error, setError] = useState("");
@@ -34,7 +34,6 @@ const ProfilePage = ({ getUsername }) => {
       try {
         const { data } = await axios.get("/api/private", config);
         setUserData(data);
-        getUsername(data.username);
       } catch (error) {
         localStorage.removeItem("authToken");
         setError("You are not authorized please login! Redirecting to login");
