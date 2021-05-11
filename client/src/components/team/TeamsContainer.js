@@ -40,8 +40,7 @@ function MyTeamContainer() {
               </button>
             </div>
           )}
-          <h1 className="text">My Teams</h1>
-          {message && <div className="alert alert-success">{message}</div>}
+          {message && <div className="alert alert-success mt-3">{message}</div>}
           {showTeams && <Teams myTeams={myTeams} />}
           {!showTeams && <AddTeam getShowTeams={getShowTeams} />}
         </div>

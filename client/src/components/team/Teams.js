@@ -5,6 +5,7 @@ import "../../styles/Teams.css";
 function Teams({ myTeams }) {
   return (
     <div className="mt-3">
+      <h1 className="text">My Teams</h1>
       {myTeams.length === 0 ? <h5 className="text">No Teams Available</h5> : 
       myTeams.map(team => (
         <Link

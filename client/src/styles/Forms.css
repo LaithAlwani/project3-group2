@@ -1,0 +1,41 @@
+.log-reg {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.log-reg-form {
+  width: 380px;
+  padding: 1.5rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  background: #fff;
+}
+.log-reg-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.form-control {
+  background-color: #eee;
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid lightgray;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  background-color: #eee;
+  border-bottom: 3px solid coral;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+.input-group-addon {
+  border-bottom: 1px solid lightgray;
+  background-color: #eee;
+}
+.icon {
+  padding: 12px 0 0 10px;
+}
