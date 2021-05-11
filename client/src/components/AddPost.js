@@ -11,8 +11,7 @@ const AddPost = ({newPostModel,updateNewPostModel}) => {
     const [title, setTitle] = useState("");
     const [post, setPost] = useState("");
     const [postAuthor, setPostAuthor] = useState("");
-    const [success, setSuccess]= useState("");
-    const [error, setError]= useState("");
+    const [error, setError] = useState("");
     const [fileName, setFileName] = useState("");
   
     
@@ -76,7 +75,6 @@ const AddPost = ({newPostModel,updateNewPostModel}) => {
         <Modal.Body>
           <form onSubmit={submitHandler} encType="multipart/form-data" >
             {error && <span className="error-message">{error}</span>}
-            {success && <span className="success-message">{success}</span>}
             <div className="form-group">
               <label htmlFor="title">Title</label>
                 <input

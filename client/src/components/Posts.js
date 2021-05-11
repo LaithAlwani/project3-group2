@@ -1,42 +1,43 @@
-import React, {useState, useEffect} from "react";
-import {useHistory, Link} from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useHistory, Link } from "react-router-dom";
 import axios from "axios";
 import AddPost from "./AddPost";
 import "../styles/Post.css";
 
 const ViewPost = () => {
-
   const history = useHistory();
 
   const [title, setTitle] = useState("");
-  const [post,  setPost] = useState("");
+  const [post, setPost] = useState("");
   const [postAuthor, setPostAuthor] = useState("");
   const [file, setFile] = useState("");
 
-  const url = window.location.pathname
-  const id = url.substring(url.lastIndexOf('/')+ 1)
-  const delid = url.split("/").slice(-2).join("/")
+  const url = window.location.pathname;
+  const id = url.substring(url.lastIndexOf("/") + 1);
+  const delid = url.split("/").slice(-2).join("/");
 
   const deletePost = () => {
-    axios.delete(`/api/posts/${delid}`)
-    .then(res => console.log(res.data))
-    history.go(-1)
-  }
+    axios.delete(`/api/posts/${delid}`).then((res) => console.log(res.data));
+    history.go(-1);
+  };
 
-  const viewPost = () => { 
-    axios.get(`/api/posts/getpost/${id}`)
-    .then(res => [console.log(res),
-      setTitle(res.data.title),
-      setPostAuthor(res.data.postAuthor),
-      setPost(res.data.post),
-      setFile(res.data.postFile)
-    ]) }
+  const viewPost = () => {
+    axios
+      .get(`/api/posts/getpost/${id}`)
+      .then((res) => [
+        console.log(res),
+        setTitle(res.data.title),
+        setPostAuthor(res.data.postAuthor),
+        setPost(res.data.post),
+        setFile(res.data.postFile),
+      ]);
+  };
 
   useEffect(() => {
     viewPost();
   }, []);
 
-  return ( 
+  return (
     <div className="container">
       <div className="card card-post">
         <div className="card-body">
@@ -57,37 +58,68 @@ const ViewPost = () => {
         </div>
       </div>
     </div>
-   );
-}
- 
+  );
+};
 
 //Display all post in the made in the team
 const Post = () => {
+  const url = window.location.pathname;
+  const id = url.substring(url.lastIndexOf("/") + 1);
 
-  const url = window.location.pathname
-  const id = url.substring(url.lastIndexOf('/')+ 1)
-
-  const [post, setPost]= useState([])
-  const [newPostModel, setNewPostModel] = useState(false)
+  const [post, setPost] = useState([]);
+  const [newPostModel, setNewPostModel] = useState(false);
 
   const updateNewPostModel = (value) => {
     setNewPostModel(value);
-  }
+  };
 
-  useEffect(() =>{
+  useEffect(() => {
     getAllPosts();
-    
-  },[newPostModel])
+  }, [newPostModel]);
 
-  const getAllPosts = ()=>{
-    axios.get(`/api/posts/getposts/team/${id}`)
-    .then(res => setPost(res.data.posts))
-    .catch(err => console.log(err))
-  }
+  const getAllPosts = () => {
+    axios
+      .get(`/api/posts/getposts/team/${id}`)
+      .then((res) => setPost(res.data.posts))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div>
       <div>
+<<<<<<< HEAD
+        <button className="btn" onClick={() => setNewPostModel(true)}>
+          Add Post
+        </button>
+      </div>
+      {newPostModel && (
+        <AddPost
+          newPostModel={newPostModel}
+          updateNewPostModel={updateNewPostModel}
+        />
+      )}
+      {post
+        .map((posts, key) => (
+          <div className="card  register-screen__form w-100" key={key}>
+            <div className="card-body">
+              <Link to={`/view/${id}/${posts._id}`}>
+                {" "}
+                <h3>{posts.title}</h3>{" "}
+              </Link>
+              <span className="card-text">posted by: {posts.postAuthor}</span>
+              <p>
+                <span className="card-text">post date: {posts.timestamp}</span>
+              </p>
+            </div>
+          </div>
+        ))
+        .reverse()}
+    </div>
+  );
+};
+
+export { Post, ViewPost };
+=======
         <button className="btn modal-btn" onClick={()=>setNewPostModel(true)}>
           Add Post
         </button>
@@ -111,3 +143,4 @@ const Post = () => {
 
 
 export { Post, ViewPost}
+>>>>>>> 0e626bd71a31a229dfc133a48cde2503f31f2c78
