@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import "../styles/Register.css";
+import "../styles/Forms.css";
+
 
 const Register = ({ history }) => {
   const [username, setUsername] = useState("");
@@ -44,7 +45,7 @@ const Register = ({ history }) => {
 
       history.push("/login");
     } catch (error) {
-      setError(error.response.data.error);
+      setError(`Email already Exists`);
       setTimeout(() => {
         setError("");
       }, 5000);
@@ -52,48 +53,67 @@ const Register = ({ history }) => {
   };
 
   return (
-    <div className="register-screen">
-      <form onSubmit={registerHandler} className="register-screen__form">
-        <h3 className="register-screen__title">Sign Up</h3>
+    <div className="log-reg">
+      <form onSubmit={registerHandler} className="log-reg-form">
+        <h3 className="log-reg-title">Sign Up</h3>
         {error && <span className="error-message">{error}</span>}
-        <div className="form-group">
-          <label htmlFor="name">Username:</label>
+
+        <label htmlFor="name">Username:</label>
+        <div className="input-group">
+          <span class="input-group-addon">
+            <span class="fas fa-user icon"></span>
+          </span>
           <input
             type="text"
+            className="form-control"
             required
             id="name"
-            placeholder="Enter Full Name"
+            placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </div>
-        <div className="form-group">
-          <label>Email:</label>
+
+        <label>Email:</label>
+        <div className="input-group">
+          <span class="input-group-addon">
+            <span class="fas fa-envelope icon"></span>
+          </span>
           <input
             type="email"
+            className="form-control"
             required
             id="email"
-            placeholder="Email address"
+            placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
+
+        <label htmlFor="password">Password:</label>
+        <div className="input-group">
+          <span class="input-group-addon">
+            <span class="fas fa-lock icon"></span>
+          </span>
           <input
             type="password"
+            className="form-control"
             required
             id="password"
             autoComplete="true"
-            placeholder="Enter password"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="confirmpassword">Confirm Password:</label>
+        <label htmlFor="confirmpassword">Confirm Password:</label>
+        <div className="input-group">
+          <span class="input-group-addon">
+            <span class="fas fa-lock icon"></span>
+          </span>
           <input
             type="password"
+            className="form-control"
             required
             id="confirmpassword"
             autoComplete="true"
@@ -107,7 +127,7 @@ const Register = ({ history }) => {
           {" "}
           Sign Up
         </button>
-        <span className="register-screen__subtext">
+        <span className="small">
           Already have an account? <Link to="/login">Login</Link>
         </span>
       </form>
