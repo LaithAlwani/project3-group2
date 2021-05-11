@@ -33,13 +33,13 @@ const App = () => {
               <Landing getUser={getUser}/>
             </Route>
             <Route exact path="/teams">
-              <Teams getUsername={getUsername}/>
+              <Teams />
             </Route>
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
             <Route path="/forgotpassword" component={ForgotPassword} />
             <Route exact path="/passwordreset/:resetToken" component={ResetPassword} />
-            <Route exact path="/portal/:myteam">
+            <Route exact path="/teams/:myteam">
               <MyTeam user={user} />
             </Route>
             <Route exact path="/passwordreset/:resetToken" component={ResetPassword}/>

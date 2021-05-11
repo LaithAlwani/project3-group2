@@ -11,6 +11,7 @@ function MyTeam({ user }) {
   const data = location.state.team;
   const [players, setPlayers] = useState([]);
   const [message, setMessage] = useState("");
+  const [addDelPlayer, setAddDelPlayer] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
   const getPlayers = () => {
