@@ -16,26 +16,4 @@
   margin-bottom: 1rem;
 }
 
-.form-control {
-  background-color: #eee;
-  outline: none;
-  border: 0;
-  border-bottom: 1px solid lightgray;
-}
 
-.form-control:focus {
-  box-shadow: none;
-  background-color: #eee;
-  border-bottom: 3px solid coral;
-}
-
-.input-group {
-  margin-bottom: 15px;
-}
-.input-group-addon {
-  border-bottom: 1px solid lightgray;
-  background-color: #eee;
-}
-.icon {
-  padding: 12px 0 0 10px;
-}
