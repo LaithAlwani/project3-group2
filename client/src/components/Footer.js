@@ -3,7 +3,7 @@ import "../styles/footer.css";
 
 function Footer() {
   return (
-    <div className="footer text-center">
+    <div className="footer small text-center">
       <span>Group2-project3 © 2021</span>
     </div>
   );

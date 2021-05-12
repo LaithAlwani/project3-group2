@@ -16,7 +16,7 @@ const Home = () => {
             <img
               src={`/uploads/football.png`}
               alt="track"
-              className="img-fuild main-pics"
+              className="img-fluid main-pics"
             />
             <div className="mt-3">
               <h5>Team Roster</h5>
@@ -27,7 +27,7 @@ const Home = () => {
             <img
               src={`/uploads/sports.png`}
               alt="team"
-              className="img-fuild main-pics"
+              className="img-fluid main-pics"
             />
             <div className="mt-3">
               <h4>Team Workout</h4>
@@ -38,7 +38,7 @@ const Home = () => {
             <img
               src={`/uploads/message.png`}
               alt="post"
-              className="img-fuild main-pics"
+              className="img-fluid main-pics"
             />
             <div className="mt-3">
               <h4>Team Posts</h4>
