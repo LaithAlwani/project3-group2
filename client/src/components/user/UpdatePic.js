@@ -34,7 +34,6 @@ const UpdatePic = ({showModal,updateModel}) => {
       setTimeout(() => {
         setSuccess("");
       }, 2000);
-      window.location.reload()
     } catch (error) {
       setError(`File not supported`);
       console.log(error)
