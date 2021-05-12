@@ -9,11 +9,11 @@ import Teams from "./pages/Teams";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import MyTeam from "./components/team/MyTeam";
-import './styles/Home.css'
 import PostView from "./pages/PostView";
 import NotFound from "./pages/NotFound";
 import Footer from "./components/Footer"
 import Landing from "./pages/Landing";
+import './App.css'
 
 
 const App = () => {

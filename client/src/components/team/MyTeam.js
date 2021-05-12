@@ -71,7 +71,7 @@ function MyTeam({ user }) {
                   <img
                     src={`/uploads/${data.teamImage}`}
                     alt=""
-                    className="img-fluid"
+                    className="img-fluid team-img"
                   />
                   {isAdmin && <UpdateTeam />}
                 </div>

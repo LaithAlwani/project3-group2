@@ -16,4 +16,15 @@
   margin-bottom: 1rem;
 }
 
+@media only screen and (max-width:425px){
+  .log-reg{
+    margin-top: 1rem;
+    height: 100%;
+    align-items: start;
+  }
+  .log-reg-form {
+    box-shadow:none;
+  }
+}
+
 
