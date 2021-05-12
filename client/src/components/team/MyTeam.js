@@ -46,6 +46,7 @@ function MyTeam({ user }) {
       })
       .then((res) => {
         setMessage(res.data);
+        addedPlayers(true);
         setTimeout(() => {
           setMessage("");
         }, 2000);
@@ -57,6 +58,7 @@ function MyTeam({ user }) {
     getPlayers();
     checkAdmin();
   }, [data._id, addDelPlayer]);
+
   return (
     <>
       <div className="container">
@@ -104,9 +106,14 @@ function MyTeam({ user }) {
                 {message && <div className="alert alert-danger">{message}</div>}
                 <hr></hr>
                 <div className="mt-3">
-                  <h3>Add Players</h3>
                   {isAdmin && (
-                    <AddMember teamId={data._id} addedPlayers={addedPlayers} />
+                    <>
+                      <h3>Add Players</h3>
+                      <AddMember
+                        teamId={data._id}
+                        addedPlayers={addedPlayers}
+                      />
+                    </>
                   )}
                 </div>
               </div>

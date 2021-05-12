@@ -92,8 +92,8 @@ const UpdateProfile = ({ history }) => {
                   <form onSubmit={submitHandler}>
                     <label htmlFor="name">Username:</label>
                     <div className="input-group">
-                      <span class="input-group-addon">
-                        <span class="fas fa-user icon"></span>
+                      <span className="input-group-addon">
+                        <span className="fas fa-user icon"></span>
                       </span>
                       <input
                         type="text"
@@ -108,8 +108,8 @@ const UpdateProfile = ({ history }) => {
 
                     <label>Email:</label>
                     <div className="input-group">
-                      <span class="input-group-addon">
-                        <span class="fas fa-envelope icon"></span>
+                      <span className="input-group-addon">
+                        <span className="fas fa-envelope icon"></span>
                       </span>
                       <input
                         type="email"
@@ -124,8 +124,8 @@ const UpdateProfile = ({ history }) => {
 
                     <label htmlFor="password">Password:</label>
                     <div className="input-group">
-                      <span class="input-group-addon">
-                        <span class="fas fa-lock icon"></span>
+                      <span className="input-group-addon">
+                        <span className="fas fa-lock icon"></span>
                       </span>
                       <input
                         type="password"

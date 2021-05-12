@@ -88,8 +88,8 @@ const UpdateTeam = () => {
 
             <label htmlFor="name">Team Name:</label>
             <div className="input-group">
-              <span class="input-group-addon">
-                <span class="fas fa-users icon"></span>
+              <span className="input-group-addon">
+                <span className="fas fa-users icon"></span>
               </span>
               <input
                 type="text"
@@ -104,8 +104,8 @@ const UpdateTeam = () => {
 
             <label htmlFor="name">Sport:</label>
             <div className="input-group">
-              <span class="input-group-addon">
-                <span class="fas fa-basketball-ball icon"></span>
+              <span className="input-group-addon">
+                <span className="fas fa-basketball-ball icon"></span>
               </span>
               <input
                 type="text"
