@@ -82,15 +82,15 @@ const Login = ({ history }) => {
             tabIndex={2}
           />
         </div>
-          <Link to="/forgotpassword" className="small">
-            Forgot Password?
+          <Link  to="/forgotpassword" className="small">
+            <p className="links">Forgot Password?</p>
           </Link>
         <button type="submit" className="btn btn-block">
           Login
         </button>
 
         <span className="small">
-          Don't have an account? <Link to="/register">Register</Link>
+          Don't have an account? <Link to="/register"><span className="links">Register</span></Link>
         </span>
       </form>
     </div>

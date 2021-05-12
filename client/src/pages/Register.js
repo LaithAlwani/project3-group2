@@ -128,7 +128,7 @@ const Register = ({ history }) => {
           Sign Up
         </button>
         <span className="small">
-          Already have an account? <Link to="/login">Login</Link>
+          Already have an account? <Link to="/login"><span className="links">Login</span></Link>
         </span>
       </form>
     </div>
