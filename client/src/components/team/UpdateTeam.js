@@ -36,36 +36,24 @@ const UpdateTeam = () => {
     if (!fileName) {
       axios
         .put(`/api/teams/${id}/updatenp`, { teamName, sport }, config)
-        .then(() => {
-          setSuccess(`Team Updated Successfully`);
-          setTimeout(() => {
-            setSuccess("");
-          }, 3000);
-          history.push("/portal");
-        })
+        .then(() => history.push("/teams"))
         .catch((error) => {
           setError(error);
           if (error)
             setTimeout(() => {
               setError("");
-            }, 3000);
+            }, 2000);
         });
     } else {
       axios
         .put(`/api/teams/${id}/update`, formData, config)
-        .then(() => {
-          setSuccess(`Post Added Successfully`);
-          setTimeout(() => {
-            setSuccess("");
-          }, 3000);
-          history.push("/portal");
-        })
+        .then(() => history.push("/teams"))
         .catch((error) => {
           setError(`Image Required/ File Unsupported`);
           if (error)
             setTimeout(() => {
               setError("");
-            }, 3000);
+            }, 2000);
         });
     }
   };
