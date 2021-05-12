@@ -10,19 +10,12 @@ body {
   background: #eee;
   color: #333;
 }
-/* .links {
-  color:blue
+
+.wrapper {
+  min-height: 100vh;
+  margin-bottom: -27px;
+  padding-bottom: 30px;
 }
-
- a {
-  color: #333;
-} 
-a:hover {
-  color: #333; 
-  text-decoration: underline;
-} */
-
-
 
 
 /* form styles */
