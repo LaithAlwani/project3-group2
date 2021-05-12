@@ -31,7 +31,7 @@ function Navbar({username}) {
           <ul className="navbar-nav ml-auto">
             <li className="nav-item dropdown">
               <Link to="#" className={
-                  location.pathname === "/profile"
+                  location.pathname === "/portal"
                     ? "dropdown-toggle nav-link  active"
                     : "dropdown-toggle nav-link"
                 }  id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

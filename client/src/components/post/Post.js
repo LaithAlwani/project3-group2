@@ -47,7 +47,7 @@ const Post = ({isAdmin}) => {
           post
             .map((posts) => (
               <div key={posts._id}>
-                <Link to={{pathname:`/view/${id}/${posts._id}`, state:{isAdmin}}}>
+                <Link  to={{pathname:`/view/${id}/${posts._id}`, state:{isAdmin}}}>
                   <div className="card w-80 card-post ">
                     <div className="card-body card-main ">
                       <h3>{posts.title}</h3>
