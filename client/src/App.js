@@ -44,7 +44,7 @@ const App = () => {
             </Route>
             <Route exact path="/passwordreset/:resetToken" component={ResetPassword}/>
             <Route path="/profile">
-              <ProfilePage/>
+              <ProfilePage getUser={getUser}/>
             </Route>
             <Route exact path="/view/:teamid/:id">
               <PostView />

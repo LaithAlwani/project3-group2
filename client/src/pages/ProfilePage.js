@@ -4,7 +4,7 @@ import axios from "axios";
 import UserContext from "../utils/UserContext";
 import UpdateProfile  from "../components/user/UpdateProfile";
 
-const ProfilePage = () => {
+const ProfilePage = ({getUser}) => {
   const history = useHistory();
 
   const [error, setError] = useState("");
@@ -54,7 +54,7 @@ const ProfilePage = () => {
   ) : (
     <UserContext.Provider value={userData}>
       <div className="container">
-        <UpdateProfile/>
+        <UpdateProfile getUser={getUser}/>
     </div>
     </UserContext.Provider>
   );
