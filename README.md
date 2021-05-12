@@ -1,8 +1,8 @@
-# MY TEAM
+<h1 align="center"> MY TEAM </h1>
 
 <p align="center">
- <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" target="_blank" />
- <img alt="Nodejs" src="https://aleen42.github.io/badges/src/node.svg" target="_blank" />
+ <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg"  />
+ <img alt="Nodejs" src="https://aleen42.github.io/badges/src/node.svg"  />
  <img alt="NPM version" src="https://img.shields.io/badge/npm-v6.14.10-blue"/>
  <img alt="Dependencies" src="https://img.shields.io/badge/dependencies%20-up%20to%20date-orange" />
  <img alt="Dependencies" src="https://badges.aleen42.com/src/react.svg" />
@@ -70,9 +70,28 @@ Heroku was used for app deployment.
 Click [here](https://group2-project3.herokuapp.com/) to deploy.
 
 ### Screenshots
+The application is responsive.
 
+<p align="center">
+ <img alt="main page" src="client/public/uploads/main.png" height="500" width="800" />
+ <img alt="teams" src="client/public/uploads/teams.png" height="500" width="800"  />
+ <img alt="team portal" src="client/public/uploads/alpha.png" height="500" width="800"/>
+</p>
 
+### Click on the arrow to drop down more images of the app.
 
+<details>
+  <summary>Application on small screen (login screen)</summary>
+  <img src="client/public/uploads/mobile2.png" alt= "app on small screen"/>
+</details>
+<details>
+  <summary>Application on small screen (landing page)</summary>
+  <img src="client/public/uploads/mobile1.png" alt= "app on small screen"/>
+</details>
+<details>
+  <summary>Application on small screen (user profile)</summary>
+  <img src="client/public/uploads/mobile3.png" alt= "app on small screen"/>
+</details>
 
 
 ## Contributors

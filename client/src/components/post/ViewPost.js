@@ -40,7 +40,7 @@ const ViewPost = () => {
       <div className="container">
         <div className="card card-post">
           <div className="card-body">
-            <h1>{title}</h1>
+            <h1 className="text">{title}</h1>
             <span className="text">Written by: {postAuthor}</span>
             <br></br>
             <p className="align">{post}</p>

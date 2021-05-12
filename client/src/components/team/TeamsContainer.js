@@ -31,7 +31,7 @@ function MyTeamContainer() {
   };
   return (
     <div className="container mt-3">
-      <div className="card card-view">
+      <div className="card card-profile">
         <div className="card-body">
           {showTeams && (
             <div className="text-right">
