@@ -81,7 +81,7 @@ const Landing = ({ getUser }) => {
                 className="img-fluid main-pics"
               />
               <div className="mt-3">
-                <h5>Poll</h5>
+                <h5>Polls</h5>
                 <p>Engage players in decision making</p>
               </div>
             </div>
