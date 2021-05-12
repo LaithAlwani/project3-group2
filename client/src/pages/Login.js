@@ -48,8 +48,8 @@ const Login = ({ history }) => {
         {error && <span className="error-message">{error}</span>}
         <label htmlFor="email">Email:</label>
         <div className="input-group">
-          <span class="input-group-addon">
-            <span class="fas fa-envelope icon"></span>
+          <span className="input-group-addon">
+            <span className="fas fa-envelope icon"></span>
           </span>
           <input
             type="email"
@@ -67,8 +67,8 @@ const Login = ({ history }) => {
           Password:{" "}
         </label>
         <div className="input-group">
-          <span class="input-group-addon">
-            <span class="fas fa-lock icon"></span>
+          <span className="input-group-addon">
+            <span className="fas fa-lock icon"></span>
           </span>
           <input
             type="password"

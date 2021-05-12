@@ -60,8 +60,8 @@ const Register = ({ history }) => {
 
         <label htmlFor="name">Username:</label>
         <div className="input-group">
-          <span class="input-group-addon">
-            <span class="fas fa-user icon"></span>
+          <span className="input-group-addon">
+            <span className="fas fa-user icon"></span>
           </span>
           <input
             type="text"
@@ -76,8 +76,8 @@ const Register = ({ history }) => {
 
         <label>Email:</label>
         <div className="input-group">
-          <span class="input-group-addon">
-            <span class="fas fa-envelope icon"></span>
+          <span className="input-group-addon">
+            <span className="fas fa-envelope icon"></span>
           </span>
           <input
             type="email"
@@ -92,8 +92,8 @@ const Register = ({ history }) => {
 
         <label htmlFor="password">Password:</label>
         <div className="input-group">
-          <span class="input-group-addon">
-            <span class="fas fa-lock icon"></span>
+          <span className="input-group-addon">
+            <span className="fas fa-lock icon"></span>
           </span>
           <input
             type="password"
@@ -108,8 +108,8 @@ const Register = ({ history }) => {
         </div>
         <label htmlFor="confirmpassword">Confirm Password:</label>
         <div className="input-group">
-          <span class="input-group-addon">
-            <span class="fas fa-lock icon"></span>
+          <span className="input-group-addon">
+            <span className="fas fa-lock icon"></span>
           </span>
           <input
             type="password"

@@ -43,7 +43,7 @@ function AddTeam({ getShowTeams }) {
         <form onSubmit={handleSubmit} className="add-team-form">
           <div className="input-group">
             <span class="input-group-addon">
-              <span class="fas fa-user icon"></span>
+              <span class="fas fa-users icon"></span>
             </span>
             <input
               type="text"

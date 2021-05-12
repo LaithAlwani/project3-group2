@@ -4,13 +4,14 @@ import axios from "axios";
 import Profile from "./Profile";
 import "../../styles/Profile.css";
 
-const UpdateProfile = ({ history }) => {
-  const { _id } = useContext(UserContext);
+const UpdateProfile = ({ history, getUser }) => {
+  const { _id , image } = useContext(UserContext);
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [success, setSuccess] = useState("");
+  const [updateProfile, setUpdateProfile] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -20,29 +21,31 @@ const UpdateProfile = ({ history }) => {
         history.push("/login");
       }, 2000);
     }
-    const fetchPrivateDate = async () => {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-        },
-      };
-
-      try {
-        const { data } = await axios.get("/api/private", config);
-        setUsername(data.username);
-        setEmail(data.email);
-      } catch (error) {
-        localStorage.removeItem("authToken");
-        setError("You are not authorized please login! Redirecting to login");
-        setTimeout(() => {
-          history.push("/login");
-        }, 2000);
-      }
-    };
 
     fetchPrivateDate();
-  }, []);
+  }, [updateProfile]);
+
+  const fetchPrivateDate = async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      },
+    };
+
+    try {
+      const { data } = await axios.get("/api/private", config);
+      setUsername(data.username);
+      setEmail(data.email);
+      getUser(data);
+    } catch (error) {
+      localStorage.removeItem("authToken");
+      setError("You are not authorized please login! Redirecting to login");
+      setTimeout(() => {
+        history.push("/login");
+      }, 2000);
+    }
+  };
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -62,7 +65,8 @@ const UpdateProfile = ({ history }) => {
       setTimeout(() => {
         setSuccess("");
       }, 2000);
-      window.location.reload();
+      setUpdateProfile(!updateProfile);
+      setPassword("");
     } catch (error) {
       setError(`Email Already Exists`);
       setPassword("");
@@ -78,7 +82,9 @@ const UpdateProfile = ({ history }) => {
       <div className="container">
         <div className="row gutters">
           <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 card-space">
-            <Profile />
+            <UserContext.Provider value={{_id,username, email,image}}>
+            <Profile   />
+            </UserContext.Provider>
           </div>
           <div className="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12 card-space">
             <div className="card h-100 card-profile">
@@ -92,8 +98,8 @@ const UpdateProfile = ({ history }) => {
                   <form onSubmit={submitHandler}>
                     <label htmlFor="name">Username:</label>
                     <div className="input-group">
-                      <span class="input-group-addon">
-                        <span class="fas fa-user icon"></span>
+                      <span className="input-group-addon">
+                        <span className="fas fa-user icon"></span>
                       </span>
                       <input
                         type="text"
@@ -108,8 +114,8 @@ const UpdateProfile = ({ history }) => {
 
                     <label>Email:</label>
                     <div className="input-group">
-                      <span class="input-group-addon">
-                        <span class="fas fa-envelope icon"></span>
+                      <span className="input-group-addon">
+                        <span className="fas fa-envelope icon"></span>
                       </span>
                       <input
                         type="email"
@@ -124,8 +130,8 @@ const UpdateProfile = ({ history }) => {
 
                     <label htmlFor="password">Password:</label>
                     <div className="input-group">
-                      <span class="input-group-addon">
-                        <span class="fas fa-lock icon"></span>
+                      <span className="input-group-addon">
+                        <span className="fas fa-lock icon"></span>
                       </span>
                       <input
                         type="password"

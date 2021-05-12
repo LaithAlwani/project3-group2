@@ -4,18 +4,14 @@ import { Modal } from "react-bootstrap";
 import axios from "axios";
 import "../../styles/Profile.css";
 
-const UpdatePic = () => {
+const UpdatePic = ({showModal,updateModel}) => {
 
   const { _id } = useContext(UserContext);
 
   const [fileName, setFileName] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-
-  const [showModal, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+  
   const submitHandler = async (e) => {
     e.preventDefault();
 
@@ -29,35 +25,29 @@ const UpdatePic = () => {
     formData.append("image",fileName);
 
     try {
-      const { data } = await axios.put(
+      await axios.put(
         `/api/users/${_id}/updatepic`, formData,
         config
       );
-      console.log(data);
-      window.location.reload();
+      updateModel(false)
       setSuccess(`Image Updated`);
       setTimeout(() => {
         setSuccess("");
-      }, 5000);
+      }, 2000);
 
     } catch (error) {
       setError(`File not supported`);
       console.log(error)
       setTimeout(() => {
         setError("");
-      }, 5000);
+      }, 2000);
     }
   };
 
 
   return (
   <div>
-    <div>
-      <button className="btn btn-block mt-2" onClick={handleShow}>
-        Update Image
-      </button>
-    </div>
-    <Modal show={showModal} onHide={handleClose}>
+    <Modal show={showModal} onHide={()=> updateModel(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Update Image</Modal.Title>
         </Modal.Header>

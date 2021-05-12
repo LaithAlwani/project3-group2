@@ -12,7 +12,7 @@ const Post = ({isAdmin}) => {
   const [post, setPost] = useState([]);
   const [newPostModel, setNewPostModel] = useState(false);
 
-  const updateNewPostModel = (value) => {
+  const updateNewPostModel = value => {
     setNewPostModel(value);
   };
 
