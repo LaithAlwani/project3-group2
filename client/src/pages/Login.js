@@ -34,7 +34,7 @@ const Login = ({ history }) => {
       localStorage.setItem("authToken", data.token);
       history.push("/portal");
     } catch (error) {
-      console.log(error.response.data);
+      setError(`Invalid credentials. Please try again`);
       setTimeout(() => {
         setError("");
       }, 5000);
