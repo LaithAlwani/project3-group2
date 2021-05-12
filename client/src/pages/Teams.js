@@ -5,7 +5,7 @@ import UserContext from "../utils/UserContext";
 import TeamsContainer from "../components/team/TeamsContainer";
 import "../App.css";
 
-const Landing = () => {
+const Teams = () => {
   const history = useHistory();
 
   const [error, setError] = useState("");
@@ -61,4 +61,4 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+export default Teams;

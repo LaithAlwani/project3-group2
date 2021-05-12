@@ -104,9 +104,11 @@ function MyTeam({ user }) {
                 {message && <div className="alert alert-danger">{message}</div>}
                 <hr></hr>
                 <div className="mt-3">
-                  <h3>Add Players</h3>
                   {isAdmin && (
+                    <div>
+                    <h3>Add Players</h3>
                     <AddMember teamId={data._id} addedPlayers={addedPlayers} />
+                    </div>
                   )}
                 </div>
               </div>
