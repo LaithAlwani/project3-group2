@@ -13,7 +13,6 @@ const UpdateTeam = () => {
   const [sport, setSport] = useState("");
   const [fileName, setFileName] = useState("");
   const [error, setError] = useState("");
-  const [success, setSuccess] = useState("");
 
   const [showModal, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -29,7 +28,7 @@ const UpdateTeam = () => {
     };
 
     const formData = new FormData();
-    formData.append("sport", sport);
+    formData.append("sport", sport)
     formData.append("teamName", teamName);
     formData.append("teamImage", fileName);
 
@@ -72,8 +71,6 @@ const UpdateTeam = () => {
         <Modal.Body>
           <form onSubmit={submitHandler} encType="multipart/form-data">
             {error && <span className="error-message">{error}</span>}
-            {success && <span className="success-message">{success}</span>}
-
             <label htmlFor="name">Team Name:</label>
             <div className="input-group">
               <span className="input-group-addon">
