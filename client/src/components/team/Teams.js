@@ -17,16 +17,16 @@ function Teams({ myTeams }) {
         >
           <div  className="team-card">
             <div className="row text-center mb-2 p-3">
-              <div className="col-4">
+              <div className="col-sm-4">
                 <img className="teamcard-img"
                   src={`/uploads/${team.teamImage}`}
                   alt=""
                 />
               </div>
-              <div className="col-4">
+              <div className="col-sm-4">
                 <p className="mt-3">{team.teamName}</p>
               </div>
-              <div className="col-4">
+              <div className="col-sm-4">
                 <p className="mt-3">{team.sport}</p>
               </div>
               

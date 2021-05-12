@@ -5,7 +5,7 @@
    white, white 50%, rgb(122, 122, 122) 50%, #333
 );
 background-size: 100% 200%;
-transition: all 0.2s ease;
+/* transition: all 0.2s ease; */
 }
 
 .team-card:hover {
@@ -24,8 +24,8 @@ height: 3.75rem;
 width: 6.25rem;
 }
 
-.img-fluid {
-width: 100% !important;
+.team-img {
+/* width: 100% !important; */
 border-radius: 50%;
 }
 

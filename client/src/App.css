@@ -10,16 +10,11 @@ body {
   background: #eee;
   color: #333;
 }
-.links {
-  color:blue
-}
 
-a {
-  color: #333;
-}
-a:hover {
-  color: #333;
-  text-decoration: underline;
+.wrapper {
+  min-height: 100vh;
+  margin-bottom: -27px;
+  padding-bottom: 30px;
 }
 
 
@@ -34,7 +29,7 @@ a:hover {
 .form-control:focus {
   box-shadow: none;
   background-color: #eee;
-  border-bottom: 3px solid coral;
+  border-bottom: 3px solid rgba(0, 0, 0, 0.8);
 }
 
 .input-group {
@@ -50,16 +45,22 @@ a:hover {
 
 
 /*All button Styles*/
+
 .btn {
   border: none;
-  background-color: coral;
-  color: white;
+  background-color: rgb(71, 71, 71);
+  border-radius: 10px;
+  border: 4px double #cccccc;
+  color: #e4e4e4;
   margin-top: 10px;
+
 }
+
 .btn:hover {
-  background-color: #fd652e;
-  color: black;
+  background-color: black;
+  color:white
 }
+
 .btn:active {
   outline: none;
   box-shadow: none;
@@ -70,13 +71,7 @@ a:hover {
   box-shadow: none;
 }
 
-.btn-main {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  margin-right: auto;
-  margin-left: auto;
-}
+
 /*Message styles*/
 .error-message {
   width: 100%;
@@ -99,7 +94,7 @@ a:hover {
 /*Navbar style*/
 .dropdown-item:hover {
   color: white !important;
-  background-color: #ff7f50;
+  background-color: black;
 }
 /*404 page styles*/
 .d-block {

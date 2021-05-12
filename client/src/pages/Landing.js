@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import UserContext from "../utils/UserContext";
-import "../App.css";
-
 
 const Landing = ({ getUser }) => {
   const history = useHistory();
@@ -13,7 +11,7 @@ const Landing = ({ getUser }) => {
     username: "",
     _id: "",
     email: "",
-    teams: "",
+    teams: [],
     userCreated: "",
   });
 
@@ -24,29 +22,30 @@ const Landing = ({ getUser }) => {
         history.push("/login");
       }, 2000);
     }
-    const fetchPrivateDate = async () => {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-        },
-      };
-
-      try {
-        const { data } = await axios.get("/api/private", config);
-        setUserData(data);
-        getUser(data);
-      } catch (error) {
-        localStorage.removeItem("authToken");
-        setError("You are not authorized please login! Redirecting to login");
-        setTimeout(() => {
-          history.push("/login");
-        }, 2000);
-      }
-    };
 
     fetchPrivateDate();
-  }, [history]);
+  }, []);
+
+  const fetchPrivateDate = async () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      },
+    };
+
+    try {
+      const { data } = await axios.get("/api/private", config);
+      setUserData(data);
+      getUser(data);
+    } catch (error) {
+      localStorage.removeItem("authToken");
+      setError("You are not authorized please login! Redirecting to login");
+      setTimeout(() => {
+        history.push("/login");
+      }, 2000);
+    }
+  };
 
   return error ? (
     <div className="alert alert-danger" role="alert">
@@ -54,37 +53,48 @@ const Landing = ({ getUser }) => {
     </div>
   ) : (
     <UserContext.Provider value={userData}>
-      <div>
-        <div className="jumbotron jumbotron-fluid">
-          <div className="container text-center">
-            <h1 className="display-4">Welcome {userData.username} !!!</h1>
-            <p className="text">Connect with your team today.</p>
-            <Link to="/teams"><button className="btn btn-main">Teams</button></Link>
-            <Link to="/profile"><button className="btn btn-main">Profile</button></Link>
-          </div>
-        </div>
-        <div className="container-fluid card-bottom">
-          <div className="row text-center slideanim">
+      <div className="text-center">
+        <h1 className="title mt-3">Welcome {userData.username} !!!</h1>
+        <p className="text">Connect with your team today.</p>
+        <Link to="/teams">
+          <button className="btn">Teams</button>
+        </Link>
+
+        <div className="container-fluid mt-5">
+          <h2>Coming Soon!</h2>
+          <div className="row  mt-3">
             <div className="col-sm-4">
-                <div className="thumbnail">
-                    <img src={`/uploads/sports.png`} alt="track" className="main-pics"/>
-                    <p><strong>Track Team</strong></p>
-                    <p>Track team activity</p>
-                </div>
+              <img
+                src={`/uploads/google-calendar.jpg`}
+                alt="Calendar"
+                className="img-fluid main-pics"
+              />
+              <div className="mt-3">
+                <h5>Google Calender</h5>
+                <p>schedule team meetings and workouts</p>
+              </div>
             </div>
             <div className="col-sm-4">
-                <div className="thumbnail">
-                    <img src={`/uploads/football.png`} alt="team" className="main-pics"/>
-                    <p><strong>Team Work</strong></p>
-                    <p>Build your team</p>
-                </div>
+              <img
+                src={`/uploads/polls.png`}
+                alt="team"
+                className="img-fluid main-pics"
+              />
+              <div className="mt-3">
+                <h5>Poll</h5>
+                <p>Engage players in decision making</p>
+              </div>
             </div>
             <div className="col-sm-4">
-                <div className="thumbnail">
-                    <img src={`/uploads/message.png`} alt="post"className="main-pics"/>
-                    <p><strong>Team Posts</strong></p>
-                    <p>Post messages, schedule and other team information</p>
-                </div>
+              <img
+                src={`/uploads/chatsrus.jpeg`}
+                alt="post"
+                className="img-fluid main-pics"
+              />
+              <div className="mt-3">
+                <h5>Team Chat</h5>
+                <p>Real team chat with your teammates</p>
+              </div>
             </div>
           </div>
         </div>

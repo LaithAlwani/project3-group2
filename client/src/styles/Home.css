@@ -1,24 +1,10 @@
-
-
 /* button login & signup */
-.btn {
-  background-color: rgb(31, 31, 31);
-  border-radius: 10px;
-  border: 4px double #cccccc;
-  color: #e4e4e4;
-
-}
-
-.btn:hover {
-  background-color: black;
-  color:white
-}
 
 
 /* title */
-#title {
+.title {
   margin-top: 2rem;
-  font-size: 100px;
+  font-size: 50px;
   letter-spacing: 2px;
   color: rgb(0, 0, 0);
   font-family: fantasy;
